@@ -326,3 +326,29 @@ p {
   font-size: 2.5rem;
   color: #cffbff;
 }
+.home .home_intro {
+  padding: 0 1.8rem;
+  display: block;
+  text-align: center;
+}
+.home .home_intro p {
+  margin: 1.5rem 0 2rem;
+  color: #29f3db;
+  font-size: 1.5rem;
+}
+.home .home_intro .mobileBtn {
+  color: white;
+  background: linear-gradient(180deg, #01fce1 0, #01d6c8 31.87%, #0299a0 90.06%);
+  cursor: pointer;
+  border-radius: 10rem;
+  border: 0;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  min-width: 26.5rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.2rem;
+  padding: 0 7px;
+}

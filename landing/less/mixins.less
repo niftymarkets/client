@@ -1,4 +1,4 @@
-.button() {
+.button() { //For mobile side nav
     color: white;
     min-width: 100%;
     height: 3.8rem;
@@ -10,7 +10,7 @@
     font-size: 2rem;
     outline: none;
 
-    @media @desktop {
+    @media @desktop { //For desktop Top nav
         align-content: center;
         min-width: 11.2rem;
         font-size: 1.6rem;
@@ -18,4 +18,13 @@
         padding: 0 .8rem;
         
     }
+}
+
+.pageButton() {
+    color: white;
+    background: @navSideBtns;
+    cursor: pointer;
+    border-radius: 10rem;
+    border: 0;
+    font-size: 1.6rem;
 }
