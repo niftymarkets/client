@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import TransactionHistory from './TransactionHistory'
 import Wishlist from './WishList'
 import UserDetails from './UserDetails'
+import CurrentItems from './CurrentItems'
 
 const user = {
   id: 'user1',
@@ -70,8 +71,9 @@ class UserWrapper extends Component {
         <UserDetails
           name={user.name}
           balance={user.balance}
-          userItems={user.userItems}
+          
         />
+        <CurrentItems userItems={user.userItems} />
         <TransactionHistory transHist={user.transactionHistory} />
         <Wishlist wishList={user.wishList} />
       </div>

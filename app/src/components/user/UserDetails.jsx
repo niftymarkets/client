@@ -11,15 +11,6 @@ class UserDetails extends Component {
           <button>Add funds</button>
           <button>Send funds</button>        
         </div>
-        <div>
-          <h3>Your items:</h3>
-          {
-            this.props.userItems.map(item => (
-              /* item(itemId) needs to target an Item card in state.item */
-              <div key={item}>{item}</div>
-            ))
-          }
-        </div>
       </div>
     );
   }
