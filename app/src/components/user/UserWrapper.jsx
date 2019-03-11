@@ -26,14 +26,14 @@ const user = {
       otherUser: 'user2',
     },
     {
-      id: 3,
+      transId: 3,
       itemId: 3,
       price: 30,
       date: Date.now(),
       otherUser: 'user3',
     },
     {
-      id: 4,
+      transId: 4,
       itemId: 4,
       price: 40,
       date: Date.now(),

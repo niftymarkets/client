@@ -7,7 +7,7 @@ class TransactionHistory extends Component {
         <h2>I'm the Transaction History!</h2>
         {
           this.props.transHist.map(transaction => (
-            <ul key={transaction.id}>
+            <ul key={transaction.transId}>
               <li>
                 <span>{transaction.date} - </span>
                 {/* itemId needs to target an Item name in state.item */}

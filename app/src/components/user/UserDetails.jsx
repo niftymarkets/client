@@ -6,7 +6,7 @@ class UserDetails extends Component {
       <div>
         <h2>I have user details</h2>
         <p> My name is {this.props.name}</p>
-        <h3>Balance: {this.props.balance}€</h3>
+        <h3>Balance: {this.props.balance}$</h3>
         <div>
           <button>Add funds</button>
           <button>Send funds</button>        
