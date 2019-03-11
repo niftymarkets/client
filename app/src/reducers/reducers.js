@@ -1,8 +1,7 @@
 import * as types from '../actions/actionTypes';
 import { combineReducers } from 'redux';
 
-
-
+// Reducer template
 export const loading = (loading=false, action) => {
   switch (action.type) {
     case types.LOADING:
@@ -23,6 +22,7 @@ export const error = (error=null, action) => {
   }
 }
 
+// Combine all reducers into single one
 const rootReducer = combineReducers({
   loading,
   error,
