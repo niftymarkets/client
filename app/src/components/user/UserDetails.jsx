@@ -6,7 +6,20 @@ class UserDetails extends Component {
       <div>
         <h2>I have user details</h2>
         <p> My name is {this.props.name}</p>
-        <div>Balance: {this.props.balance}</div>
+        <h3>Balance: {this.props.balance}€</h3>
+        <div>
+          <button>Add funds</button>
+          <button>Send funds</button>        
+        </div>
+        <div>
+          <h3>Your items:</h3>
+          {
+            this.props.userItems.map(item => (
+              /* item(itemId) needs to target an Item card in state.item */
+              <div key={item}>{item}</div>
+            ))
+          }
+        </div>
       </div>
     );
   }

@@ -8,6 +8,7 @@ const user = {
   name: 'Frank1',
   balance: 100,
   wishList: ['item1', 'item3', 'item4'], // game_item.id
+  userItems: ['item23', 'item12'],
   transactionHistory: [
     { // each transaction should change game_item.owner
       id: 'trans1',
@@ -66,7 +67,11 @@ class UserWrapper extends Component {
     return (
       <div>
         <h2>I'm the UserWrapper!</h2>
-        <UserDetails name={user.name} balance={user.balance} />
+        <UserDetails
+          name={user.name}
+          balance={user.balance}
+          userItems={user.userItems}
+        />
         <TransactionHistory transHist={user.transactionHistory} />
         <Wishlist wishList={user.wishList} />
       </div>
