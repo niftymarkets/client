@@ -9,10 +9,11 @@ class Wish extends Component {
   }
 
   render() {
+    const itemName = this.props.gameItems.filter(item => item.itemId === this.props.wish);
+
     return (
-      /* wish(itemId) needs to target an Item name in state.item */
       <li>
-        {this.props.wish}
+        {itemName[0].name}
         <button onClick={this.onClickHandler}>X</button>
       </li>
     );
@@ -22,7 +23,7 @@ class Wish extends Component {
 const mapStateToProps = state => {
   return ({
     user: state.user,
-    // gameItems: state.gameItems,
+    gameItems: state.gameItems,
   });
 }
 
