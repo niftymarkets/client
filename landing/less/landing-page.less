@@ -1,12 +1,12 @@
 .home {
-
+    
     .home_benefits{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         padding: 0 2rem;
         margin-top: 2.5rem;
-
+        
         .benefits_item {
             margin: 0 0 1.5rem;
             .fa-hand-holding-usd {
@@ -21,7 +21,8 @@
     .home_intro {
         padding: 0 1.8rem;
         display: block;
-    text-align: center;
+        text-align: center;
+        border-bottom: 1px solid @menuBtn-color;
         p {
             margin: 1.5rem 0 2rem;
             color: @header-font-color;
@@ -37,6 +38,37 @@
             justify-content: center;
             height: 4.2rem;
             padding: 0 7px;
+        }
+    }
+    .p-abovecarousel {
+        text-align: center;
+        color: @home-h3-color;
+        padding-top: 2rem;
+    }
+
+    .lower {
+        
+        .lower1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 3px solid @header-font-color;
+        border-radius: 5rem;
+        padding: 2rem;
+        margin: 3rem;
+        //background: linear-gradient(180deg,#01fce1 0,#01d6c8 31.87%,#0299a0 90.06%);
+        }
+        p {
+            padding: 2rem 4rem 3rem 4rem;
+        }
+        .lower2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 3px solid @header-font-color;
+            border-radius: 5rem;
+            padding: 2rem;
+            margin: 3rem;
         }
     }
 }

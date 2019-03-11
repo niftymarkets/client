@@ -135,7 +135,7 @@ html {
 html,
 body {
   font-family: 'Ubuntu', sans-serif;
-  color: #040F0F;
+  background-color: #1b232d;
 }
 h1,
 h2,
@@ -143,15 +143,17 @@ h3,
 h4,
 h5 {
   font-family: 'Russo One', sans-serif;
-  color: #040F0F;
+  color: #29f3db;
 }
 h2 {
   font-size: 3.2rem;
 }
 h3 {
   font-size: 2.8rem;
+  color: #cffbff;
 }
 p {
+  color: #29f3db;
   font-size: 1.6rem;
   line-height: 1.4;
 }
@@ -167,6 +169,9 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 25;
 }
 @media (min-width: 1000px) {
   .nav {
@@ -309,6 +314,63 @@ p {
     padding-right: 0;
   }
 }
+.carousel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.6rem;
+}
+@media (min-width: 1000px) {
+  .carousel {
+    width: 100%;
+    height: 40rem;
+    margin-bottom: 15rem;
+  }
+}
+.carousel .left-button,
+.carousel .right-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #29f3db;
+  background-color: #040F0F;
+  font-size: 4rem;
+  border-radius: 50%;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+}
+.carousel .left-button:hover,
+.carousel .right-button:hover {
+  color: #C2FCF7;
+  background-color: #212b38;
+  border: 2px solid #212b38;
+}
+.carousel .left-button {
+  top: 50%;
+  left: 2.5rem;
+  transform: translate(0, -50%);
+}
+.carousel .right-button {
+  top: 50%;
+  right: 2.5rem;
+  transform: translate(0, -50%);
+}
+.carousel img {
+  width: 100%;
+  display: none;
+  padding: 0 2rem;
+}
+@media (min-width: 1000px) {
+  .carousel img {
+    height: 40rem;
+  }
+}
 .home .home_benefits {
   display: flex;
   flex-wrap: wrap;
@@ -330,6 +392,7 @@ p {
   padding: 0 1.8rem;
   display: block;
   text-align: center;
+  border-bottom: 1px solid #85BDBF;
 }
 .home .home_intro p {
   margin: 1.5rem 0 2rem;
@@ -351,4 +414,30 @@ p {
   justify-content: center;
   height: 4.2rem;
   padding: 0 7px;
+}
+.home .p-abovecarousel {
+  text-align: center;
+  color: #cffbff;
+  padding-top: 2rem;
+}
+.home .lower .lower1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #29f3db;
+  border-radius: 5rem;
+  padding: 2rem;
+  margin: 3rem;
+}
+.home .lower p {
+  padding: 2rem 4rem 3rem 4rem;
+}
+.home .lower .lower2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #29f3db;
+  border-radius: 5rem;
+  padding: 2rem;
+  margin: 3rem;
 }
