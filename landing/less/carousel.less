@@ -7,12 +7,19 @@
     position: relative;
     overflow: hidden;
     margin-top: 1.6rem;
+    border-bottom: 3px solid @nav-bgColor;
     @media @desktop {
       width: 100%;
-      height: 40rem;
+      height: 50rem;
       margin-bottom: 15rem;
+      padding-bottom: 5rem;
     }
     .left-button, .right-button {
+      -khtml-user-select: none;
+      -o-user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -44,8 +51,13 @@
         width: 100%;
         display: none;
         padding: 0 2rem;
+        -khtml-user-select: none;
+        -o-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+         user-select: none;
         @media @desktop {
-            height: 40rem;
+            height: 50rem;
         }
     }
   }
