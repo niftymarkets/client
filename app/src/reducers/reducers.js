@@ -1,4 +1,4 @@
-import * as types from '../actions/actionTypes';
+import * as types from '../actions/actionTypes'
 import { combineReducers } from 'redux'
 
 // Dummy data for reducers
@@ -64,8 +64,8 @@ const dummyUser = {
     imgUrl: '',
     availability: false
   }
-};
-const gameItems = [
+}
+const dummyItems = [
   {
     itemId: 1,
     name: 'Love Ranger',
@@ -107,7 +107,7 @@ const gameItems = [
     imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
     availability: true
   }
-];
+]
 
 // Reducers
 export const loading = (loading = false, action) => {
@@ -130,7 +130,7 @@ export const error = (error = null, action) => {
   }
 }
 
-export const userReducer = (state = dummyUser, action) => {
+export const user = (state = dummyUser, action) => {
   switch (action.type) {
     case types.TOGGLE_WISHLIST: {
       return {
@@ -140,17 +140,17 @@ export const userReducer = (state = dummyUser, action) => {
     }
 
     case types.REMOVE_WISH:
-      return ({
+      return {
         ...state,
         wishList: action.payload
-      });
+      }
 
     default:
       return state
   }
 }
 
-export const gameItemsReducer = (state = gameItems, action) => {
+export const gameItems = (state = dummyItems, action) => {
   switch (action.type) {
     default:
       return state
@@ -191,11 +191,11 @@ export const activeCategory = (activeCategory = '', action) => {
 const rootReducer = combineReducers({
   loading,
   error,
-  user: userReducer,
-  gameItems: gameItemsReducer,
+  user,
+  gameItems,
   isAuthed,
   marketSearch,
-  activeCategory,
+  activeCategory
 })
 
 export default rootReducer

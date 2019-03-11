@@ -1,36 +1,38 @@
-import * as types from './actionTypes';
+import * as types from './actionTypes'
 // import axiosFunctions!
 
-export const url = '';
+export const url = ''
 
 // actionCreator template
-export const actionName = (args) => dispatch => { // rename function accordingly
-  dispatch(onError(null));
-  dispatch(onLoad(true));
+export const actionName = args => dispatch => {
+  // rename function accordingly
+  dispatch(onError(null))
+  dispatch(onLoad(true))
 
   // axios function here
   // .then(res => dispatch(onFetch(res.data)))
   //   .catch(err => dispatch(onError(err.message)))
   //   .finally(() => dispatch(onLoad(false)));
-};
+}
 
 // Action creatros
 export const onLoad = bool => {
-  return ({
+  return {
     type: types.LOADING,
-    payload: bool,
-  });
+    payload: bool
+  }
 }
 
 export const onError = err => {
-  return ({
+  return {
     type: types.ERROR,
-    payload: err,
-  });
+    payload: err
+  }
 }
 
-export const searchItems = name => ({ 
-  type: types.SEARCH_ITEMS, payload: name 
+export const searchItems = name => ({
+  type: types.SEARCH_ITEMS,
+  payload: name
 })
 
 export const filterItems = category => ({
@@ -38,12 +40,12 @@ export const filterItems = category => ({
   payload: category
 })
 
-export const toggleWishList = (id, wishlist) => {
+export const toggleWishList = (id, wishList) => {
   let items
-  if (wishlist.includes(id)) {
-    items = wishlist.filter(item => item !== id)
+  if (wishList.includes(id)) {
+    items = wishList.filter(item => item !== id)
   } else {
-    items = [...wishlist, id]
+    items = [...wishList, id]
   }
   return {
     type: types.TOGGLE_WISHLIST,
@@ -52,9 +54,8 @@ export const toggleWishList = (id, wishlist) => {
 }
 
 export const removeWish = (id, wishList) => {
-  return ({
+  return {
     type: types.REMOVE_WISH,
-    payload: wishList.filter(wish => wish !== id),
-  });
-};
-
+    payload: wishList.filter(wish => wish !== id)
+  }
+}
