@@ -229,6 +229,11 @@ p {
     padding: 0 0.8rem;
   }
 }
+@media (min-width: 1000px) and (min-width: 1000px) {
+  .nav .desktop .desktopBtn:hover {
+    box-shadow: 0 5px 15px rgba(194, 252, 247, 0.4);
+  }
+}
 @media (min-width: 1000px) {
   .nav .desktop .fa-gamepad {
     font-size: 5rem;
@@ -441,6 +446,11 @@ p {
   height: 4.2rem;
   padding: 0 7px;
 }
+@media (min-width: 1000px) {
+  .home .home_intro .mobileBtn:hover {
+    box-shadow: 0 5px 15px rgba(194, 252, 247, 0.4);
+  }
+}
 .home .p-abovecarousel {
   text-align: center;
   color: #cffbff;
@@ -454,6 +464,7 @@ p {
   border-radius: 5rem;
   padding: 2rem;
   margin: 3rem;
+  background: linear-gradient(180deg, #112e46 0, #205886 31.87%, #2c7c74 90.06%);
 }
 .home .lower p {
   padding: 2rem 4rem 3rem 4rem;
@@ -466,4 +477,5 @@ p {
   border-radius: 5rem;
   padding: 2rem;
   margin: 3rem;
+  background: linear-gradient(180deg, #112e46 0, #205886 31.87%, #2c7c74 90.06%);
 }

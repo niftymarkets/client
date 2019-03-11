@@ -38,6 +38,11 @@
             justify-content: center;
             height: 4.2rem;
             padding: 0 7px;
+            @media @desktop {
+                &:hover {
+                box-shadow: 0 5px 15px rgba(194, 252, 247, 0.4);
+                }
+            }
         }
     }
     .p-abovecarousel {
@@ -56,10 +61,11 @@
         border-radius: 5rem;
         padding: 2rem;
         margin: 3rem;
-        //background: linear-gradient(180deg,#01fce1 0,#01d6c8 31.87%,#0299a0 90.06%);
+        background: linear-gradient(180deg,rgb(17, 46, 70) 0,rgb(32, 88, 134) 31.87%,rgb(44, 124, 116) 90.06%);
         }
         p {
             padding: 2rem 4rem 3rem 4rem;
+            
         }
         .lower2 {
             display: flex;
@@ -69,6 +75,7 @@
             border-radius: 5rem;
             padding: 2rem;
             margin: 3rem;
+            background: linear-gradient(180deg,rgb(17, 46, 70) 0,rgb(32, 88, 134) 31.87%,rgb(44, 124, 116) 90.06%);
         }
     }
 }
