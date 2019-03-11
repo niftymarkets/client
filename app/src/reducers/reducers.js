@@ -145,6 +145,12 @@ export const userReducer = (state = dummyUser, action) => {
         wishList: action.payload
       });
 
+    case types.UPDATE_ITEM_FORM:
+      return ({
+        ...state,
+        addItem: action.payload
+      });
+
     default:
       return state
   }
