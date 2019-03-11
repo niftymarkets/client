@@ -16,8 +16,12 @@
       <nav id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn">&times;</a>
           <div class="login-btns">
-          <button class ="sidebarBtn" href="#">Login</button>
-          <button class ="sidebarBtn" href="#">Get Started</button>
+              <form method="POST" action="#">
+                  <button class ="sidebarBtn" type="submit">Login</button>
+              </form>
+              <form method="POST" action="#">
+                  <button class ="sidebarBtn" type ="submit">Get Started</button>
+              </form>
         </div>
           <a href="#">Home</a>
           <a href="#">About Us</a>
@@ -32,16 +36,25 @@
             <a href="#">Contact</a>
           </div>
           <div class="right">
-                <button class ="desktopBtn" href="#">Login</button>
-                <button class ="desktopBtn" href="#">Get Started</button>
+              <form method="POST" action="#">
+                <button class ="desktopBtn" type="submit">Login</button>
+            </form>
+            <form method="POST" action="#">
+                <button class ="desktopBtn" type ="submit">Get Started</button>
+            </form>
               </div>
               <span class="fas fa-gamepad"></span>
         </nav>
       </div>
       <div class="container home">
         <div class="home_benefits">
-          <div class="benefits_item"></div>
-          <div class="benefits_item"></div>
+          <div class="benefits_item">
+            <img src="" alt="">
+            <h3 class="itemText fas fa-hand-holding-usd">Commission Free Trading</h3>
+          </div>
+          <div class="benefits_item">
+              <h3 class="itemText fas fa-shield-alt">100% Secure</h3>
+          </div>
         </div>
       </div>
   </body>
