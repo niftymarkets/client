@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removeWish } from '../../reducers/user';
+import { removeWish } from '../../actions/actionCreators';
 
 class Wish extends Component {
 
@@ -21,7 +21,7 @@ class Wish extends Component {
 
 const mapStateToProps = state => {
   return ({
-    user: state.userReducer,
+    user: state.user,
     // gameItems: state.gameItems,
   });
 }
