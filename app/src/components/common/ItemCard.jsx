@@ -36,7 +36,7 @@ const mapStateToProps = state => {
   // console.log(state)
   return {
     isAuthed: state.isAuthed,
-    wishlist: state.userReducer.wishList
+    wishlist: state.user.wishList
   }
 }
 
