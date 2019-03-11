@@ -7,8 +7,8 @@ const dummyUser = {
   userId: 1,
   name: 'Jack1',
   balance: 100,
-  wishList: [1, 5, 6, 8], // game_item.id
-  userItems: [2, 3],
+  wishList: [1, 3], // game_item.id
+  userItems: [2, 4],
   transactionHistory: [
     {
       // each transaction should change game_item.owner
@@ -92,6 +92,16 @@ const gameItems = [
     name: 'Stop Axe',
     price: 40,
     description: 'Never stop axin',
+    category: 'toys',
+    owner: 'username',
+    imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
+    availability: true
+  },
+  {
+    itemId: 4,
+    name: 'Start Name Thing',
+    price: 500,
+    description: 'Gotta go',
     category: 'toys',
     owner: 'username',
     imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
