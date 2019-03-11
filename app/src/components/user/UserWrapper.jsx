@@ -5,61 +5,63 @@ import UserDetails from './UserDetails'
 import CurrentItems from './CurrentItems'
 
 const user = {
-  id: 'user1',
+  userId: 1,
   name: 'Frank1',
   balance: 100,
-  wishList: ['item1', 'item3', 'item4'], // game_item.id
-  userItems: ['item23', 'item12'],
+  wishList: [1], // game_item.id
+  userItems: [2, 3],
   transactionHistory: [
     { // each transaction should change game_item.owner
-      id: 'trans1',
-      itemId: 'item1',
-      price: 1,
+      transId: 1,
+      itemId: 1,
+      price: 10,
       date: Date.now(),
       otherUser: 'user1',
     },
     {
-      id: 'trans2',
-      itemId: 'item2',
-      price: 2,
+      transId: 2,
+      itemId: 2,
+      price: 20,
       date: Date.now(),
       otherUser: 'user2',
     },
     {
-      id: 'trans3',
-      itemId: 'item3',
-      price: 3,
+      id: 3,
+      itemId: 3,
+      price: 30,
       date: Date.now(),
       otherUser: 'user3',
     },
     {
-      id: 'trans4',
-      itemId: 'item4',
-      price: 4,
+      id: 4,
+      itemId: 4,
+      price: 40,
       date: Date.now(),
       otherUser: 'user4',
     }
   ],
 
-  /*
   editingItem: false, // bool - changes on "EDIT" btn click
   editItem: { // item the user will be editing
+    itemId: 3,	    
     name: '',
     description: '',
     price: 1,
     category: '',
-    imageURL: '',
+    imgUrl: '',
+    availability: false,
   },
 
   addItem: { // new item to be added to DB
-    name: '',
-    description: '',
-    price: 1,
-    category: '',
-    imageURL: '',
     owner: '', // user.name
+    itemId: '',
+    name: '',
+    price: 10,
+    description: '',
+    category: '',
+    imgUrl: '',
+    availability: false,
   },
-  */
 };
 
 
@@ -70,8 +72,7 @@ class UserWrapper extends Component {
         <h2>I'm the UserWrapper!</h2>
         <UserDetails
           name={user.name}
-          balance={user.balance}
-          
+          balance={user.balance}          
         />
         <CurrentItems userItems={user.userItems} />
         <TransactionHistory transHist={user.transactionHistory} />

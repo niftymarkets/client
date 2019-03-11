@@ -9,7 +9,10 @@ class WishList extends Component {
           this.props.wishList.map(wish => (
             <ul key={wish}>
               {/* wish(itemId) needs to target an Item name in state.item */}
-              <li>{wish}<button>X</button></li>
+              <li>
+                {wish}
+                <button onClick={console.log(`removed ${wish} from wishlist`)}>X</button>
+              </li>
             </ul>
           ))
         }
