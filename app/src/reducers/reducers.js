@@ -1,5 +1,7 @@
 import * as types from '../actions/actionTypes'
 import { combineReducers } from 'redux'
+import userReducerPavol from './user'
+import { userReducer, gameItemsReducer } from './market' // Delbas code
 
 // Reducer template
 export const loading = (loading = false, action) => {
@@ -25,8 +27,11 @@ export const error = (error = null, action) => {
 // Combine all reducers into single one
 const rootReducer = combineReducers({
   loading,
-  error
+  error,
   // enter all reduces here
+  userReducerPavol,
+  userReducer, // Delbas Code
+  gameItems: gameItemsReducer // Delbas Code
 })
 
 export default rootReducer
