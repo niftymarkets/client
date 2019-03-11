@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 // import axiosFunctions!
 
+export const url = '';
 
 // actionCreator template
 export const actionName = (args) => dispatch => { // rename function accordingly
