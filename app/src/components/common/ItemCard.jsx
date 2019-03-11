@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { toggleWishList } from '../../reducers/market'
+import { toggleWishList } from '../../actions/actionCreators'
 
 // item, isAuthed, toggleWishList
 class ItemCard extends Component {
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     const { item, toggleWishList, wishlist, isAuthed } = this.props
     return (
       <div>
@@ -33,7 +33,7 @@ class ItemCard extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
+  // console.log(state)
   return {
     isAuthed: state.isAuthed,
     wishlist: state.userReducer.wishList

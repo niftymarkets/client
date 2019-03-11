@@ -1,0 +1,109 @@
+.nav {
+    width: 100%;
+    height: 7.5rem;
+    background-color: @nav-bgColor;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 25;
+    @media @desktop {
+        justify-content: flex-start;
+        padding: 0 2.5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .desktop {
+        display: none;
+
+        @media @desktop {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .left {
+                margin-right: 20rem;
+            }
+            .desktopBtn {
+                .button();
+            }
+            a {
+                padding: 16px 8px 16px 32px;
+                 text-decoration: none;
+                 font-size: 1.6rem;
+                 color: @header-font-color;
+             &:hover {
+                 color: @hover-color;
+                 }
+            }
+        }
+    .fa-gamepad {
+        @media @desktop {
+            font-size: 5rem;
+            padding-left: 5rem;
+           }
+       }
+       form {
+           display: inline;
+       }
+    }
+.sidenav {
+    height: 100%;
+    width: 0; 
+    position: fixed; 
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: @nav-bgColor;
+    overflow-x: hidden; 
+    transition: 0.5s;
+    padding-top: 6rem;
+    .login-btns {
+    padding: 18px 24px 0;
+    border-bottom: 1px solid  rgba(62,77,95,.3);
+    }
+    .sidebarBtn {
+        .button();
+    }
+    a {
+    padding: 16px 8px 16px 32px;
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: @header-font-color;
+    display: block;
+    transition: 0.3s;
+  &:hover {
+    color: @hover-color;
+  }
+    }
+    .closebtn {
+    position: absolute;
+    top: 0;
+    right: 2.5rem;
+    font-size: 3.6rem;
+    margin-left: 50px;
+}
+    }
+    .menu-button {
+        font-size: 3.5rem;
+        color: @menuBtn-color;
+        cursor: pointer;
+        margin-left: 2.5rem;
+        @media @desktop {
+        display: none;
+        }
+        
+        &:hover {
+        color: @hover-color;
+        }
+    }
+    h1 {
+        font-size: 4.8rem;
+        padding-right: 7rem;
+        color: @header-font-color;
+        @media @desktop {
+            padding-right: 0;
+        }
+        }
+    }
+  

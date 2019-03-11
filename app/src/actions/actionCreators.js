@@ -14,6 +14,7 @@ export const actionName = (args) => dispatch => { // rename function accordingly
   //   .finally(() => dispatch(onLoad(false)));
 };
 
+// Action creatros
 export const onLoad = bool => {
   return ({
     type: types.LOADING,
@@ -27,3 +28,33 @@ export const onError = err => {
     payload: err,
   });
 }
+
+export const searchItems = name => ({ 
+  type: types.SEARCH_ITEMS, payload: name 
+})
+
+export const filterItems = category => ({
+  type: types.FILTER_ITEMS,
+  payload: category
+})
+
+export const toggleWishList = (id, wishlist) => {
+  let items
+  if (wishlist.includes(id)) {
+    items = wishlist.filter(item => item !== id)
+  } else {
+    items = [...wishlist, id]
+  }
+  return {
+    type: types.TOGGLE_WISHLIST,
+    payload: items
+  }
+}
+
+export const removeWish = (id, wishList) => {
+  return ({
+    type: types.REMOVE_WISH,
+    payload: wishList.filter(wish => wish !== id),
+  });
+};
+

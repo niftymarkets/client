@@ -3,11 +3,92 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,10,9,7,8" />
+    <title>NiftyMarkets</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Russo+One|Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="css/index.css" rel="stylesheet">
+  <script src="./JS/sidenav.js" async></script>
+  <script src="./JS/carousel.js" async></script>
   </head>
   <body>
-    <h1>Welcome to Nifty Markets</h1>
-    <a href="/app">APP</a>
+    <div class="nav">
+      <nav id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn">&times;</a>
+          <div class="login-btns">
+              <form method="POST" action="#">
+                  <button class ="sidebarBtn" type="submit">Login</button>
+              </form>
+              <form method="POST" action="#">
+                  <button class ="sidebarBtn" type ="submit">Get Started</button>
+              </form>
+        </div>
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Contact</a>
+      </nav>
+        <span class="menu-button">&#9776;</span>
+        <h1>NiftyMarkets</h1>
+        <nav class="desktop">
+          <div class="left">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="right">
+              <form method="POST" action="#">
+                <button class ="desktopBtn" type="submit">Login</button>
+            </form>
+            <form method="POST" action="#">
+                <button class ="desktopBtn" type ="submit">Get Started</button>
+            </form>
+              </div>
+              <span class="fas fa-gamepad"></span>
+        </nav>
+      </div>
+      <div class="container home">
+        <div class="home_benefits">
+          <div class="benefits_item">
+            <img src="" alt="">
+            <h3 class="itemText fas fa-hand-holding-usd">Commission Free Trading</h3>
+          </div>
+          <div class="benefits_item">
+              <h3 class="itemText fas fa-shield-alt">100% Secure</h3>
+          </div>
+        </div>
+        <div class="home_intro">
+          <p>Welcome to a cross-game universe for trading, buying, and selling virtual assets.
+            What are you waiting for?
+          </p>
+          <div class="home_btns">
+              <form method="POST" action="#">
+                  <button class ="mobileBtn" type="submit">Get Started</button>
+              </form>
+              <form method="POST" action="#">
+                  <button class ="mobileBtn" type ="submit">FAQs</button>
+              </form>
+          </div>
+        </div>
+        <h3 class="p-abovecarousel">A couple of the games</br> we have on site</h3>
+        <div class="carousel">
+            <div class="left-button">-</div>
+            <img src="../landing/imgs/fortnite.jpg" alt="Fortnite">
+            <img src="../landing/imgs/runescape.jpg" alt="Runescape"/>
+            <img src="../landing/imgs/wow.jpg" alt="World of Warcraft"/>
+            <img src="../landing/imgs/csgo.jpg" alt="Counter-Strike"/>
+            <div class="right-button">+</div>
+          </div>
+          <section class="lower">
+            <div class="lower1">
+            <h3>Our dedication</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac dolor tortor. Fusce ut elementum diam. In at libero id ligula ultrices egestas. Aenean non massa ipsum. Phasellus sit amet sem ac ligula molestie commodo nec at sapien. Pellentesque ac velit ligula. Duis aliquam diam quis mattis pulvinar. Duis consectetur lacus at enim porta, sit amet efficitur mauris luctus. </p>
+          </div>
+            <div class="lower2">
+            <h3>Our goals</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac dolor tortor. Fusce ut elementum diam. In at libero id ligula ultrices egestas. Aenean non massa ipsum. Phasellus sit amet sem ac ligula molestie commodo nec at sapien. Pellentesque ac velit ligula. Duis aliquam diam quis mattis pulvinar. Duis consectetur lacus at enim porta, sit amet efficitur mauris luctus. </p>
+          </div>
+          </section>
+      </div>
   </body>
 </html>
