@@ -158,7 +158,7 @@ p {
   line-height: 1.4;
 }
 .container {
-  max-width: 1000px;
+  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
 }
@@ -175,7 +175,6 @@ p {
 }
 @media (min-width: 1000px) {
   .nav {
-    justify-content: flex-start;
     padding: 0 2.5rem;
     margin-left: auto;
     margin-right: auto;
@@ -190,8 +189,12 @@ p {
     justify-content: space-between;
     align-items: center;
   }
-  .nav .desktop .left {
-    margin-right: 20rem;
+  .nav .desktop .right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
   }
   .nav .desktop .desktopBtn {
     color: white;
@@ -215,9 +218,18 @@ p {
     text-decoration: none;
     font-size: 1.6rem;
     color: #29f3db;
+    white-space: nowrap;
   }
   .nav .desktop a:hover {
     color: #C2FCF7;
+  }
+}
+@media (min-width: 1000px) and (min-width: 1000px) {
+  .nav .desktop .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 }
 @media (min-width: 1000px) and (min-width: 1000px) {
@@ -232,12 +244,13 @@ p {
 @media (min-width: 1000px) and (min-width: 1000px) {
   .nav .desktop .desktopBtn:hover {
     box-shadow: 0 5px 15px rgba(194, 252, 247, 0.4);
+    transition: 0.5s ease-in-out;
   }
 }
 @media (min-width: 1000px) {
   .nav .desktop .fa-gamepad {
     font-size: 5rem;
-    padding-left: 5rem;
+    padding-left: 1rem;
   }
 }
 .nav .desktop form {
@@ -338,12 +351,14 @@ p {
   position: relative;
   overflow: hidden;
   margin-top: 1.6rem;
+  border-bottom: 3px solid #212b38;
 }
 @media (min-width: 1000px) {
   .carousel {
     width: 100%;
-    height: 40rem;
+    height: 50rem;
     margin-bottom: 15rem;
+    padding-bottom: 5rem;
   }
 }
 .carousel .left-button,
@@ -393,8 +408,26 @@ p {
 }
 @media (min-width: 1000px) {
   .carousel img {
-    height: 40rem;
+    height: 50rem;
   }
+}
+footer {
+  color: #29f3db;
+  width: 100%;
+  padding: 2rem;
+  border-top: 1px solid black;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: #212b38;
+}
+footer .fab {
+  font-size: 5rem;
+  color: #85BDBF;
+  margin: 1rem;
+}
+footer .fab:hover {
+  color: #C2FCF7;
 }
 .home .home_benefits {
   display: flex;
@@ -403,8 +436,18 @@ p {
   padding: 0 2rem;
   margin-top: 2.5rem;
 }
+@media (min-width: 1000px) {
+  .home .home_benefits {
+    margin-top: 2rem;
+  }
+}
 .home .home_benefits .benefits_item {
   margin: 0 0 1.5rem;
+}
+@media (min-width: 1000px) {
+  .home .home_benefits .benefits_item {
+    margin: 3rem;
+  }
 }
 .home .home_benefits .benefits_item .fa-hand-holding-usd {
   font-size: 5rem;
@@ -413,16 +456,33 @@ p {
   font-size: 2.5rem;
   color: #cffbff;
 }
+@media (min-width: 1000px) {
+  .home .home_benefits .benefits_item .itemText {
+    font-size: 2rem;
+  }
+}
 .home .home_intro {
   padding: 0 1.8rem;
   display: block;
   text-align: center;
   border-bottom: 1px solid #85BDBF;
 }
+@media (min-width: 1000px) {
+  .home .home_intro {
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+}
 .home .home_intro p {
   margin: 1.5rem 0 2rem;
   color: #29f3db;
   font-size: 1.5rem;
+}
+@media (min-width: 1000px) {
+  .home .home_intro p {
+    padding: 0 2rem;
+    font-size: 2.8rem;
+  }
 }
 .home .home_intro .mobileBtn {
   color: white;
@@ -447,8 +507,18 @@ p {
   padding: 0 7px;
 }
 @media (min-width: 1000px) {
+  .home .home_intro .mobileBtn {
+    margin: 3rem 1.5rem;
+    height: 5.2rem;
+  }
   .home .home_intro .mobileBtn:hover {
-    box-shadow: 0 5px 15px rgba(194, 252, 247, 0.4);
+    box-shadow: 0 2px 70px rgba(194, 252, 247, 0.4);
+    transition: 0.5s ease-in-out;
+  }
+}
+@media (min-width: 1000px) {
+  .home .home_intro .home_btns {
+    display: inline-flex;
   }
 }
 .home .p-abovecarousel {
@@ -465,6 +535,11 @@ p {
   padding: 2rem;
   margin: 3rem;
   background: linear-gradient(180deg, #112e46 0, #205886 31.87%, #2c7c74 90.06%);
+}
+@media (min-width: 1000px) {
+  .home .lower .lower1 {
+    margin-top: -10rem;
+  }
 }
 .home .lower p {
   padding: 2rem 4rem 3rem 4rem;
