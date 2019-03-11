@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import UserItem from './UserItem';
+import ItemForm from './AddItemForm';
 
 class CurrentItems extends Component {
   render() {
     return (
       <div>
         <h2>I have list of current items</h2>
-        <div>Add new item!</div>
+        <div>Add new item here!</div>
+        <ItemForm />
         <div>
           <h3>Your current items:</h3>
           <div>
