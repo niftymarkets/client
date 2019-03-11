@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
 class UserWrapper extends Component {
   render() {
