@@ -9,7 +9,7 @@ class WishList extends Component {
           this.props.wishList.map(wish => (
             <ul key={wish}>
               {/* wish(itemId) needs to target an Item name in state.item */}
-              <li>{wish }</li>
+              <li>{wish}<button>X</button></li>
             </ul>
           ))
         }
@@ -19,7 +19,3 @@ class WishList extends Component {
 }
 
 export default WishList
-
-/*
-wishList: ['item1', 'item3', 'item4'], // game_item.id
-*/
