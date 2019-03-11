@@ -147,6 +147,35 @@ export const gameItemsReducer = (state = gameItems, action) => {
   }
 }
 
+export const isAuthed = (isAuthed = false, action) => {
+  switch (action.type) {
+    case types.IS_AUTHED:
+      return action.payload
+
+    default:
+      return isAuthed
+  }
+}
+
+export const marketSearch = (marketSearch = '', action) => {
+  switch (action.type) {
+    case types.SEARCH_ITEMS:
+      return action.payload
+
+    default:
+      return marketSearch
+  }
+}
+
+export const activeCategory = (activeCategory = '', action) => {
+  switch (action.type) {
+    case types.FILTER_ITEMS:
+      return action.payload
+
+    default:
+      return activeCategory
+  }
+}
 
 // Combine all reducers into single one
 const rootReducer = combineReducers({
@@ -154,6 +183,9 @@ const rootReducer = combineReducers({
   error,
   user: userReducer,
   gameItems: gameItemsReducer,
+  isAuthed,
+  marketSearch,
+  activeCategory,
 })
 
 export default rootReducer
