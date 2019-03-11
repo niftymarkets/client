@@ -126,3 +126,182 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+html,
+body {
+  font-family: 'Ubuntu', sans-serif;
+  color: #040F0F;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Russo One', sans-serif;
+  color: #29f3db;
+}
+h2 {
+  font-size: 3.2rem;
+}
+h3 {
+  font-size: 2.8rem;
+}
+p {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+.nav {
+  width: 100%;
+  height: 7.5rem;
+  background-color: #212b38;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 1000px) {
+  .nav {
+    justify-content: flex-start;
+    padding: 0 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.nav .desktop {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .nav .desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav .desktop .left {
+    margin-right: 20rem;
+  }
+  .nav .desktop .desktopBtn {
+    color: white;
+    min-width: 100%;
+    height: 3.8rem;
+    margin-bottom: 1.8rem;
+    background: linear-gradient(180deg, #01fce1 0, #01d6c8 31.87%, #0299a0 90.06%);
+    cursor: pointer;
+    border-radius: 10rem;
+    border: 0;
+    font-size: 2rem;
+    outline: none;
+  }
+  .nav .desktop a {
+    padding: 16px 8px 16px 32px;
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: #29f3db;
+  }
+  .nav .desktop a:hover {
+    color: #C2FCF7;
+  }
+}
+@media (min-width: 1000px) and (min-width: 1000px) {
+  .nav .desktop .desktopBtn {
+    align-content: center;
+    min-width: 11.2rem;
+    font-size: 1.6rem;
+    margin: 0 0 0 2rem;
+    padding: 0 0.8rem;
+  }
+}
+@media (min-width: 1000px) {
+  .nav .desktop .fa-gamepad {
+    font-size: 5rem;
+    padding-left: 5rem;
+  }
+}
+.nav .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
+  left: 0;
+  background-color: #212b38;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 6rem;
+}
+.nav .sidenav .login-btns {
+  padding: 18px 24px 0;
+  border-bottom: 1px solid rgba(62, 77, 95, 0.3);
+}
+.nav .sidenav .sidebarBtn {
+  color: white;
+  min-width: 100%;
+  height: 3.8rem;
+  margin-bottom: 1.8rem;
+  background: linear-gradient(180deg, #01fce1 0, #01d6c8 31.87%, #0299a0 90.06%);
+  cursor: pointer;
+  border-radius: 10rem;
+  border: 0;
+  font-size: 2rem;
+  outline: none;
+}
+@media (min-width: 1000px) {
+  .nav .sidenav .sidebarBtn {
+    align-content: center;
+    min-width: 11.2rem;
+    font-size: 1.6rem;
+    margin: 0 0 0 2rem;
+    padding: 0 0.8rem;
+  }
+}
+.nav .sidenav a {
+  padding: 16px 8px 16px 32px;
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: #29f3db;
+  display: block;
+  transition: 0.3s;
+}
+.nav .sidenav a:hover {
+  color: #C2FCF7;
+}
+.nav .sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 2.5rem;
+  font-size: 3.6rem;
+  margin-left: 50px;
+}
+.nav .menu-button {
+  font-size: 3.5rem;
+  color: #85BDBF;
+  cursor: pointer;
+  margin-left: 2.5rem;
+}
+@media (min-width: 1000px) {
+  .nav .menu-button {
+    display: none;
+  }
+}
+.nav .menu-button:hover {
+  color: #C2FCF7;
+}
+.nav h1 {
+  font-size: 4.8rem;
+  padding-right: 7rem;
+}
+@media (min-width: 1000px) {
+  .nav h1 {
+    padding-right: 0;
+  }
+}
