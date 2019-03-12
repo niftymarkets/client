@@ -161,7 +161,6 @@ export const isAuthed = (isAuthed = false, action) => {
   switch (action.type) {
     case types.IS_AUTHED:
       return action.payload
-
     default:
       return isAuthed
   }
@@ -171,7 +170,6 @@ export const marketSearch = (marketSearch = '', action) => {
   switch (action.type) {
     case types.SEARCH_ITEMS:
       return action.payload
-
     default:
       return marketSearch
   }
@@ -181,7 +179,6 @@ export const activeCategory = (activeCategory = '', action) => {
   switch (action.type) {
     case types.FILTER_ITEMS:
       return action.payload
-
     default:
       return activeCategory
   }

@@ -30,9 +30,9 @@ export const onError = err => {
   }
 }
 
-export const searchItems = name => ({
+export const searchItems = searchTerm => ({
   type: types.SEARCH_ITEMS,
-  payload: name
+  payload: searchTerm
 })
 
 export const filterItems = category => ({
