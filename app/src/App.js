@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom'
 import Navigation from './components/common/Navigation'
 import MarketWrapper from './components/market/MarketWrapper'
 import UserWrapper from './components/user/UserWrapper'
-import AuthWrapper from './components/user/UserWrapper'
+import AuthWrapper from './components/auth/AuthWrapper'
 
 class App extends Component {
   render() {
