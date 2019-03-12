@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { searchItems, filterItems } from '../../actions/actionCreators'
+import {
+  searchItems,
+  filterItems,
+  clearSearch
+} from '../../actions/actionCreators'
 import matchSorter from 'match-sorter'
 
 import Gallery from './Gallery'
@@ -14,7 +18,8 @@ class MarketWrapper extends Component {
       marketSearch,
       searchItems,
       activeCategory,
-      filterItems
+      filterItems,
+      clearSearch
     } = this.props
 
     // THE CODE BELOW HANDLES THE SEARCH AND TABS FEATURES
@@ -85,7 +90,7 @@ class MarketWrapper extends Component {
       <main>
         <h1>Nifty Markets</h1>
         <Tabs filterItems={filterItems} categories={newCategories} />
-        <Search searchItems={searchItems} />
+        <Search searchItems={searchItems} clearSearch={clearSearch} />
         <Gallery gameItems={items} />
       </main>
     )
@@ -102,5 +107,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { searchItems, filterItems }
+  { searchItems, filterItems, clearSearch }
 )(MarketWrapper)
