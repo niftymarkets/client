@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { toggleWishList } from '../../actions/actionCreators'
+import { Link } from 'react-router-dom'
 
 class ItemCard extends Component {
   render() {
@@ -14,6 +15,7 @@ class ItemCard extends Component {
       hasWishlist,
       hasDeleteButton
     } = this.props
+
     return (
       <ItemWrap>
         <div>
@@ -26,7 +28,15 @@ class ItemCard extends Component {
         <p>#{item.category}</p>
 
         {/* Conditonals for card options */}
-        {hasBuyButton ? <button>Buy</button> : null}
+        {hasBuyButton ? (
+          isAuthed ? (
+            <button>Buy</button>
+          ) : (
+            <Link to='/login'>
+              <button>Buy</button>
+            </Link>
+          )
+        ) : null}
 
         {hasWishlist && isAuthed ? (
           <button onClick={() => toggleWishList(item.itemId, wishList)}>
