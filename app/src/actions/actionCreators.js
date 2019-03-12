@@ -116,9 +116,10 @@ export const updateLoginForm = item => {
 export const loginUser = (username, password) => dispatch => {
   dispatch(onError(null));
   dispatch(onLoad(true));
+  dispatch({ type: types.IS_AUTHED, payload: true }) // delete this when API works
   axios.post(url, { username, password }) // FIX URL!
     .then(res => {
-      dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
+      // dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
     })
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(true)));
