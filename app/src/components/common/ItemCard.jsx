@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import { toggleWishList } from '../../actions/actionCreators'
+import { Link } from 'react-router-dom'
 
-// item, isAuthed, toggleWishList
 class ItemCard extends Component {
   render() {
-    const { item, toggleWishList, wishList, isAuthed } = this.props
+    const {
+      item,
+      toggleWishList,
+      wishList,
+      isAuthed,
+      hasBuyButton,
+      hasWishlist,
+      hasDeleteButton
+    } = this.props
+
     return (
       <ItemWrap>
         <div>
@@ -17,16 +26,25 @@ class ItemCard extends Component {
         <p>${item.price}</p>
         <p>{item.owner}</p>
         <p>#{item.category}</p>
-        {isAuthed ? (
-          <div>
+
+        {/* Conditonals for card options */}
+        {hasBuyButton ? (
+          isAuthed ? (
             <button>Buy</button>
-          </div>
-        ) : (
-          <button>Buy</button>
-        )}
-        <button onClick={() => toggleWishList(item.itemId, wishList)}>
-          Toggle wishlist
-        </button>
+          ) : (
+            <Link to='/login'>
+              <button>Buy</button>
+            </Link>
+          )
+        ) : null}
+
+        {hasWishlist && isAuthed ? (
+          <button onClick={() => toggleWishList(item.itemId, wishList)}>
+            Toggle Wishlist Icon
+          </button>
+        ) : null}
+
+        {hasDeleteButton ? <button>Delete Item</button> : null}
       </ItemWrap>
     )
   }
@@ -59,4 +77,4 @@ const ItemWrap = styled.div`
   p {
     margin: 0;
   }
-`;
+`
