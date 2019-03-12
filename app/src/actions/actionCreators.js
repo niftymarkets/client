@@ -3,7 +3,8 @@ import axios from 'axios';
 
 export const url = '';
 
-// Action creatros
+// ACTION CREATORS
+
 export const onLoad = bool => {
   return ({
     type: types.LOADING,
@@ -18,6 +19,7 @@ export const onError = err => {
   });
 }
 
+// SEARCH AND FILTER ITEMS ON MARKET
 export const searchItems = name => ({ 
   type: types.SEARCH_ITEMS, payload: name 
 })
@@ -27,6 +29,7 @@ export const filterItems = category => ({
   payload: category
 })
 
+// ADD/REMOVE ITEM FROM WISHLIST
 export const toggleWishList = (id, wishlist) => {
   let items
   if (wishlist.includes(id)) {
@@ -47,7 +50,7 @@ export const removeWish = (id, wishList) => {
   });
 };
 
-
+// ADD NEW ITEM
 export const updateItemForm = (item) => {
   return ({
     type: types.UPDATE_ITEM_FORM,
@@ -61,7 +64,7 @@ export const postNewItem = (item) => dispatch => {
 
   axios({
     method: 'post',
-    url: url,
+    url: url,  // FIX URL!
     data: JSON.stringify(item),
     headers: {
       'Content-Type': 'application/json'
@@ -77,4 +80,23 @@ export const onGetItems = (items) => {
     type: types.GET_ITEMS,
     payload: items,
   });
+}
+
+// MANAGE LOGIN FORM
+export const updateLoginForm = item => {
+  return {
+    type: types.UPDATE_LOGIN_FORM,
+    payload: item,
+  };
+}
+
+export const loginUser = (username, password) => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  axios.post(url, { username, password }) // FIX URL!
+    .then(res => {
+      dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
+    })
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(true)));
 }

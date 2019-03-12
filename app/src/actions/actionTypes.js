@@ -8,6 +8,7 @@ export const TOGGLE_WISHLIST = 'FILTER_ITEMS';
 export const REMOVE_WISH = 'REMOVE_WISH';
 
 export const IS_AUTHED = 'IS_AUTHED';
+export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM';
 
 export const UPDATE_ITEM_FORM = 'UPDATE_ITEM_FORM';
 
