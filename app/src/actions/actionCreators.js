@@ -85,6 +85,26 @@ export const onGetItems = (items) => {
   });
 }
 
+// SIGN UP USER
+export const updateSignupForm = form => {
+  return {
+    type: types.UPDATE_SIGNUP_FORM,
+    payload: form,
+  }
+}
+
+export const signupUser = (username, email, password) => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  axios.post(url, { username, email, password }) // FIX URL!
+    .then(res => {
+      console.log('what will I get in response?');
+      // dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
+    })
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(true)));
+}
+
 // MANAGE LOGIN FORM
 export const updateLoginForm = item => {
   return {

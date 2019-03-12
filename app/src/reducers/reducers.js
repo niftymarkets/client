@@ -109,10 +109,18 @@ const dummyItems = [
   }
 ]
 
+
+const signupFormDummy = {
+  username: '',
+  email: '',
+  password: '',
+}
+
 const loginFormDummy = {
   username: '',
   password: '',
 }
+
 // Reducers
 export const loading = (loading = false, action) => {
   switch (action.type) {
@@ -205,6 +213,16 @@ export const activeCategory = (activeCategory = '', action) => {
   }
 }
 
+export const signupFormReducer = (signupForm = signupFormDummy, action) => {
+  switch (action.type) {
+    case types.UPDATE_SIGNUP_FORM:
+      return action.payload
+
+    default:
+      return signupForm
+  }
+}
+
 // Combine all reducers into single one
 const rootReducer = combineReducers({
   loading,
@@ -214,7 +232,8 @@ const rootReducer = combineReducers({
   isAuthed,
   marketSearch,
   activeCategory,
-  loginForm: loginFormReducer,
+  signupForm: signupFormReducer,
+  loginForm: loginFormReducer
 })
 
 export default rootReducer

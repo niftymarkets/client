@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import Login from './Login';
+import React, { Component } from 'react'
+import Signup from './Signup'
+import Login from './Login'
+
 
 class AuthWrapper extends Component {
   render() {
     return (
-    <div>
-      <Login />
-    </div>
+      <div>
+        <Signup />
+        <Login />
+      </div>
     );
   }
 }

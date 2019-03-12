@@ -8,7 +8,8 @@ const emptyLoginForm = {
   password: '',
 }
 
-class ItemForm extends Component {
+
+class Login extends Component {
   onClickHandler = (e) => {
     e.preventDefault();
     this.props.loginUser(this.props.loginForm.username, this.props.loginForm.password);
@@ -58,4 +59,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { loginUser, updateLoginForm })(ItemForm);
+export default connect(mapStateToProps, { loginUser, updateLoginForm })(Login);
