@@ -9,14 +9,27 @@ class Navigation extends Component {
       <nav>
         <NavLink to='static_page'>Home</NavLink>
         <NavLink to='/market'>Market</NavLink>
-        <NavLink to='/user/123'>Profile</NavLink>
         <NavLink to='static_page'>FAQs</NavLink>
-        <NavLink to='/signup'>Sign up</NavLink>
-        <NavLink to='/login'>Log in</NavLink>
-        <NavLink to='static_page'><button onClick={this.props.logoutUser}>Log out</button></NavLink>
+        {
+          this.props.isAuthed
+          ? <span>
+            <NavLink to='/user/123'>Profile</NavLink>
+            <NavLink to='static_page'><button onClick={this.props.logoutUser}>Log out</button></NavLink>
+          </span>
+          : <span>
+            <NavLink to='/signup'>Sign up</NavLink>
+            <NavLink to='/login'>Log in</NavLink>
+          </span>
+        }
       </nav>
     )
   }
 }
 
-export default connect(st => st, { logoutUser })(Navigation);
+const mapStateToProps = state => {
+  return ({
+    isAuthed: state.isAuthed,
+  })
+}
+
+export default connect(mapStateToProps, { logoutUser })(Navigation);
