@@ -10,7 +10,6 @@ class ItemCard extends Component {
       item,
       toggleWishList,
       wishList,
-      isAuthed,
       hasBuyButton,
       hasWishlist,
       hasDeleteButton
@@ -29,7 +28,7 @@ class ItemCard extends Component {
 
         {/* Conditonals for card options */}
         {hasBuyButton ? (
-          isAuthed ? (
+          localStorage.getItem('jwt') ? (
             <button>Buy</button>
           ) : (
             <Link to='/login'>
@@ -38,7 +37,7 @@ class ItemCard extends Component {
           )
         ) : null}
 
-        {hasWishlist && isAuthed ? (
+        {hasWishlist && localStorage.getItem('jwt') ? (
           <button onClick={() => toggleWishList(item.itemId, wishList)}>
             Toggle Wishlist Icon
           </button>
@@ -52,7 +51,6 @@ class ItemCard extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthed: state.isAuthed,
     wishList: state.user.wishList
   }
 }

@@ -28,12 +28,14 @@ class Login extends Component {
         <form autoComplete="off">
 
           <input
+            required
             value={this.props.loginForm.username}
             onChange={this.onChangeHandler}
             name="username" type="text" placeholder="Enter your user name">
           </input>
 
           <input
+            required
             value={this.props.loginForm.password}
             onChange={this.onChangeHandler}
             name="password" type="password" placeholder="Enter password">

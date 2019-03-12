@@ -174,15 +174,6 @@ export const gameItems = (state = dummyItems, action) => {
   }
 }
 
-export const isAuthed = (isAuthed = false, action) => {
-  switch (action.type) {
-    case types.IS_AUTHED:
-      return action.payload
-    default:
-      return isAuthed
-  }
-}
-
 export const loginFormReducer = (loginForm = loginFormDummy, action) => {
   switch (action.type) {
     case types.UPDATE_LOGIN_FORM:
@@ -229,7 +220,6 @@ const rootReducer = combineReducers({
   error,
   user,
   gameItems,
-  isAuthed,
   marketSearch,
   activeCategory,
   signupForm: signupFormReducer,

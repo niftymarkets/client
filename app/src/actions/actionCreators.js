@@ -1,7 +1,7 @@
 import * as types from './actionTypes'
 import axios from 'axios'
 
-export const url = ''
+export const url = 'https://nifty-markets.herokuapp.com'
 
 // ACTION CREATORS
 
@@ -13,6 +13,7 @@ export const onLoad = bool => {
 }
 
 export const onError = err => {
+  console.error(err)
   return {
     type: types.ERROR,
     payload: err
@@ -99,11 +100,13 @@ export const updateSignupForm = form => {
 export const signupUser = (username, email, password) => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
+
+  const signupUrl = '/api/users/register'
+
   axios
-    .post(url, { username, email, password }) // FIX URL!
+    .post(`${url}${signupUrl}`, { username, email, password })
     .then(res => {
-      console.log('what will I get in response?')
-      // dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
+      console.log(res);
     })
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(true)))
@@ -117,24 +120,22 @@ export const updateLoginForm = item => {
   }
 }
 
+// I think the axios function needs to be declared in Login.jsx
+// reason - we should redirect user with `this.props.history.push('url')
+// after clicking the login btn, BUT only after the response came back
+// from the server and user is authenticated
+// if we do the redirect in the onClickHandler fn in Login.jsx, it will
+// run as a synchronous function before the POST request is resolved
 export const loginUser = (username, password) => dispatch => {
-
   dispatch(onError(null));
-  // dispatch(onLoad(true));
-  dispatch({ type: types.IS_AUTHED, payload: true }) // delete this when API works
-  // axios.post(url, { username, password }) // FIX URL!
-  //   .then(res => {
-  //     // dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
-  //   })
-  //   .catch(err => dispatch(onError(err)))
-  //   .finally(() => dispatch(onLoad(true)));
-}
+  dispatch(onLoad(true));
 
-// LOG OUT USER
-export const logoutUser = () => {
-  return {
-    // REWORK this when API works
-    type: types.IS_AUTHED,
-    payload: false
-  }
+  axios
+    .post(url, { username, password }) // FIX URL!
+    .then(res => {
+      localStorage.setItem('jwt', res.data.token);
+    })
+    // .then(this.props.history.push('/user/123')) // FIX URL! and this!
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(true)));
 }
