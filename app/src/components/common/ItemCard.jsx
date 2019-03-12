@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components';
 import { toggleWishList } from '../../actions/actionCreators'
 
 // item, isAuthed, toggleWishList
@@ -7,7 +8,7 @@ class ItemCard extends Component {
   render() {
     const { item, toggleWishList, wishList, isAuthed } = this.props
     return (
-      <div>
+      <ItemWrap>
         <div>
           <img src={item.imgUrl} alt='Item' />
         </div>
@@ -26,7 +27,7 @@ class ItemCard extends Component {
         <button onClick={() => toggleWishList(item.itemId, wishList)}>
           Toggle wishlist
         </button>
-      </div>
+      </ItemWrap>
     )
   }
 }
@@ -42,3 +43,20 @@ export default connect(
   mapStateToProps,
   { toggleWishList }
 )(ItemCard)
+
+const ItemWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 30%;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 1rem;
+  div {
+    img {
+      max-width: 100%;
+    }
+  }
+  p {
+    margin: 0;
+  }
+`;

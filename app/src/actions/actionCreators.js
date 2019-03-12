@@ -1,19 +1,7 @@
-import * as types from './actionTypes'
-// import axiosFunctions!
+import * as types from './actionTypes';
+import axios from 'axios';
 
 export const url = ''
-
-// actionCreator template
-export const actionName = args => dispatch => {
-  // rename function accordingly
-  dispatch(onError(null))
-  dispatch(onLoad(true))
-
-  // axios function here
-  // .then(res => dispatch(onFetch(res.data)))
-  //   .catch(err => dispatch(onError(err.message)))
-  //   .finally(() => dispatch(onLoad(false)));
-}
 
 // Action creatros
 export const onLoad = bool => {
@@ -54,8 +42,39 @@ export const toggleWishList = (id, wishList) => {
 }
 
 export const removeWish = (id, wishList) => {
-  return {
+    return ({
     type: types.REMOVE_WISH,
     payload: wishList.filter(wish => wish !== id)
-  }
+  });
+}
+                                             
+export const updateItemForm = (item) => {
+  return ({
+    type: types.UPDATE_ITEM_FORM,
+    payload: item,
+  });
+}
+
+export const postNewItem = (item) => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+
+  axios({
+    method: 'post',
+    url: url,
+    data: JSON.stringify(item),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => dispatch(onGetItems(res.data)))
+    .catch(err => dispatch(onError(err.message)))
+    .finally(() => dispatch(onLoad(false)));
+}
+
+export const onGetItems = (items) => {
+  return ({
+    type: types.GET_ITEMS,
+    payload: items,
+  });
 }
