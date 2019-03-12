@@ -7,15 +7,14 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./reducers/reducers";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const store = createStore(
   rootReducer,
   compose(
     // composes functions into createStores third argument to enhance store
-    applyMiddleware(thunk, logger)
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 
