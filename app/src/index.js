@@ -1,3 +1,4 @@
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
@@ -14,7 +15,7 @@ const store = createStore(
   rootReducer,
   compose(
     // composes functions into createStores third argument to enhance store
-    applyMiddleware(thunk, logger),
+    applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )

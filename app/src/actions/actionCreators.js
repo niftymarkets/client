@@ -3,7 +3,8 @@ import axios from 'axios';
 
 export const url = ''
 
-// Action creatros
+// ACTION CREATORS
+
 export const onLoad = bool => {
   return {
     type: types.LOADING,
@@ -18,6 +19,8 @@ export const onError = err => {
   }
 }
 
+
+// SEARCH AND FILTER ITEMS ON MARKET
 export const searchItems = searchTerm => ({
   type: types.SEARCH_ITEMS,
   payload: searchTerm
@@ -28,6 +31,8 @@ export const filterItems = category => ({
   payload: category
 })
 
+
+// ADD/REMOVE ITEM FROM WISHLIST
 export const toggleWishList = (id, wishList) => {
   let items
   if (wishList.includes(id)) {
@@ -46,8 +51,9 @@ export const removeWish = (id, wishList) => {
     type: types.REMOVE_WISH,
     payload: wishList.filter(wish => wish !== id)
   });
-}
-                                             
+};
+
+// ADD NEW ITEM
 export const updateItemForm = (item) => {
   return ({
     type: types.UPDATE_ITEM_FORM,
@@ -61,7 +67,7 @@ export const postNewItem = (item) => dispatch => {
 
   axios({
     method: 'post',
-    url: url,
+    url: url,  // FIX URL!
     data: JSON.stringify(item),
     headers: {
       'Content-Type': 'application/json'
@@ -77,4 +83,52 @@ export const onGetItems = (items) => {
     type: types.GET_ITEMS,
     payload: items,
   });
+}
+
+// SIGN UP USER
+export const updateSignupForm = form => {
+  return {
+    type: types.UPDATE_SIGNUP_FORM,
+    payload: form,
+  }
+}
+
+export const signupUser = (username, email, password) => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  axios.post(url, { username, email, password }) // FIX URL!
+    .then(res => {
+      console.log('what will I get in response?');
+      // dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
+    })
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(true)));
+}
+
+// MANAGE LOGIN FORM
+export const updateLoginForm = item => {
+  return {
+    type: types.UPDATE_LOGIN_FORM,
+    payload: item,
+  };
+}
+
+export const loginUser = (username, password) => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  dispatch({ type: types.IS_AUTHED, payload: true }) // delete this when API works
+  axios.post(url, { username, password }) // FIX URL!
+    .then(res => {
+      // dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
+    })
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(true)));
+}
+
+// LOG OUT USER
+export const logoutUser = () => {
+  return { // REWORK this when API works
+    type: types.IS_AUTHED,
+    payload: false
+  } 
 }

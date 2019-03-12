@@ -109,6 +109,18 @@ const dummyItems = [
   }
 ]
 
+
+const signupFormDummy = {
+  username: '',
+  email: '',
+  password: '',
+}
+
+const loginFormDummy = {
+  username: '',
+  password: '',
+}
+
 // Reducers
 export const loading = (loading = false, action) => {
   switch (action.type) {
@@ -172,6 +184,17 @@ export const isAuthed = (isAuthed = false, action) => {
   }
 }
 
+export const loginFormReducer = (loginForm = loginFormDummy, action) => {
+  switch (action.type) {
+    case types.UPDATE_LOGIN_FORM:
+      return action.payload
+
+    default:
+      return loginForm
+  }
+}
+
+
 export const marketSearch = (marketSearch = '', action) => {
   switch (action.type) {
     case types.SEARCH_ITEMS:
@@ -190,6 +213,16 @@ export const activeCategory = (activeCategory = '', action) => {
   }
 }
 
+export const signupFormReducer = (signupForm = signupFormDummy, action) => {
+  switch (action.type) {
+    case types.UPDATE_SIGNUP_FORM:
+      return action.payload
+
+    default:
+      return signupForm
+  }
+}
+
 // Combine all reducers into single one
 const rootReducer = combineReducers({
   loading,
@@ -198,7 +231,9 @@ const rootReducer = combineReducers({
   gameItems,
   isAuthed,
   marketSearch,
-  activeCategory
+  activeCategory,
+  signupForm: signupFormReducer,
+  loginForm: loginFormReducer
 })
 
 export default rootReducer
