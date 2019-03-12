@@ -8,8 +8,12 @@
     position: sticky;
     top: 0;
     z-index: 25;
+    @media @tablet {
+        justify-content: center;
+    }
 
     @media @desktop {
+        justify-content: space-between;
         padding: 0 2.5rem;
         margin-left: auto;
         margin-right: auto;
@@ -108,6 +112,9 @@
         color: @menuBtn-color;
         cursor: pointer;
         margin-left: 2.5rem;
+        @media @tablet {
+            margin: 0 20rem 0 -12rem;
+        }
         @media @desktop {
         display: none;
         }

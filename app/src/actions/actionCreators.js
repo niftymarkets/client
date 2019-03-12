@@ -1,27 +1,29 @@
 import * as types from './actionTypes';
 import axios from 'axios';
 
-export const url = '';
+export const url = ''
 
 // ACTION CREATORS
 
 export const onLoad = bool => {
-  return ({
+  return {
     type: types.LOADING,
-    payload: bool,
-  });
+    payload: bool
+  }
 }
 
 export const onError = err => {
-  return ({
+  return {
     type: types.ERROR,
-    payload: err,
-  });
+    payload: err
+  }
 }
 
+
 // SEARCH AND FILTER ITEMS ON MARKET
-export const searchItems = name => ({ 
-  type: types.SEARCH_ITEMS, payload: name 
+export const searchItems = searchTerm => ({
+  type: types.SEARCH_ITEMS,
+  payload: searchTerm
 })
 
 export const filterItems = category => ({
@@ -29,13 +31,14 @@ export const filterItems = category => ({
   payload: category
 })
 
+
 // ADD/REMOVE ITEM FROM WISHLIST
-export const toggleWishList = (id, wishlist) => {
+export const toggleWishList = (id, wishList) => {
   let items
-  if (wishlist.includes(id)) {
-    items = wishlist.filter(item => item !== id)
+  if (wishList.includes(id)) {
+    items = wishList.filter(item => item !== id)
   } else {
-    items = [...wishlist, id]
+    items = [...wishList, id]
   }
   return {
     type: types.TOGGLE_WISHLIST,
@@ -44,9 +47,9 @@ export const toggleWishList = (id, wishlist) => {
 }
 
 export const removeWish = (id, wishList) => {
-  return ({
+    return ({
     type: types.REMOVE_WISH,
-    payload: wishList.filter(wish => wish !== id),
+    payload: wishList.filter(wish => wish !== id)
   });
 };
 

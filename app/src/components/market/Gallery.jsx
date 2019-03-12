@@ -10,4 +10,5 @@ const Gallery = ({ gameItems }) => {
     </div>
   )
 }
+
 export default Gallery

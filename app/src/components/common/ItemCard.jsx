@@ -6,8 +6,7 @@ import { toggleWishList } from '../../actions/actionCreators'
 // item, isAuthed, toggleWishList
 class ItemCard extends Component {
   render() {
-    // console.log(this.props)
-    const { item, toggleWishList, wishlist, isAuthed } = this.props
+    const { item, toggleWishList, wishList, isAuthed } = this.props
     return (
       <ItemWrap>
         <div>
@@ -25,7 +24,7 @@ class ItemCard extends Component {
         ) : (
           <button>Buy</button>
         )}
-        <button onClick={() => toggleWishList(item.itemId, wishlist)}>
+        <button onClick={() => toggleWishList(item.itemId, wishList)}>
           Toggle wishlist
         </button>
       </ItemWrap>
@@ -34,10 +33,9 @@ class ItemCard extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state)
   return {
     isAuthed: state.isAuthed,
-    wishlist: state.user.wishList
+    wishList: state.user.wishList
   }
 }
 
