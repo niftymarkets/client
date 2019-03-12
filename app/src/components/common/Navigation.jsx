@@ -5,11 +5,11 @@ class Navigation extends Component {
   render() {
     return (
       <nav>
-        <NavLink to='static page?'>Home</NavLink>
+        <NavLink to='static_page'>Home</NavLink>
         <NavLink to='/market'>Market</NavLink>
         <NavLink to='/user/123'>Profile</NavLink>
-        <NavLink to='static page?'>FAQs</NavLink>
-        <NavLink to='static page?'>Sign out</NavLink>
+        <NavLink to='static_page'>FAQs</NavLink>
+        <NavLink to='/signup'>Sign up</NavLink>
       </nav>
     )
   }

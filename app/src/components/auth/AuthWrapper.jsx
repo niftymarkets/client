@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import Signup from './Signup'
 
 class AuthWrapper extends Component {
   render() {
-    return <div>I'm the AuthWrapper</div>
+    return (
+      <div>
+        <Signup />
+      </div>
+    );
   }
 }
 
