@@ -10,8 +10,8 @@ class Navigation extends Component {
         <NavLink to='/user/123'>Profile</NavLink>
         <NavLink to='static_page'>FAQs</NavLink>
         <NavLink to='/signup'>Sign up</NavLink>
-<!--         <NavLink to='static_page'>Sign out</NavLink> -->
         <NavLink to='/login'>Log in</NavLink>
+        <NavLink to='static_page'><button>Log out</button></NavLink>
       </nav>
     )
   }

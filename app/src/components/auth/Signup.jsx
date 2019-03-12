@@ -51,7 +51,7 @@ class Signup extends Component {
         </form>
 
         <div>                    
-          <p>Already have an account? <Link to="/login">Login with your accout!</Link></p>
+          <p>Already have an account? <Link to="/login">Login with your account!</Link></p>
         </div>
 
       </div>
