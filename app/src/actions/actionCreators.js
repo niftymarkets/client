@@ -1,5 +1,5 @@
-import * as types from './actionTypes';
-import axios from 'axios';
+import * as types from './actionTypes'
+import axios from 'axios'
 
 export const url = ''
 
@@ -19,7 +19,6 @@ export const onError = err => {
   }
 }
 
-
 // SEARCH AND FILTER ITEMS ON MARKET
 export const searchItems = searchTerm => ({
   type: types.SEARCH_ITEMS,
@@ -31,6 +30,10 @@ export const filterItems = category => ({
   payload: category
 })
 
+export const clearSearch = () => ({
+  type: types.CLEAR_SEARCH,
+  payload: ''
+})
 
 // ADD/REMOVE ITEM FROM WISHLIST
 export const toggleWishList = (id, wishList) => {
@@ -47,27 +50,27 @@ export const toggleWishList = (id, wishList) => {
 }
 
 export const removeWish = (id, wishList) => {
-    return ({
+  return {
     type: types.REMOVE_WISH,
     payload: wishList.filter(wish => wish !== id)
-  });
-};
-
-// ADD NEW ITEM
-export const updateItemForm = (item) => {
-  return ({
-    type: types.UPDATE_ITEM_FORM,
-    payload: item,
-  });
+  }
 }
 
-export const postNewItem = (item) => dispatch => {
-  dispatch(onError(null));
-  dispatch(onLoad(true));
+// ADD NEW ITEM
+export const updateItemForm = item => {
+  return {
+    type: types.UPDATE_ITEM_FORM,
+    payload: item
+  }
+}
+
+export const postNewItem = item => dispatch => {
+  dispatch(onError(null))
+  dispatch(onLoad(true))
 
   axios({
     method: 'post',
-    url: url,  // FIX URL!
+    url: url, // FIX URL!
     data: JSON.stringify(item),
     headers: {
       'Content-Type': 'application/json'
@@ -75,60 +78,63 @@ export const postNewItem = (item) => dispatch => {
   })
     .then(res => dispatch(onGetItems(res.data)))
     .catch(err => dispatch(onError(err.message)))
-    .finally(() => dispatch(onLoad(false)));
+    .finally(() => dispatch(onLoad(false)))
 }
 
-export const onGetItems = (items) => {
-  return ({
+export const onGetItems = items => {
+  return {
     type: types.GET_ITEMS,
-    payload: items,
-  });
+    payload: items
+  }
 }
 
 // SIGN UP USER
 export const updateSignupForm = form => {
   return {
     type: types.UPDATE_SIGNUP_FORM,
-    payload: form,
+    payload: form
   }
 }
 
 export const signupUser = (username, email, password) => dispatch => {
-  dispatch(onError(null));
-  dispatch(onLoad(true));
-  axios.post(url, { username, email, password }) // FIX URL!
+  dispatch(onError(null))
+  dispatch(onLoad(true))
+  axios
+    .post(url, { username, email, password }) // FIX URL!
     .then(res => {
-      console.log('what will I get in response?');
+      console.log('what will I get in response?')
       // dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
     })
     .catch(err => dispatch(onError(err)))
-    .finally(() => dispatch(onLoad(true)));
+    .finally(() => dispatch(onLoad(true)))
 }
 
 // MANAGE LOGIN FORM
 export const updateLoginForm = item => {
   return {
     type: types.UPDATE_LOGIN_FORM,
-    payload: item,
-  };
+    payload: item
+  }
 }
 
 export const loginUser = (username, password) => dispatch => {
-  dispatch(onError(null));
-  dispatch(onLoad(true));
+  dispatch(onError(null))
+  dispatch(onLoad(true))
   dispatch({ type: types.IS_AUTHED, payload: true }) // delete this when API works
-  axios.post(url, { username, password }) // FIX URL!
+  axios
+    .post(url, { username, password }) // FIX URL!
     .then(res => {
       // dispatch({ type: types.IS_AUTHED, payload: res.data.payload });
     })
     .catch(err => dispatch(onError(err)))
-    .finally(() => dispatch(onLoad(true)));
+    .finally(() => dispatch(onLoad(true)))
 }
 
 // LOG OUT USER
 export const logoutUser = () => {
-  return { // REWORK this when API works
+  return {
+    // REWORK this when API works
     type: types.IS_AUTHED,
     payload: false
-  } 
+  }
 }

@@ -5,7 +5,12 @@ const Gallery = ({ gameItems }) => {
   return (
     <div>
       {gameItems.map(item => (
-        <ItemCard key={item.itemId} item={item} />
+        <ItemCard
+          key={item.itemId}
+          item={item}
+          hasBuyButton={true}
+          hasWishlist={true}
+        />
       ))}
     </div>
   )

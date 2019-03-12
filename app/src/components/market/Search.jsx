@@ -7,6 +7,11 @@ class Search extends Component {
     this.props.searchItems(this.searchRef.current.value)
   }
 
+  clearSearch = () => {
+    this.props.clearSearch()
+    this.searchRef.current.value = ''
+  }
+
   render() {
     return (
       <div>
@@ -16,6 +21,7 @@ class Search extends Component {
           ref={this.searchRef}
           onChange={() => this.searchItems()}
         />
+        <button onClick={() => this.clearSearch()}>Clear Search</button>
       </div>
     )
   }

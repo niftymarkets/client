@@ -109,16 +109,15 @@ const dummyItems = [
   }
 ]
 
-
 const signupFormDummy = {
   username: '',
   email: '',
-  password: '',
+  password: ''
 }
 
 const loginFormDummy = {
   username: '',
-  password: '',
+  password: ''
 }
 
 // Reducers
@@ -194,10 +193,11 @@ export const loginFormReducer = (loginForm = loginFormDummy, action) => {
   }
 }
 
-
 export const marketSearch = (marketSearch = '', action) => {
   switch (action.type) {
     case types.SEARCH_ITEMS:
+      return action.payload
+    case types.CLEAR_SEARCH:
       return action.payload
     default:
       return marketSearch
