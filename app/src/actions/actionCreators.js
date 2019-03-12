@@ -124,3 +124,11 @@ export const loginUser = (username, password) => dispatch => {
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(true)));
 }
+
+// LOG OUT USER
+export const logoutUser = () => {
+  return { // REWORK this when API works
+    type: types.IS_AUTHED,
+    payload: false
+  } 
+}

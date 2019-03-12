@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { logoutUser } from '../../actions/actionCreators'
 
 class Navigation extends Component {
   render() {
@@ -11,10 +13,10 @@ class Navigation extends Component {
         <NavLink to='static_page'>FAQs</NavLink>
         <NavLink to='/signup'>Sign up</NavLink>
         <NavLink to='/login'>Log in</NavLink>
-        <NavLink to='static_page'><button>Log out</button></NavLink>
+        <NavLink to='static_page'><button onClick={this.props.logoutUser}>Log out</button></NavLink>
       </nav>
     )
   }
 }
 
-export default Navigation
+export default connect(st => st, { logoutUser })(Navigation);
