@@ -158,10 +158,10 @@ export const user = (state = dummyUser, action) => {
       }
 
     case types.UPDATE_ITEM_FORM:
-      return ({
+      return {
         ...state,
         addItem: action.payload
-      });
+      }
 
     default:
       return state
