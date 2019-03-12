@@ -9,12 +9,12 @@ class Navigation extends Component {
       <nav>
         <NavLink to='static_page'>Home</NavLink>
         <NavLink to='/market'>Market</NavLink>
-        <NavLink to='static_page'>FAQs</NavLink>
+        <NavLink to='/static_page'>FAQs</NavLink>
         {
           this.props.isAuthed
           ? <span>
             <NavLink to='/user/123'>Profile</NavLink>
-            <NavLink to='static_page'><button onClick={this.props.logoutUser}>Log out</button></NavLink>
+            <button onClick={this.props.logoutUser}>Log out</button>
           </span>
           : <span>
             <NavLink to='/signup'>Sign up</NavLink>
