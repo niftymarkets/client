@@ -1,5 +1,6 @@
 import matchSorter from 'match-sorter'
 
+// This is the initial categories object
 const defaultCategories = [
   { name: 'All', id: '' },
   { name: 'Outfits', id: 'outfits' },
@@ -13,7 +14,6 @@ const defaultCategories = [
 // If this was a large application, it would be slow because it's causing the component to re-render with each user action (e.g. keystroke), but it should be ok for our small application for now.
 
 function searchMachine(gameItems, marketSearch, activeCategory) {
-  // This is the initial categories object
   let searchResults
   // this creates a new category object based on the number of items available
   const newCategories = defaultCategories.map(category => {
