@@ -9,7 +9,10 @@ class UserDetails extends Component {
         <div>
           <img src={this.props.img_url} alt='User avatar' />
         </div>
-        <p> My name is {this.props.name}</p>
+        <p>
+          Welcome <span>{this.props.name}</span>
+        </p>
+        {/* Capitalize the first letter of name using CSS text-transform, could do it with JS but it's too complex */}
         <h3>Balance: {this.props.balance}$</h3>
         <div>
           <button>Add funds</button>
