@@ -16,6 +16,9 @@ class ItemCard extends Component {
       pathname,
     } = this.props
 
+    const checkWishlist =
+      wishList && wishList.find(list => list.itemId === item.itemId)
+
     return (
       <ItemWrap>
         <div>
@@ -24,8 +27,9 @@ class ItemCard extends Component {
         <p>{item.name}</p>
         <p>{item.description}</p>
         <p>${item.price}</p>
-        <p>{item.owner}</p>
+        <p>@{item.username}</p>
         <p>#{item.category}</p>
+        {item.availability === 0 ? <p>Sold</p> : <p>Available</p>}
 
         {/* Conditonals for card options */}
         {hasBuyButton ? (
@@ -39,8 +43,8 @@ class ItemCard extends Component {
         ) : null}
 
         {hasWishlist && localStorage.getItem('jwt') ? (
-          <button onClick={() => toggleWishList(item.itemId, wishList)}>
-            Toggle Wishlist Icon
+          <button onClick={() => toggleWishList(1, item.itemId, wishList)}>
+            {checkWishlist ? `Remove from Wishlist` : `Add to Wishlist`}
           </button>
         ) : null}
 
@@ -73,6 +77,7 @@ const ItemWrap = styled.div`
   border: 1px solid black;
   border-radius: 4px;
   margin: 1rem;
+  background: lightgrey;
   div {
     img {
       max-width: 100%;

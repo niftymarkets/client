@@ -13,14 +13,14 @@ const defaultCategories = [
 // Ideally we'd have a search api that provides pagination and category counts, but for now everything is calculated in the client side
 // If this was a large application, it would be slow because it's causing the component to re-render with each user action (e.g. keystroke), but it should be ok for our small application for now.
 
-function searchMachine(gameItems, marketSearch, activeCategory) {
+function searchMachine(marketItems, marketSearch, activeCategory) {
   let searchResults
   // this creates a new category object based on the number of items available
   const newCategories = defaultCategories.map(category => {
     // COUNTER
     // find the the number of items in each category
     // we need to do this for each category because we need to get the total count of each category
-    const categoryItems = matchSorter(gameItems, category.id, {
+    const categoryItems = matchSorter(marketItems, category.id, {
       keys: ['category'],
       threshold: matchSorter.rankings.EQUAL
     })

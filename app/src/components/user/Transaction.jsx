@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class Transaction extends Component {
   render() {
-    const { itemId, price, otherUser, date } = this.props.transaction;
-    const transactedItem = this.props.gameItems.filter(item => item.itemId === itemId);
+    const { itemId, price, otherUser, date } = this.props.transaction
+    const transactedItem = this.props.marketItems.filter(
+      item => item.itemId === itemId
+    )
     return (
       <tr>
         <td>{transactedItem[0].name}</td>
@@ -12,15 +14,17 @@ class Transaction extends Component {
         <td>{otherUser}</td>
         <td>{date}</td>
       </tr>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
-  return ({
-    gameItems: state.gameItems,
-  });
+  return {
+    marketItems: state.marketItems
+  }
 }
 
-export default connect(mapStateToProps, {})(Transaction);
-
+export default connect(
+  mapStateToProps,
+  {}
+)(Transaction)

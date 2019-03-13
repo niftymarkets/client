@@ -10,7 +10,6 @@ import CurrentItems from './CurrentItems';
 
 
 class UserWrapper extends Component {
-
   componentDidMount() {
     this.props.getUserDetails(this.props.renderProps.location.pathname)
     this.props.getUserItems(this.props.renderProps.location.pathname)
@@ -32,6 +31,8 @@ class UserWrapper extends Component {
       <StyledUser>
         <h2>I'm the UserWrapper!</h2>
         <UserDetails
+
+
           name={userDetails.username}
           balance={userDetails.funds_balance}          
         />
@@ -42,12 +43,12 @@ class UserWrapper extends Component {
         <TransactionHistory transHist={transactionHistory} />
         <Wishlist wishList={wishList} />
       </StyledUser>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
-  return ({
+  return {
     user: state.user,
     transactionHistory: state.user.transactionHistory,
     wishList: state.user.wishList,
@@ -62,4 +63,4 @@ const StyledUser = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
