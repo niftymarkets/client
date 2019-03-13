@@ -105,7 +105,7 @@ export const signupUser = (username, email, password) => dispatch => {
   axios
     .post(`${url}${signupUrl}`, { username, email, password })
     .then(res => {
-      console.log(res);
+      console.log(res)
     })
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
@@ -120,11 +120,29 @@ export const updateLoginForm = item => {
 }
 
 export const getUserDetails = pathname => dispatch => {
-  dispatch(onError(null));
-  dispatch(onLoad(true));
-  
-  axios.get(`${url}/api${pathname}`)
-    .then(res => dispatch({type: types.LOGIN_SUCCESS, userDetails: res.data}))
+  dispatch(onError(null))
+  dispatch(onLoad(true))
+
+  axios
+    .get(`${url}/api${pathname}`)
+    .then(res => dispatch({ type: types.LOGIN_SUCCESS, userDetails: res.data }))
     .catch(err => dispatch(onError(err)))
-    .finally(() => dispatch(onLoad(false)));
+    .finally(() => dispatch(onLoad(false)))
 }
+
+// FETCH ITEMS
+
+export const getMarketItems = () => dispatch => {
+  dispatch(onError(null))
+  dispatch(onLoad(true))
+
+  axios
+    .get(`${url}/api/items`)
+    .then(res => {
+      dispatch({ type: types.GET_MARKET_ITEMS, payload: res.data })
+    })
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(false)))
+}
+
+export const getUserItems = () => dispatch => {}

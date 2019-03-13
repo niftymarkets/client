@@ -18,13 +18,14 @@ class ItemCard extends Component {
     return (
       <ItemWrap>
         <div>
-          <img src={item.imgUrl} alt='Item' />
+          <img src={item.img_url} alt='Item' />
         </div>
         <p>{item.name}</p>
         <p>{item.description}</p>
         <p>${item.price}</p>
-        <p>{item.owner}</p>
+        <p>@{item.username}</p>
         <p>#{item.category}</p>
+        {item.availability === 0 ? <p>Sold</p> : <p>Available</p>}
 
         {/* Conditonals for card options */}
         {hasBuyButton ? (
@@ -67,6 +68,7 @@ const ItemWrap = styled.div`
   border: 1px solid black;
   border-radius: 4px;
   margin: 1rem;
+  background: lightgrey;
   div {
     img {
       max-width: 100%;
