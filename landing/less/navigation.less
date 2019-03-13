@@ -4,7 +4,7 @@
     background-color: @nav-bgColor;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     position: sticky;
     top: 0;
     z-index: 25;
@@ -22,11 +22,13 @@
         display: none;
 
         @media @desktop {
+            width: 80%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             .left {
                 @media @desktop {
+                    width: 20rem;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -68,6 +70,9 @@
        }
        form {
            display: inline;
+       }
+       h1 {
+           font-size: 4.8rem;
        }
     }
 .sidenav {
@@ -111,7 +116,6 @@
         font-size: 3.5rem;
         color: @menuBtn-color;
         cursor: pointer;
-        margin-left: 2.5rem;
         @media @tablet {
             margin: 0 20rem 0 -12rem;
         }
@@ -123,12 +127,12 @@
         color: @hover-color;
         }
     }
-    h1 {
+    .navH1 {
         font-size: 4.8rem;
-        margin-right: 7rem;
         color: @header-font-color;
         @media @desktop {
             padding-right: 0;
+            display: none;
         }
         }
     }
