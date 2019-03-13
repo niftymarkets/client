@@ -17,9 +17,14 @@ class UserWrapper extends Component {
   }
 
   render() {
-    // Have to add [0] for userDetails, because the API endpoint returns and array with 1 object
-    // requested to get it fixed to return just an object
-    if (!this.props.userDetails[0]) {
+    const {
+      userDetails,
+      userItems,
+      transactionHistory,
+      wishList,
+    } = this.props;
+
+    if (!userDetails) {
       return <div>Loading user details...</div>
     }
 
@@ -27,12 +32,15 @@ class UserWrapper extends Component {
       <StyledUser>
         <h2>I'm the UserWrapper!</h2>
         <UserDetails
-          name={this.props.userDetails[0].username} // Once the API endpoint is fixed, remove [0]
-          balance={this.props.userDetails[0].funds_balance}          
+          name={userDetails.username}
+          balance={userDetails.funds_balance}          
         />
-        <CurrentItems userItems={this.props.userItems} />
-        <TransactionHistory transHist={this.props.user.transactionHistory} />
-        <Wishlist wishList={this.props.user.wishList} />
+        <CurrentItems
+          userItems={userItems}
+          pathname={this.props.renderProps.location.pathname}
+        />
+        <TransactionHistory transHist={transactionHistory} />
+        <Wishlist wishList={wishList} />
       </StyledUser>
     );
   }
@@ -41,6 +49,8 @@ class UserWrapper extends Component {
 const mapStateToProps = state => {
   return ({
     user: state.user,
+    transactionHistory: state.user.transactionHistory,
+    wishList: state.user.wishList,
     userDetails: state.user.userDetails,
     userItems: state.user.userItems,
   });
