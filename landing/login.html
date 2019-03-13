@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,10,9,7,8" />
+    <title>NiftyMarkets</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Russo+One|Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="css/index.css" rel="stylesheet">
+  <script src="./JS/sidenav.js" async></script>
+  </head>
+  <body>
+        <div class="nav">
+                <nav id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn">&times;</a>
+                    <div class="login-btns">
+                        <form method="POST" action="#">
+                            <button class ="sidebarBtn" type="submit">Login</button>
+                        </form>
+                        <form method="POST" action="../landing/register.html">
+                            <button class ="sidebarBtn" type ="submit">Get Started</button>
+                        </form>
+                  </div>
+                    <a href="../landing/index.html">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="../landing/contact.html">Contact</a>
+                </nav>
+                  <span class="menu-button">&#9776;</span>
+                  <div class="navH1">
+                  <h1>NiftyMarkets</h1>
+                </div>
+                  <nav class="desktop">
+                    <div class="left">
+                      <a href="../landing/index.html">Home</a>
+                      <a href="#">About Us</a>
+                      <a href="../landing/contact.html">Contact</a>
+                    </div>
+                    <div class="right">
+                        <form method="POST" action="#">
+                          <button class ="desktopBtn" type="submit">Login</button>
+                      </form>
+                      <form method="POST" action="../landing/register.html">
+                          <button class ="desktopBtn" type ="submit">Get Started</button>
+                      </form>
+                        </div>
+                        <span class="fas fa-gamepad"></span>
+                  </nav>
+                </div>
+    <div class='login'>
+        <h2>Login</h2>
+        <input name='username' placeholder='Username' type='text'/>
+        <input id='pw' name='password' placeholder='Password' type='password'/>
+        <div class='remember'>
+          <input checked='' id='remember' name='remember' type='checkbox'/>
+          <label for='remember'></label>Remember me
+        </div>
+        <input type='submit' value='Sign in'/>
+        <div class="socialLogin">
+                <a href="#" class="fab fa-facebook-square"></a>
+                <a href="#" class="fab fa-steam-square"></a>
+        </div>
+        <a class='register' href='../landing/register.html'>Register now</a>
+        <a class='register' href='#'>Forgot your password?</a>
+      </div>
+  </body>
+  </html>
