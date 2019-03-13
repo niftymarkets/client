@@ -10,7 +10,7 @@ const defaultCategories = [
 
 // THE CODE BELOW HANDLES THE SEARCH AND TABS FEATURES
 // Ideally we'd have a search api that provides pagination and category counts, but for now everything is calculated in the client side
-// Ideally this should be outside the render for optimization, but works for now
+// If this was a large application, it would be slow because it's causing the component to re-render with each user action (e.g. keystroke), but it should be ok for our small application for now.
 
 function searchMachine(gameItems, marketSearch, activeCategory) {
   // This is the initial categories object
