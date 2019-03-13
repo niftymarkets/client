@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 class UserDetails extends Component {
   render() {
+    console.log(this.props)
     return (
       <div>
         <h2>I have user details</h2>
@@ -9,10 +10,10 @@ class UserDetails extends Component {
         <h3>Balance: {this.props.balance}$</h3>
         <div>
           <button>Add funds</button>
-          <button>Send funds</button>        
+          <button>Send funds</button>
         </div>
       </div>
-    );
+    )
   }
 }
 

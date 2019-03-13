@@ -14,11 +14,13 @@ class ItemCard extends Component {
       hasWishlist,
       hasDeleteButton,
       pathname,
+      userId
     } = this.props
 
     const checkWishlist =
       wishList && wishList.find(list => list.itemId === item.itemId)
 
+    console.log(this.props)
     return (
       <ItemWrap>
         <div>
@@ -43,17 +45,18 @@ class ItemCard extends Component {
         ) : null}
 
         {hasWishlist && localStorage.getItem('jwt') ? (
-          <button onClick={() => toggleWishList(1, item.itemId, wishList)}>
+          <button onClick={() => toggleWishList(userId, item.itemId, wishList)}>
             {checkWishlist ? `Remove from Wishlist` : `Add to Wishlist`}
           </button>
         ) : null}
 
-        {
-          hasDeleteButton
-          ?
-          <button onClick={() => this.props.deleteUserItem(item.itemId, pathname)}>Delete Item</button>
-          : null
-        }
+        {hasDeleteButton ? (
+          <button
+            onClick={() => this.props.deleteUserItem(item.itemId, pathname)}
+          >
+            Delete Item
+          </button>
+        ) : null}
       </ItemWrap>
     )
   }
@@ -61,7 +64,8 @@ class ItemCard extends Component {
 
 const mapStateToProps = state => {
   return {
-    wishList: state.user.wishList
+    wishList: state.user.wishList,
+    userId: state.user.userDetails.userId
   }
 }
 
