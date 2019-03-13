@@ -70,13 +70,13 @@ export const postNewItem = item => dispatch => {
 
   axios({
     method: 'post',
-    url: url, // FIX URL!
+    url: `${url}/api/items`,
     data: JSON.stringify(item),
     headers: {
       'Content-Type': 'application/json'
     }
   })
-    .then(res => dispatch(onGetItems(res.data)))
+    .then(res => alert(res.data.message))
     .catch(err => dispatch(onError(err.message)))
     .finally(() => dispatch(onLoad(false)))
 }

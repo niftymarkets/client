@@ -5,11 +5,6 @@ import { combineReducers } from 'redux'
 
 const dummyUser = {
   userDetails: {
-    // userId: 1,
-    // username: 'Jack1',
-    // funds_balance: 100,
-    // img_url: null,
-    // email: '',
   },
   wishList: [1, 3], // game_item.id
   userItems: [2, 4],
@@ -58,14 +53,12 @@ const dummyUser = {
   },
 
   addItem: {
-    // new item to be added to DB
-    owner: '', // user.name
-    itemId: '',
     name: '',
-    price: 10,
+    price: '',
     description: '',
-    category: '',
-    imgUrl: '',
+    category: 'Outfits', // this is the default value for dropdown
+    userId: '',
+    img_url: '',
     availability: false
   }
 }

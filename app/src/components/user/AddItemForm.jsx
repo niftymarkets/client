@@ -16,12 +16,16 @@ const emptyItemForm = {
 class ItemForm extends Component {
   onClickHandler = (e) => {
     e.preventDefault();
-    this.props.postNewItem(this.props.addItem); // actionCreator that sends the POST request
-    this.props.updateItemForm(emptyItemForm); // actionCreator that changes the addItem state object
+    this.props.postNewItem(this.props.addItem);
+    this.props.updateItemForm(emptyItemForm);
   }
 
   onChangeHandler = (e) => {
-    this.props.updateItemForm({ ...this.props.addItem , [e.target.name]: e.target.value });
+    this.props.updateItemForm({
+      ...this.props.addItem,
+      // userId: this.props.id,  // uncomment and test this once the userDetails API is fixed
+      [e.target.name]: e.target.value
+    });
   }
 
   render() {
@@ -29,44 +33,50 @@ class ItemForm extends Component {
       <form autoComplete="off">
 
         <input
+          required
           value={this.props.addItem.name}
           onChange={this.onChangeHandler}
           name="name" type="text" placeholder="Enter item name">
         </input>
 
         <input
+          required
           value={this.props.addItem.price}
           onChange={this.onChangeHandler}
           name="price" type="text" placeholder="Enter item price">
         </input>
 
         <input
+          required
           value={this.props.addItem.description}
           onChange={this.onChangeHandler}
           name="description" type="text" placeholder="Enter item description">
         </input>
         
         <select
+          required
           name="category"
           onChange={this.onChangeHandler}
         >
-          <option value="Outfits">Outfits</option>
+          <option defaultValue value="Outfits">Outfits</option>
           <option value="Emotes">Emotes</option>
           <option value="Toys">Toys</option>
           <option value="Pets">Pets</option>
         </select>
                 
         <input
-          value={this.props.addItem.imgUrl}
+          required
+          value={this.props.addItem.img_url}
           onChange={this.onChangeHandler}
-          name="imgUrl" type="text" placeholder="Enter image URL">
+          name="img_url" type="text" placeholder="Enter image URL">
         </input>
 
-        <input
+{/* Still not sure how do we use this */}
+        {/* <input
           value={this.props.addItem.availability}
           onChange={this.onChangeHandler}
           name="availability" type="text" placeholder="Enter item immediately on the market?">
-        </input>
+        </input> */}
 
 
         <button onClick={this.onClickHandler}>Add new item</button>
@@ -79,6 +89,7 @@ class ItemForm extends Component {
 const mapStateToProps = state => {
   return ({
     addItem: state.user.addItem,
+    id: state.user.userDetails.userId,
   })
 }
 
