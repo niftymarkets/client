@@ -6,6 +6,9 @@ class UserDetails extends Component {
     return (
       <div>
         <h2>I have user details</h2>
+        <div>
+          <img src={this.props.img_url} alt='User avatar' />
+        </div>
         <p> My name is {this.props.name}</p>
         <h3>Balance: {this.props.balance}$</h3>
         <div>

@@ -11,8 +11,6 @@ class Wish extends Component {
     // const itemName = this.props.marketItems.filter(
     //   item => item.itemId === this.props.wish
     // )
-    console.log(this.props)
-    const { userDetails, wish } = this.props
 
     return (
       // <li>
@@ -21,7 +19,7 @@ class Wish extends Component {
       //
       // </li>
       <div>
-        {wish.name} <button onClick={this.onClickHandler}>X</button>
+        {this.props.wish.name} <button onClick={this.onClickHandler}>X</button>
       </div>
     )
   }
