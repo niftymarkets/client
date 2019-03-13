@@ -4,7 +4,7 @@ import { removeWish } from '../../actions/actionCreators'
 
 class Wish extends Component {
   onClickHandler = () => {
-    this.props.removeWish(this.props.userDetails, this.props.wishList)
+    this.props.removeWish(this.props.userDetails.userId, this.props.wishList)
   }
 
   render() {
