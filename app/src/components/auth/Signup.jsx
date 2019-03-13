@@ -11,8 +11,9 @@ const emptySignupForm = {
 
 class Signup extends Component {
   onClickHandler = (e) => {
+    const { username, email, password } = this.props.signupForm;
     e.preventDefault();
-    this.props.signupUser(this.props.signupForm.username, this.props.signupForm.password);
+    this.props.signupUser(username, email, password);
     this.props.updateSignupForm(emptySignupForm);
   }
 
@@ -26,18 +27,21 @@ class Signup extends Component {
         <form autoComplete="off">
 
           <input
+            required
             value={this.props.signupForm.username}
             onChange={this.onChangeHandler}
             name="username" type="text" placeholder="Enter your user name">
           </input>
 
           <input
+            required
             value={this.props.signupForm.email}
             onChange={this.onChangeHandler}
             name="email" type="email" placeholder="Enter your email">
           </input>
 
           <input
+            required
             value={this.props.signupForm.password}
             onChange={this.onChangeHandler}
             name="password" type="password" placeholder="Enter password">

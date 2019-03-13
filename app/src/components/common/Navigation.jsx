@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { logoutUser } from '../../actions/actionCreators'
+
 
 class Navigation extends Component {
+  // test refactored auth
+  logoutUser = () => {
+    localStorage.removeItem('jwt');
+    // This forces the page to reload, so all the authentication options
+    // are removed once the user logs out.
+    // Otherwise log out would cause bugs, because changes to localStorage
+    // do not re-render anything
+    window.location.reload();
+  }
+
   render() {
     return (
       <nav>
@@ -11,10 +20,10 @@ class Navigation extends Component {
         <NavLink to='/market'>Market</NavLink>
         <NavLink to='/static_page'>FAQs</NavLink>
         {
-          this.props.isAuthed
+          localStorage.getItem('jwt')
           ? <span>
             <NavLink to='/user/123'>Profile</NavLink>
-            <button onClick={this.props.logoutUser}>Log out</button>
+            <button onClick={this.logoutUser}>Log out</button>
           </span>
           : <span>
             <NavLink to='/signup'>Sign up</NavLink>
@@ -26,10 +35,4 @@ class Navigation extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return ({
-    isAuthed: state.isAuthed,
-  })
-}
-
-export default connect(mapStateToProps, { logoutUser })(Navigation);
+export default Navigation;

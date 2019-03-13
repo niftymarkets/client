@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { Route, withRouter, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { Route, Redirect } from 'react-router-dom'
 
 // Components
 import Navigation from './components/common/Navigation'
 import MarketWrapper from './components/market/MarketWrapper'
 import UserWrapper from './components/user/UserWrapper'
-// import AuthWrapper from './components/auth/AuthWrapper'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 
@@ -23,10 +21,10 @@ class App extends Component {
           exact
           path='/user/123'
           render={() => (
-            this.props.isAuthed ? (
+            localStorage.getItem('jwt') ? (
               <UserWrapper/>
             ) : (
-              <Redirect to="/market"/>
+              <Redirect to="/login"/>
             )
           )} />
 
@@ -37,14 +35,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return ({
-    isAuthed: state.isAuthed,
-  })
-}
-
-// need to wrap connect in withRouter HOC
-// to deal with Blocked Updates
-// https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/redux.md
-export default withRouter(connect(mapStateToProps, {})(App));
-
+export default App;
