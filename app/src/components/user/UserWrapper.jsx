@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { getUserDetails } from '../../actions/actionCreators';
+import { getUserDetails, getUserItems } from '../../actions/actionCreators';
 
 import TransactionHistory from './TransactionHistory';
 import Wishlist from './WishList';
@@ -13,6 +13,7 @@ class UserWrapper extends Component {
 
   componentDidMount() {
     this.props.getUserDetails(this.props.renderProps.location.pathname)
+    this.props.getUserItems(this.props.renderProps.location.pathname)
   }
 
   render() {
@@ -29,7 +30,7 @@ class UserWrapper extends Component {
           name={this.props.userDetails[0].username} // Once the API endpoint is fixed, remove [0]
           balance={this.props.userDetails[0].funds_balance}          
         />
-        <CurrentItems userItems={this.props.user.userItems} />
+        <CurrentItems userItems={this.props.userItems} />
         <TransactionHistory transHist={this.props.user.transactionHistory} />
         <Wishlist wishList={this.props.user.wishList} />
       </StyledUser>
@@ -41,10 +42,11 @@ const mapStateToProps = state => {
   return ({
     user: state.user,
     userDetails: state.user.userDetails,
+    userItems: state.user.userItems,
   });
 }
 
-export default connect(mapStateToProps, { getUserDetails })(UserWrapper);
+export default connect(mapStateToProps, { getUserDetails, getUserItems })(UserWrapper);
 
 const StyledUser = styled.div`
   display: flex;

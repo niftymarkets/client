@@ -9,7 +9,7 @@ const emptyItemForm = {
   price: '',
   description: '',
   category: '',
-  imgUrl: '',
+  img_url: '',
   availability: '',
 }
 

@@ -18,7 +18,7 @@ class ItemCard extends Component {
     return (
       <ItemWrap>
         <div>
-          <img src={item.imgUrl} alt='Item' />
+          <img src={item.img_url} alt='Item' />
         </div>
         <p>{item.name}</p>
         <p>{item.description}</p>
