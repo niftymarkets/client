@@ -8,12 +8,13 @@ class Transaction extends Component {
       item => item.itemId === itemId
     )
     return (
-      <tr>
-        <td>{transactedItem[0].name}</td>
-        <td>$ {price}</td>
-        <td>{otherUser}</td>
-        <td>{date}</td>
-      </tr>
+      // <tr>
+      //   <td>{transactedItem[0].name}</td>
+      //   <td>$ {price}</td>
+      //   <td>{otherUser}</td>
+      //   <td>{date}</td>
+      // </tr>
+      <div>Hello World</div>
     )
   }
 }

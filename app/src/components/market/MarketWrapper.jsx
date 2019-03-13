@@ -5,7 +5,8 @@ import {
   filterItems,
   clearSearch,
   getMarketItems,
-  getWishList
+  getWishList,
+  getUserDetails
 } from '../../actions/actionCreators'
 
 import Gallery from './Gallery'
@@ -16,8 +17,10 @@ import searchMachine from './searchMachine'
 
 class MarketWrapper extends Component {
   componentDidMount() {
+    const id = localStorage.getItem('userId')
     this.props.getMarketItems()
-    this.props.getWishList(1) // will need to pass userId here and make component aware of user details through state
+    this.props.getUserDetails(`/user/${id}`)
+    this.props.getWishList(this.props.userDetails.userId)
   }
 
   render() {
@@ -51,11 +54,19 @@ const mapStateToProps = state => {
   return {
     marketItems: state.marketItems,
     marketSearch: state.marketSearch,
-    activeCategory: state.activeCategory
+    activeCategory: state.activeCategory,
+    userDetails: state.user.userDetails
   }
 }
 
 export default connect(
   mapStateToProps,
-  { searchItems, filterItems, clearSearch, getMarketItems, getWishList }
+  {
+    searchItems,
+    filterItems,
+    clearSearch,
+    getMarketItems,
+    getWishList,
+    getUserDetails
+  }
 )(MarketWrapper)

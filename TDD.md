@@ -39,6 +39,10 @@ Frameworks
 
 Material-UI / Semantic-UI/ Styled-Components
 
+- **Match-Sorter** - A library to aid search. It sorts items in an array based on various conditions. Used it to help implement the search on keystroke functionality and the tabs for filtering items based on their categories. (https://github.com/kentcdodds/match-sorter)
+- **Moment.js** - Used to format date for the user’s transaction history.
+- **Styled-Components** - Used for styling the application side.
+
 #### - Do APIs require you to contact its maintainer to gain access?
 
 No

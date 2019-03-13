@@ -3,6 +3,10 @@ import axios from 'axios'
 
 export const url = 'https://nifty-markets.herokuapp.com'
 
+let token = localStorage.getItem('jwt')
+
+axios.defaults.headers.common['Authorization'] = token
+
 // ACTION CREATORS
 
 export const onLoad = bool => {
@@ -66,11 +70,18 @@ export const toggleWishList = (userId, itemId, wishList) => dispatch => {
   }
 }
 
-export const removeWish = (id, wishList) => {
-  return {
-    type: types.REMOVE_WISH,
-    payload: wishList.filter(wish => wish !== id)
-  }
+export const removeWish = (userId, wishList) => dispatch => {
+  dispatch(onError(null))
+  axios
+    .delete(`${url}/api/users/${userId}/wishlist/${wishList.wishlistId}`)
+    .then(() => {
+      dispatch(getWishList(userId))
+    })
+    .catch(err => dispatch(onError(err.message)))
+  // return {
+  //   type: types.REMOVE_WISH,
+  //   payload: wishList.filter(wish => wish !== id)
+  // }
 }
 
 // ADD NEW ITEM
@@ -138,11 +149,14 @@ export const updateLoginForm = item => {
 }
 
 export const getUserDetails = pathname => dispatch => {
-  dispatch(onError(null));
-  dispatch(onLoad(true));
-  
-  axios.get(`${url}/api${pathname}`)
-    .then(res => dispatch({type: types.GET_USER_DETAILS, userDetails: res.data}))
+  dispatch(onError(null))
+  dispatch(onLoad(true))
+
+  axios
+    .get(`${url}/api${pathname}`)
+    .then(res =>
+      dispatch({ type: types.GET_USER_DETAILS, userDetails: res.data })
+    )
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -163,22 +177,24 @@ export const getMarketItems = () => dispatch => {
 }
 
 export const getUserItems = pathname => dispatch => {
-  dispatch(onError(null));
-  dispatch(onLoad(true));
-  
-  axios.get(`${url}/api${pathname}/items`)
-    .then(res => dispatch({type: types.GET_USER_ITEMS, userItems: res.data}))
+  dispatch(onError(null))
+  dispatch(onLoad(true))
+
+  axios
+    .get(`${url}/api${pathname}/items`)
+    .then(res => dispatch({ type: types.GET_USER_ITEMS, userItems: res.data }))
     .catch(err => dispatch(onError(err)))
-    .finally(() => dispatch(onLoad(false)));
+    .finally(() => dispatch(onLoad(false)))
 }
 
 export const deleteUserItem = (id, pathname) => dispatch => {
-  dispatch(onError(null));
-  dispatch(onLoad(true));
-  
-  axios.delete(`${url}/api/items/${id}`)
+  dispatch(onError(null))
+  dispatch(onLoad(true))
+
+  axios
+    .delete(`${url}/api/items/${id}`)
     .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
     .then(res => alert(res.data.message))
     .catch(err => dispatch(onError(err)))
-    .finally(() => dispatch(onLoad(false)));
+    .finally(() => dispatch(onLoad(false)))
 }

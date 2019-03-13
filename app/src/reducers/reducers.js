@@ -4,8 +4,7 @@ import { combineReducers } from 'redux'
 // Dummy data for reducers
 
 const dummyUser = {
-  userDetails: {
-  },
+  userDetails: {},
   wishList: [],
   userItems: [],
   transactionHistory: [
@@ -147,30 +146,30 @@ export const user = (state = dummyUser, action) => {
         wishList: action.payload
       }
 
-    case types.REMOVE_WISH:
-      return {
-        ...state,
-        wishList: action.payload
-      }
+    // case types.REMOVE_WISH:
+    //   return {
+    //     ...state,
+    //     wishList: action.payload
+    //   }
 
     case types.UPDATE_ITEM_FORM:
       return {
         ...state,
         addItem: action.payload
       }
-    
-      case types.GET_USER_DETAILS:
-        return {
-          ...state,
-          userDetails: action.userDetails,
-        }
 
-      case types.GET_USER_ITEMS:
-        return {
-          ...state,
-          userItems: action.userItems,
-        }
-        
+    case types.GET_USER_DETAILS:
+      return {
+        ...state,
+        userDetails: action.userDetails
+      }
+
+    case types.GET_USER_ITEMS:
+      return {
+        ...state,
+        userItems: action.userItems
+      }
+
     default:
       return state
   }
