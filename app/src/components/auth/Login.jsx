@@ -10,10 +10,12 @@ const emptyLoginForm = {
 
 
 class Login extends Component {
+
   onClickHandler = (e) => {
     e.preventDefault();
     this.props.loginUser(this.props.loginForm.username, this.props.loginForm.password);
     this.props.updateLoginForm(emptyLoginForm);
+    this.props.history.push('/user/123');
   }
 
   onChangeHandler = (e) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, withRouter, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 // Components
 import Navigation from './components/common/Navigation'
@@ -17,7 +18,17 @@ class App extends Component {
         <Navigation />
 
         <Route path='/market' component={MarketWrapper} />
-        <Route exact path='/user/123' component={UserWrapper} />
+
+        <Route
+          exact
+          path='/user/123'
+          render={() => (
+            this.props.isAuthed ? (
+              <UserWrapper/>
+            ) : (
+              <Redirect to="/market"/>
+            )
+          )} />
 
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
@@ -26,4 +37,14 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return ({
+    isAuthed: state.isAuthed,
+  })
+}
+
+// need to wrap connect in withRouter HOC
+// to deal with Blocked Updates
+// https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/redux.md
+export default withRouter(connect(mapStateToProps, {})(App));
+
