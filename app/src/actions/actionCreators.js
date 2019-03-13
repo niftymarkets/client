@@ -3,6 +3,10 @@ import axios from 'axios'
 
 export const url = 'https://nifty-markets.herokuapp.com'
 
+let token = localStorage.getItem('jwt')
+
+axios.defaults.headers.common['Authorization'] = token
+
 // ACTION CREATORS
 
 export const onLoad = bool => {
