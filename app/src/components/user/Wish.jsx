@@ -15,7 +15,7 @@ class Wish extends Component {
     return (
       // <li>
       //   {itemName[0].name}
-      //   <button onClick={this.onClickHandler}>X</button>
+      //   <button onClick={this.onClickHandler}>XX</button>
       //
       // </li>
       <div>
