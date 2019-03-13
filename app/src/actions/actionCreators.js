@@ -36,16 +36,33 @@ export const clearSearch = () => ({
 })
 
 // ADD/REMOVE ITEM FROM WISHLIST
-export const toggleWishList = (id, wishList) => {
-  let items
-  if (wishList.includes(id)) {
-    items = wishList.filter(item => item !== id)
+export const getWishList = userId => dispatch => {
+  axios.get(`${url}/api/users/${userId}/wishlist`).then(res => {
+    dispatch({ type: types.GET_WISHLIST, payload: res.data })
+  })
+}
+
+export const toggleWishList = (userId, itemId, wishList) => dispatch => {
+  dispatch(onError(null))
+  const currentList = wishList.find(list => list.itemId === itemId)
+
+  if (currentList) {
+    axios
+      .delete(`${url}/api/users/${userId}/wishlist/${currentList.wishlistId}`)
+      .then(() => {
+        dispatch(getWishList(userId))
+      })
+      .catch(err => dispatch(onError(err.message)))
   } else {
-    items = [...wishList, id]
-  }
-  return {
-    type: types.TOGGLE_WISHLIST,
-    payload: items
+    axios
+      .post(`${url}/api/users/${userId}/wishlist`, {
+        userId: userId,
+        itemId: itemId
+      })
+      .then(() => {
+        dispatch(getWishList(userId))
+      })
+      .catch(err => dispatch(onError(err.message)))
   }
 }
 
@@ -144,5 +161,3 @@ export const getMarketItems = () => dispatch => {
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
-
-export const getUserItems = () => dispatch => {}

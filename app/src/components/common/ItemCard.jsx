@@ -15,6 +15,9 @@ class ItemCard extends Component {
       hasDeleteButton
     } = this.props
 
+    const checkWishlist =
+      wishList && wishList.find(list => list.itemId === item.itemId)
+
     return (
       <ItemWrap>
         <div>
@@ -39,8 +42,8 @@ class ItemCard extends Component {
         ) : null}
 
         {hasWishlist && localStorage.getItem('jwt') ? (
-          <button onClick={() => toggleWishList(item.itemId, wishList)}>
-            Toggle Wishlist Icon
+          <button onClick={() => toggleWishList(1, item.itemId, wishList)}>
+            {checkWishlist ? `Remove from Wishlist` : `Add to Wishlist`}
           </button>
         ) : null}
 

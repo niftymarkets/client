@@ -11,7 +11,7 @@ const dummyUser = {
     // img_url: null,
     // email: '',
   },
-  wishList: [1, 3], // game_item.id
+  // wishList: [1, 3], // game_item.id
   userItems: [2, 4],
   transactionHistory: [
     {
@@ -147,12 +147,11 @@ export const error = (error = null, action) => {
 
 export const user = (state = dummyUser, action) => {
   switch (action.type) {
-    case types.TOGGLE_WISHLIST: {
+    case types.GET_WISHLIST:
       return {
         ...state,
         wishList: action.payload
       }
-    }
 
     case types.REMOVE_WISH:
       return {

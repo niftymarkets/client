@@ -4,7 +4,8 @@ import {
   searchItems,
   filterItems,
   clearSearch,
-  getMarketItems
+  getMarketItems,
+  getWishList
 } from '../../actions/actionCreators'
 
 import Gallery from './Gallery'
@@ -16,6 +17,7 @@ import searchMachine from './searchMachine'
 class MarketWrapper extends Component {
   componentDidMount() {
     this.props.getMarketItems()
+    this.props.getWishList(1) // will need to pass userId here and make component aware of user details through state
   }
 
   render() {
@@ -46,7 +48,6 @@ class MarketWrapper extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     marketItems: state.marketItems,
     marketSearch: state.marketSearch,
@@ -56,5 +57,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { searchItems, filterItems, clearSearch, getMarketItems }
+  { searchItems, filterItems, clearSearch, getMarketItems, getWishList }
 )(MarketWrapper)
