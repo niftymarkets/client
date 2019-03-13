@@ -5,14 +5,9 @@ import { combineReducers } from 'redux'
 
 const dummyUser = {
   userDetails: {
-    // userId: 1,
-    // username: 'Jack1',
-    // funds_balance: 100,
-    // img_url: null,
-    // email: '',
   },
-  // wishList: [1, 3], // game_item.id
-  userItems: [2, 4],
+  wishList: [],
+  userItems: [],
   transactionHistory: [
     {
       // each transaction should change game_item.owner
@@ -53,22 +48,21 @@ const dummyUser = {
     description: '',
     price: 1,
     category: '',
-    imgUrl: '',
+    img_url: '',
     availability: false
   },
 
   addItem: {
-    // new item to be added to DB
-    owner: '', // user.name
-    itemId: '',
     name: '',
-    price: 10,
+    price: '',
     description: '',
-    category: '',
-    imgUrl: '',
+    category: 'Outfits', // this is the default value for dropdown
+    userId: '',
+    img_url: '',
     availability: false
   }
 }
+
 // const dummyItems = [
 //   {
 //     itemId: 1,
@@ -164,13 +158,19 @@ export const user = (state = dummyUser, action) => {
         ...state,
         addItem: action.payload
       }
+    
+      case types.GET_USER_DETAILS:
+        return {
+          ...state,
+          userDetails: action.userDetails,
+        }
 
-    case types.LOGIN_SUCCESS:
-      return {
-        ...state,
-        userDetails: action.userDetails
-      }
-
+      case types.GET_USER_ITEMS:
+        return {
+          ...state,
+          userItems: action.userItems,
+        }
+        
     default:
       return state
   }

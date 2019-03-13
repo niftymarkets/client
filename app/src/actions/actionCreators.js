@@ -81,19 +81,20 @@ export const updateItemForm = item => {
   }
 }
 
-export const postNewItem = item => dispatch => {
+export const postNewItem = (item, pathname) => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
   axios({
     method: 'post',
-    url: url, // FIX URL!
+    url: `${url}/api/items`,
     data: JSON.stringify(item),
     headers: {
       'Content-Type': 'application/json'
     }
   })
-    .then(res => dispatch(onGetItems(res.data)))
+    .then(res => console.log(res.data.message))
+    .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
     .catch(err => dispatch(onError(err.message)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -137,12 +138,11 @@ export const updateLoginForm = item => {
 }
 
 export const getUserDetails = pathname => dispatch => {
-  dispatch(onError(null))
-  dispatch(onLoad(true))
-
-  axios
-    .get(`${url}/api${pathname}`)
-    .then(res => dispatch({ type: types.LOGIN_SUCCESS, userDetails: res.data }))
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  
+  axios.get(`${url}/api${pathname}`)
+    .then(res => dispatch({type: types.GET_USER_DETAILS, userDetails: res.data}))
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -160,4 +160,25 @@ export const getMarketItems = () => dispatch => {
     })
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
+}
+
+export const getUserItems = pathname => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  
+  axios.get(`${url}/api${pathname}/items`)
+    .then(res => dispatch({type: types.GET_USER_ITEMS, userItems: res.data}))
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(false)));
+}
+
+export const deleteUserItem = (id, pathname) => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  
+  axios.delete(`${url}/api/items/${id}`)
+    .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
+    .then(res => alert(res.data.message))
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(false)));
 }

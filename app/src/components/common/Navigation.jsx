@@ -6,6 +6,7 @@ class Navigation extends Component {
 
   logoutUser = () => {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('userId');
     // This forces the page to reload, so all the authentication options
     // are removed once the user logs out.
     // Otherwise log out would cause bugs, because changes to localStorage
@@ -22,7 +23,7 @@ class Navigation extends Component {
         {
           localStorage.getItem('jwt')
           ? <span>
-            <NavLink to='/users/21'>Profile</NavLink>
+            <NavLink to={`/users/${this.props.userId}`}>Profile</NavLink>
             <button onClick={this.logoutUser}>Log out</button>
           </span>
           : <span>

@@ -1,0 +1,112 @@
+
+.login {
+    width: 32rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -18.4rem 0 0 -15.5rem;
+    background: rgba(0, 0, 0,0.2);
+    padding: 2rem 3rem;
+    border-radius: .5rem;
+    box-shadow: 0 1px 0 rgba(0, 0, 0,0.3),inset
+    0 1px 0 rgba(255,255,255,0.07);
+
+    input[type="text"], input[type="password"] {
+        width: 25rem;
+        padding: 2.5rem 0;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        outline: none;
+        color: #46485c
+       }
+       input[type=checkbox] {
+        display: none;
+   }
+   label {
+    display: block;
+    position: absolute;
+    margin-top: .2rem;
+    width: .4rem;
+    height: .4rem;
+    border-radius: 50%;
+    background: #46485c;
+    content: "";
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: 3px solid #252730;
+    box-shadow: 0 0 0 2px #46485c;
+}
+#remember:checked ~ label[for=remember] {
+    background: @hover-color;
+    border: 3px solid #252730;
+    box-shadow: 0 0 0 2px @hover-color;
+}
+input[type="submit"] {
+    margin-top: 1rem;
+    background: @nav-bgColor;
+    border: 0;
+    width: 25rem;
+    height: 4rem;
+    border-radius: .3rem;
+    color: @main-font-color;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    &:hover {
+        background: @menuBtn-color;
+    }
+
+}
+.register {
+    margin-top: 1rem;
+    display: block;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    color: @home-h3-color;
+    &:hover {
+        color: #6d7781;
+    }
+}
+.remember {
+    color: @main-font-color;
+    padding: 3rem 0;
+    font-size: 1.2rem;
+    text-indent: 2.5rem;
+    line-height: 1.5rem;
+}
+::-webkit-input-placeholder {
+    color: #46485c;
+}
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: all 0.2s linear;
+    transform: translate(1rem, 0);
+    opacity: 0;
+}
+.socialLogin {
+    text-align: center;
+    .fab {
+        text-decoration: none;
+        font-size: 2.9rem;
+        color: @menuBtn-color;
+        margin: 1rem;
+        &:hover {
+            color: @hover-color;
+        }
+}
+}
+
+}
+
+
+
+
+
+

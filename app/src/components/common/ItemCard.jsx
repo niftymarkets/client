@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { toggleWishList } from '../../actions/actionCreators'
+import { toggleWishList, deleteUserItem } from '../../actions/actionCreators'
 import { Link } from 'react-router-dom'
 
 class ItemCard extends Component {
@@ -12,7 +12,8 @@ class ItemCard extends Component {
       wishList,
       hasBuyButton,
       hasWishlist,
-      hasDeleteButton
+      hasDeleteButton,
+      pathname,
     } = this.props
 
     const checkWishlist =
@@ -47,7 +48,12 @@ class ItemCard extends Component {
           </button>
         ) : null}
 
-        {hasDeleteButton ? <button>Delete Item</button> : null}
+        {
+          hasDeleteButton
+          ?
+          <button onClick={() => this.props.deleteUserItem(item.itemId, pathname)}>Delete Item</button>
+          : null
+        }
       </ItemWrap>
     )
   }
@@ -61,7 +67,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleWishList }
+  { toggleWishList, deleteUserItem }
 )(ItemCard)
 
 const ItemWrap = styled.div`
