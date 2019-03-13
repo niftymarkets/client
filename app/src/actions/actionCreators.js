@@ -13,7 +13,6 @@ export const onLoad = bool => {
 }
 
 export const onError = err => {
-  console.error(err)
   return {
     type: types.ERROR,
     payload: err
@@ -131,7 +130,7 @@ export const loginUser = (username, password) => dispatch => {
   dispatch(onLoad(true));
 
   axios
-    .post(url, { username, password }) // FIX URL!
+    .post(`${url}/api/users/login`, { username, password })
     .then(res => {
       localStorage.setItem('jwt', res.data.token);
     })
