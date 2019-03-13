@@ -48,7 +48,7 @@ const dummyUser = {
     description: '',
     price: 1,
     category: '',
-    imgUrl: '',
+    img_url: '',
     availability: false
   },
 
@@ -70,7 +70,7 @@ const dummyItems = [
     description: 'Aim for the heart.',
     category: 'outfits',
     owner: 'username',
-    imgUrl: 'https://cdn.thetrackernetwork.com/cdn/fortnite/93062_large.png',
+    img_url: 'https://cdn.thetrackernetwork.com/cdn/fortnite/93062_large.png',
     availability: true
   },
   {
@@ -80,7 +80,7 @@ const dummyItems = [
     description: 'Royale Air Force test pilot',
     category: 'outfits',
     owner: 'username',
-    imgUrl:
+    img_url:
       'https://image.fnbr.co/outfit/5ab15860e9847b3170da032d/featured.png',
     availability: false
   },
@@ -91,7 +91,7 @@ const dummyItems = [
     description: 'Never stop axin',
     category: 'toys',
     owner: 'username',
-    imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
+    img_url: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
     availability: true
   },
   {
@@ -101,7 +101,7 @@ const dummyItems = [
     description: 'Gotta go',
     category: 'toys',
     owner: 'username',
-    imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
+    img_url: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
     availability: true
   }
 ]
@@ -159,12 +159,18 @@ export const user = (state = dummyUser, action) => {
         addItem: action.payload
       }
     
-      case types.LOGIN_SUCCESS:
+      case types.GET_USER_DETAILS:
         return {
           ...state,
           userDetails: action.userDetails,
         }
 
+      case types.GET_USER_ITEMS:
+        return {
+          ...state,
+          userItems: action.userItems,
+        }
+        
     default:
       return state
   }

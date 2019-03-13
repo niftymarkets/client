@@ -15,4 +15,5 @@ export const UPDATE_SIGNUP_FORM = 'UPDATE_SIGNUP_FORM'
 
 export const GET_ITEMS = 'GET_ITEMS'
 
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const GET_USER_DETAILS = 'GET_USER_DETAILS'
+export const GET_USER_ITEMS = 'GET_USER_ITEMS'

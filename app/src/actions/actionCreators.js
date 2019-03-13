@@ -124,7 +124,17 @@ export const getUserDetails = pathname => dispatch => {
   dispatch(onLoad(true));
   
   axios.get(`${url}/api${pathname}`)
-    .then(res => dispatch({type: types.LOGIN_SUCCESS, userDetails: res.data}))
+    .then(res => dispatch({type: types.GET_USER_DETAILS, userDetails: res.data}))
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(false)));
+}
+
+export const getUserItems = pathname => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  
+  axios.get(`${url}/api${pathname}/items`)
+    .then(res => dispatch({type: types.GET_USER_ITEMS, userItems: res.data}))
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)));
 }
