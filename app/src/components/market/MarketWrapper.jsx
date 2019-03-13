@@ -18,7 +18,6 @@ import searchMachine from './searchMachine'
 class MarketWrapper extends Component {
   componentDidMount() {
     const id = localStorage.getItem('userId')
-    console.log(id)
     this.props.getMarketItems()
     this.props.getUserDetails(`/user/${id}`)
     this.props.getWishList(this.props.userDetails.userId)

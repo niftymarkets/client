@@ -4,28 +4,33 @@ import { removeWish } from '../../actions/actionCreators'
 
 class Wish extends Component {
   onClickHandler = () => {
-    this.props.removeWish(this.props.wish, this.props.user.wishList)
+    this.props.removeWish(this.props.userDetails, this.props.wishList)
   }
 
   render() {
-    const itemName = this.props.marketItems.filter(
-      item => item.itemId === this.props.wish
-    )
+    // const itemName = this.props.marketItems.filter(
+    //   item => item.itemId === this.props.wish
+    // )
+    console.log(this.props)
+    const { userDetails, wish } = this.props
 
     return (
       // <li>
       //   {itemName[0].name}
       //   <button onClick={this.onClickHandler}>X</button>
+      //
       // </li>
-      <div>Hello World!</div>
+      <div>
+        {wish.name} <button onClick={this.onClickHandler}>X</button>
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
-    marketItems: state.marketItems
+    userDetails: state.user.userDetails,
+    wishList: state.user.wishList
   }
 }
 
