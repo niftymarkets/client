@@ -19,10 +19,10 @@ class App extends Component {
 
         <Route
           exact
-          path='/user/123'
-          render={() => (
+          path='/users/21'
+          render={renderProps => (
             localStorage.getItem('jwt') ? (
-              <UserWrapper/>
+              <UserWrapper renderProps={renderProps}/>
             ) : (
               <Redirect to="/login"/>
             )

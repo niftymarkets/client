@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signupUser, updateSignupForm } from '../../actions/actionCreators';
+import axios from 'axios';
 
 const emptySignupForm = {
   username: '',
@@ -13,8 +14,13 @@ class Signup extends Component {
   onClickHandler = (e) => {
     const { username, email, password } = this.props.signupForm;
     e.preventDefault();
-    this.props.signupUser(username, email, password);
-    this.props.updateSignupForm(emptySignupForm);
+
+    axios
+    .post('https://nifty-markets.herokuapp.com/api/users/register', { username, email, password })
+    // if we get the JWT here we can login user directly
+    .then(() => this.props.history.push('/login'))
+    .catch(err => console.error(err))
+    .finally(() => this.props.updateSignupForm(emptySignupForm));
   }
 
   onChangeHandler = (e) => {

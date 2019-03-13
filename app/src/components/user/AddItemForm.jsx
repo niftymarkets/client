@@ -46,11 +46,15 @@ class ItemForm extends Component {
           name="description" type="text" placeholder="Enter item description">
         </input>
         
-        <input
-          value={this.props.addItem.category}
+        <select
+          name="category"
           onChange={this.onChangeHandler}
-          name="category" type="text" placeholder="Enter game category">
-        </input>
+        >
+          <option value="Outfits">Outfits</option>
+          <option value="Emotes">Emotes</option>
+          <option value="Toys">Toys</option>
+          <option value="Pets">Pets</option>
+        </select>
                 
         <input
           value={this.props.addItem.imgUrl}

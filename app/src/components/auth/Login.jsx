@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginUser, updateLoginForm } from '../../actions/actionCreators';
+import { updateLoginForm } from '../../actions/actionCreators';
+import axios from 'axios';
+
 
 const emptyLoginForm = {
   username: '',
@@ -13,9 +15,17 @@ class Login extends Component {
 
   onClickHandler = (e) => {
     e.preventDefault();
-    this.props.loginUser(this.props.loginForm.username, this.props.loginForm.password);
-    this.props.updateLoginForm(emptyLoginForm);
-    this.props.history.push('/user/123');
+
+    const { username, password } = this.props.loginForm;
+    
+    axios
+      .post(`https://nifty-markets.herokuapp.com/api/users/login`, { username, password })
+      .then(res => {
+        localStorage.setItem('jwt', res.data.token);
+      })
+      .then(() => this.props.history.push('/users/21'))
+      .catch(err => console.error(err))
+      .finally(() => this.props.updateLoginForm(emptyLoginForm));
   }
 
   onChangeHandler = (e) => {
@@ -60,7 +70,8 @@ class Login extends Component {
 const mapStateToProps = state => {
   return ({
     loginForm: state.loginForm,
+    userDetails: state.user.userDetails,
   })
 }
 
-export default connect(mapStateToProps, { loginUser, updateLoginForm })(Login);
+export default connect(mapStateToProps, { updateLoginForm })(Login);

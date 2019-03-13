@@ -13,7 +13,6 @@ export const onLoad = bool => {
 }
 
 export const onError = err => {
-  console.error(err)
   return {
     type: types.ERROR,
     payload: err
@@ -109,7 +108,7 @@ export const signupUser = (username, email, password) => dispatch => {
       console.log(res);
     })
     .catch(err => dispatch(onError(err)))
-    .finally(() => dispatch(onLoad(true)))
+    .finally(() => dispatch(onLoad(false)))
 }
 
 // MANAGE LOGIN FORM
@@ -120,22 +119,12 @@ export const updateLoginForm = item => {
   }
 }
 
-// I think the axios function needs to be declared in Login.jsx
-// reason - we should redirect user with `this.props.history.push('url')
-// after clicking the login btn, BUT only after the response came back
-// from the server and user is authenticated
-// if we do the redirect in the onClickHandler fn in Login.jsx, it will
-// run as a synchronous function before the POST request is resolved
-export const loginUser = (username, password) => dispatch => {
+export const getUserDetails = pathname => dispatch => {
   dispatch(onError(null));
   dispatch(onLoad(true));
-
-  axios
-    .post(url, { username, password }) // FIX URL!
-    .then(res => {
-      localStorage.setItem('jwt', res.data.token);
-    })
-    // .then(this.props.history.push('/user/123')) // FIX URL! and this!
+  
+  axios.get(`${url}/api${pathname}`)
+    .then(res => dispatch({type: types.LOGIN_SUCCESS, userDetails: res.data}))
     .catch(err => dispatch(onError(err)))
-    .finally(() => dispatch(onLoad(true)));
+    .finally(() => dispatch(onLoad(false)));
 }

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 
 class Navigation extends Component {
-  // test refactored auth
+
   logoutUser = () => {
     localStorage.removeItem('jwt');
     // This forces the page to reload, so all the authentication options
@@ -22,7 +22,7 @@ class Navigation extends Component {
         {
           localStorage.getItem('jwt')
           ? <span>
-            <NavLink to='/user/123'>Profile</NavLink>
+            <NavLink to='/users/21'>Profile</NavLink>
             <button onClick={this.logoutUser}>Log out</button>
           </span>
           : <span>

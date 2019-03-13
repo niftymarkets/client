@@ -14,3 +14,5 @@ export const UPDATE_ITEM_FORM = 'UPDATE_ITEM_FORM'
 export const UPDATE_SIGNUP_FORM = 'UPDATE_SIGNUP_FORM'
 
 export const GET_ITEMS = 'GET_ITEMS'
+
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'

@@ -4,9 +4,13 @@ import { combineReducers } from 'redux'
 // Dummy data for reducers
 
 const dummyUser = {
-  userId: 1,
-  name: 'Jack1',
-  balance: 100,
+  userDetails: {
+    // userId: 1,
+    // username: 'Jack1',
+    // funds_balance: 100,
+    // img_url: null,
+    // email: '',
+  },
   wishList: [1, 3], // game_item.id
   userItems: [2, 4],
   transactionHistory: [
@@ -161,6 +165,12 @@ export const user = (state = dummyUser, action) => {
         ...state,
         addItem: action.payload
       }
+    
+      case types.LOGIN_SUCCESS:
+        return {
+          ...state,
+          userDetails: action.userDetails,
+        }
 
     default:
       return state
