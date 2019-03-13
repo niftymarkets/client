@@ -11,15 +11,16 @@ import Signup from './components/auth/Signup'
 
 class App extends Component {
   render() {
+    let userId = localStorage.getItem('userId');
     return (
       <div>
-        <Navigation />
+        <Navigation userId={userId}/>
 
         <Route path='/market' component={MarketWrapper} />
 
         <Route
           exact
-          path='/users/21'
+          path={`/users/${userId}`}
           render={renderProps => (
             localStorage.getItem('jwt') ? (
               <UserWrapper renderProps={renderProps}/>
