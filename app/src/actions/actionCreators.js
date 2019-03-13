@@ -64,7 +64,7 @@ export const updateItemForm = item => {
   }
 }
 
-export const postNewItem = item => dispatch => {
+export const postNewItem = (item, pathname) => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
@@ -76,7 +76,8 @@ export const postNewItem = item => dispatch => {
       'Content-Type': 'application/json'
     }
   })
-    .then(res => alert(res.data.message))
+    .then(res => console.log(res.data.message))
+    .then(() => dispatch(getUserItems(pathname)))
     .catch(err => dispatch(onError(err.message)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -135,6 +136,17 @@ export const getUserItems = pathname => dispatch => {
   
   axios.get(`${url}/api${pathname}/items`)
     .then(res => dispatch({type: types.GET_USER_ITEMS, userItems: res.data}))
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(false)));
+}
+
+export const deleteUserItem = (id, pathname) => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  
+  axios.delete(`${url}/api/items/${id}`)
+    .then(() => dispatch(getUserItems(pathname)))
+    .then(res => alert(res.data.message))
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)));
 }

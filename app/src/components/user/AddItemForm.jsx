@@ -16,14 +16,15 @@ const emptyItemForm = {
 class ItemForm extends Component {
   onClickHandler = (e) => {
     e.preventDefault();
-    this.props.postNewItem(this.props.addItem);
+    this.props.postNewItem(this.props.addItem, this.props.pathname);
     this.props.updateItemForm(emptyItemForm);
   }
 
   onChangeHandler = (e) => {
     this.props.updateItemForm({
       ...this.props.addItem,
-      // userId: this.props.id,  // uncomment and test this once the userDetails API is fixed
+      availability: true,
+      userId: this.props.id,
       [e.target.name]: e.target.value
     });
   }

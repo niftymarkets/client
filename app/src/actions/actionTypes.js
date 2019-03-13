@@ -17,3 +17,4 @@ export const GET_ITEMS = 'GET_ITEMS'
 
 export const GET_USER_DETAILS = 'GET_USER_DETAILS'
 export const GET_USER_ITEMS = 'GET_USER_ITEMS'
+export const DELETE_USER_ITEM = 'DELETE_USER_ITEM'
