@@ -4,7 +4,7 @@ import ItemCard from '../common/ItemCard'
 
 class UserItem extends Component {
   render() {
-    const userItem = this.props.gameItems.filter(
+    const userItem = this.props.marketItems.filter(
       item => item.itemId === this.props.item
     )
 
@@ -14,7 +14,7 @@ class UserItem extends Component {
 
 const mapStateToProps = state => {
   return {
-    gameItems: state.gameItems
+    marketItems: state.marketItems
   }
 }
 

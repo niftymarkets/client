@@ -22,8 +22,10 @@ class Login extends Component {
       .post(`https://nifty-markets.herokuapp.com/api/users/login`, { username, password })
       .then(res => {
         localStorage.setItem('jwt', res.data.token);
+        localStorage.setItem('userId', res.data.userId);
+        this.props.history.push(`/users/${res.data.userId}`)
       })
-      .then(() => this.props.history.push('/users/21'))
+      .then(res => console.log(res))
       .catch(err => console.error(err))
       .finally(() => this.props.updateLoginForm(emptyLoginForm));
   }

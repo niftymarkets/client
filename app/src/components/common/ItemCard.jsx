@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { toggleWishList } from '../../actions/actionCreators'
+import { toggleWishList, deleteUserItem } from '../../actions/actionCreators'
 import { Link } from 'react-router-dom'
 
 class ItemCard extends Component {
@@ -12,19 +12,24 @@ class ItemCard extends Component {
       wishList,
       hasBuyButton,
       hasWishlist,
-      hasDeleteButton
+      hasDeleteButton,
+      pathname,
     } = this.props
+
+    const checkWishlist =
+      wishList && wishList.find(list => list.itemId === item.itemId)
 
     return (
       <ItemWrap>
         <div>
-          <img src={item.imgUrl} alt='Item' />
+          <img src={item.img_url} alt='Item' />
         </div>
         <p>{item.name}</p>
         <p>{item.description}</p>
         <p>${item.price}</p>
-        <p>{item.owner}</p>
+        <p>@{item.username}</p>
         <p>#{item.category}</p>
+        {item.availability === 0 ? <p>Sold</p> : <p>Available</p>}
 
         {/* Conditonals for card options */}
         {hasBuyButton ? (
@@ -38,12 +43,17 @@ class ItemCard extends Component {
         ) : null}
 
         {hasWishlist && localStorage.getItem('jwt') ? (
-          <button onClick={() => toggleWishList(item.itemId, wishList)}>
-            Toggle Wishlist Icon
+          <button onClick={() => toggleWishList(1, item.itemId, wishList)}>
+            {checkWishlist ? `Remove from Wishlist` : `Add to Wishlist`}
           </button>
         ) : null}
 
-        {hasDeleteButton ? <button>Delete Item</button> : null}
+        {
+          hasDeleteButton
+          ?
+          <button onClick={() => this.props.deleteUserItem(item.itemId, pathname)}>Delete Item</button>
+          : null
+        }
       </ItemWrap>
     )
   }
@@ -57,7 +67,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleWishList }
+  { toggleWishList, deleteUserItem }
 )(ItemCard)
 
 const ItemWrap = styled.div`
@@ -67,6 +77,7 @@ const ItemWrap = styled.div`
   border: 1px solid black;
   border-radius: 4px;
   margin: 1rem;
+  background: lightgrey;
   div {
     img {
       max-width: 100%;

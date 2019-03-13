@@ -5,14 +5,9 @@ import { combineReducers } from 'redux'
 
 const dummyUser = {
   userDetails: {
-    // userId: 1,
-    // username: 'Jack1',
-    // funds_balance: 100,
-    // img_url: null,
-    // email: '',
   },
-  wishList: [1, 3], // game_item.id
-  userItems: [2, 4],
+  wishList: [],
+  userItems: [],
   transactionHistory: [
     {
       // each transaction should change game_item.owner
@@ -53,65 +48,64 @@ const dummyUser = {
     description: '',
     price: 1,
     category: '',
-    imgUrl: '',
+    img_url: '',
     availability: false
   },
 
   addItem: {
-    // new item to be added to DB
-    owner: '', // user.name
-    itemId: '',
     name: '',
-    price: 10,
+    price: '',
     description: '',
-    category: '',
-    imgUrl: '',
+    category: 'Outfits', // this is the default value for dropdown
+    userId: '',
+    img_url: '',
     availability: false
   }
 }
-const dummyItems = [
-  {
-    itemId: 1,
-    name: 'Love Ranger',
-    price: 10,
-    description: 'Aim for the heart.',
-    category: 'outfits',
-    owner: 'username',
-    imgUrl: 'https://cdn.thetrackernetwork.com/cdn/fortnite/93062_large.png',
-    availability: true
-  },
-  {
-    itemId: 2,
-    name: 'Raptor',
-    price: 29,
-    description: 'Royale Air Force test pilot',
-    category: 'outfits',
-    owner: 'username',
-    imgUrl:
-      'https://image.fnbr.co/outfit/5ab15860e9847b3170da032d/featured.png',
-    availability: false
-  },
-  {
-    itemId: 3,
-    name: 'Stop Axe',
-    price: 40,
-    description: 'Never stop axin',
-    category: 'toys',
-    owner: 'username',
-    imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
-    availability: true
-  },
-  {
-    itemId: 4,
-    name: 'Start Name Thing',
-    price: 500,
-    description: 'Gotta go',
-    category: 'toys',
-    owner: 'username',
-    imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
-    availability: true
-  }
-]
+
+// const dummyItems = [
+//   {
+//     itemId: 1,
+//     name: 'Love Ranger',
+//     price: 10,
+//     description: 'Aim for the heart.',
+//     category: 'outfits',
+//     owner: 'username',
+//     imgUrl: 'https://cdn.thetrackernetwork.com/cdn/fortnite/93062_large.png',
+//     availability: true
+//   },
+//   {
+//     itemId: 2,
+//     name: 'Raptor',
+//     price: 29,
+//     description: 'Royale Air Force test pilot',
+//     category: 'outfits',
+//     owner: 'username',
+//     imgUrl:
+//       'https://image.fnbr.co/outfit/5ab15860e9847b3170da032d/featured.png',
+//     availability: false
+//   },
+//   {
+//     itemId: 3,
+//     name: 'Stop Axe',
+//     price: 40,
+//     description: 'Never stop axin',
+//     category: 'toys',
+//     owner: 'username',
+//     imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
+//     availability: true
+//   },
+//   {
+//     itemId: 4,
+//     name: 'Start Name Thing',
+//     price: 500,
+//     description: 'Gotta go',
+//     category: 'toys',
+//     owner: 'username',
+//     imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
+//     availability: true
+//   }
+// ]
 
 const signupFormDummy = {
   username: '',
@@ -147,12 +141,11 @@ export const error = (error = null, action) => {
 
 export const user = (state = dummyUser, action) => {
   switch (action.type) {
-    case types.TOGGLE_WISHLIST: {
+    case types.GET_WISHLIST:
       return {
         ...state,
         wishList: action.payload
       }
-    }
 
     case types.REMOVE_WISH:
       return {
@@ -166,19 +159,27 @@ export const user = (state = dummyUser, action) => {
         addItem: action.payload
       }
     
-      case types.LOGIN_SUCCESS:
+      case types.GET_USER_DETAILS:
         return {
           ...state,
           userDetails: action.userDetails,
         }
 
+      case types.GET_USER_ITEMS:
+        return {
+          ...state,
+          userItems: action.userItems,
+        }
+        
     default:
       return state
   }
 }
 
-export const gameItems = (state = dummyItems, action) => {
+export const marketItems = (state = [], action) => {
   switch (action.type) {
+    case types.GET_MARKET_ITEMS:
+      return action.payload
     default:
       return state
   }
@@ -229,7 +230,7 @@ const rootReducer = combineReducers({
   loading,
   error,
   user,
-  gameItems,
+  marketItems,
   marketSearch,
   activeCategory,
   signupForm: signupFormReducer,

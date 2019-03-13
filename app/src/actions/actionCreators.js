@@ -36,16 +36,33 @@ export const clearSearch = () => ({
 })
 
 // ADD/REMOVE ITEM FROM WISHLIST
-export const toggleWishList = (id, wishList) => {
-  let items
-  if (wishList.includes(id)) {
-    items = wishList.filter(item => item !== id)
+export const getWishList = userId => dispatch => {
+  axios.get(`${url}/api/users/${userId}/wishlist`).then(res => {
+    dispatch({ type: types.GET_WISHLIST, payload: res.data })
+  })
+}
+
+export const toggleWishList = (userId, itemId, wishList) => dispatch => {
+  dispatch(onError(null))
+  const currentList = wishList.find(list => list.itemId === itemId)
+
+  if (currentList) {
+    axios
+      .delete(`${url}/api/users/${userId}/wishlist/${currentList.wishlistId}`)
+      .then(() => {
+        dispatch(getWishList(userId))
+      })
+      .catch(err => dispatch(onError(err.message)))
   } else {
-    items = [...wishList, id]
-  }
-  return {
-    type: types.TOGGLE_WISHLIST,
-    payload: items
+    axios
+      .post(`${url}/api/users/${userId}/wishlist`, {
+        userId: userId,
+        itemId: itemId
+      })
+      .then(() => {
+        dispatch(getWishList(userId))
+      })
+      .catch(err => dispatch(onError(err.message)))
   }
 }
 
@@ -64,19 +81,20 @@ export const updateItemForm = item => {
   }
 }
 
-export const postNewItem = item => dispatch => {
+export const postNewItem = (item, pathname) => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
   axios({
     method: 'post',
-    url: url, // FIX URL!
+    url: `${url}/api/items`,
     data: JSON.stringify(item),
     headers: {
       'Content-Type': 'application/json'
     }
   })
-    .then(res => dispatch(onGetItems(res.data)))
+    .then(res => console.log(res.data.message))
+    .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
     .catch(err => dispatch(onError(err.message)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -105,7 +123,7 @@ export const signupUser = (username, email, password) => dispatch => {
   axios
     .post(`${url}${signupUrl}`, { username, email, password })
     .then(res => {
-      console.log(res);
+      console.log(res)
     })
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
@@ -124,7 +142,43 @@ export const getUserDetails = pathname => dispatch => {
   dispatch(onLoad(true));
   
   axios.get(`${url}/api${pathname}`)
-    .then(res => dispatch({type: types.LOGIN_SUCCESS, userDetails: res.data}))
+    .then(res => dispatch({type: types.GET_USER_DETAILS, userDetails: res.data}))
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(false)))
+}
+
+// FETCH ITEMS
+
+export const getMarketItems = () => dispatch => {
+  dispatch(onError(null))
+  dispatch(onLoad(true))
+
+  axios
+    .get(`${url}/api/items`)
+    .then(res => {
+      dispatch({ type: types.GET_MARKET_ITEMS, payload: res.data })
+    })
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(false)))
+}
+
+export const getUserItems = pathname => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  
+  axios.get(`${url}/api${pathname}/items`)
+    .then(res => dispatch({type: types.GET_USER_ITEMS, userItems: res.data}))
+    .catch(err => dispatch(onError(err)))
+    .finally(() => dispatch(onLoad(false)));
+}
+
+export const deleteUserItem = (id, pathname) => dispatch => {
+  dispatch(onError(null));
+  dispatch(onLoad(true));
+  
+  axios.delete(`${url}/api/items/${id}`)
+    .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
+    .then(res => alert(res.data.message))
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)));
 }

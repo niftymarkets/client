@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
-import UserItem from './UserItem';
 import ItemForm from './AddItemForm';
+import ItemCard from '../common/ItemCard'
 
 class CurrentItems extends Component {
   render() {
+
+    if (!this.props.userItems) {
+      return <div>Loading user items...</div>
+    }
+
     return (
       <div>
         <h2>I have list of current items</h2>
         <div>Add new item here!</div>
-        <ItemForm />
+        <ItemForm pathname={this.props.pathname}/>
         <div>
           <h3>Your current items:</h3>
           <div>
             {
               this.props.userItems.map(item => (
-                <UserItem
-                  key={item}
+                <ItemCard
+                  key={item.itemId}
                   item={item}
+                  hasDeleteButton={true}
+                  pathname={this.props.pathname}
                 />
               ))
             }
