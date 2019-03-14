@@ -197,3 +197,22 @@ export const deleteUserItem = (id, pathname) => dispatch => {
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
+
+// export const editUser = newDetails => {
+//   return { type: types.EDIT_USER, payload: newDetails }
+// }
+
+export const editUser = (id, newDetails) => dispatch => {
+  axios
+    .put(`${url}/api/users/${id}`, newDetails)
+    .then(() => dispatch(getUserDetails(id)))
+}
+
+export const addFunds = (id, prevFunds) => dispatch => {
+  // const newFunds = parseFloat(prevFunds) + 100
+  // console.log(newFunds)
+  axios.put(`${url}/api/users/${id}`, { funds_balance: 100 }).then(res => {
+    console.log(res)
+    dispatch(getUserDetails(id))
+  })
+}
