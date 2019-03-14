@@ -95,6 +95,28 @@ export const error = (error = null, action) => {
   }
 }
 
+export const editingUser = (editingUser = false, action) => {
+  switch (action.type) {
+    case types.EDITING_USER:
+      return action.payload
+
+    default:
+      return editingUser
+  }
+}
+
+
+export const addingItem = (addingItem = false, action) => {
+  switch (action.type) {
+    case types.ADDING_ITEM:
+      return action.payload
+
+    default:
+      return addingItem
+  }
+}
+
+
 export const user = (state = dummyUser, action) => {
   switch (action.type) {
     case types.GET_WISHLIST:
@@ -197,7 +219,9 @@ const rootReducer = combineReducers({
   marketSearch,
   activeCategory,
   signupForm: signupFormReducer,
-  loginForm: loginFormReducer
+  loginForm: loginFormReducer,
+  editingUser,
+  addingItem
 })
 
 export default rootReducer

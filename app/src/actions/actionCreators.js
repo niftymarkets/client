@@ -249,3 +249,16 @@ export const changeItemAvailability = (itemId, userId, value) => dispatch => {
   .catch(err => dispatch(onError(err.message)))
 }
 
+export const editingUser = bool => {
+  return {
+    type: types.EDITING_USER,
+    payload: bool,
+  }
+}
+
+export const addingItem = bool => {
+  return {
+    type: types.ADDING_ITEM,
+    payload: bool,
+  }
+}

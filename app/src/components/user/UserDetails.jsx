@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import EditUserForm from './EditUserForm'
+import { editingUser, addingItem} from '../../actions/actionCreators'
+import { connect } from 'react-redux'
 
 class UserDetails extends Component {
-  state = {
-    isEditing: false
-  }
+  // state = {
+  //   isEditing: false
+  // }
 
   toggleEditing = () => {
-    this.setState({ isEditing: !this.state.isEditing, isAdding: false })
+    // this.setState({ isEditing: !this.state.isEditing, isAdding: false })
+    this.props.editingUser(!this.props.isEditing)
   }
 
   render() {
@@ -44,7 +47,7 @@ class UserDetails extends Component {
           </button>
         </ButtonsContainer>
 
-        {this.state.isEditing && (
+        {this.props.isEditing && (
           <EditUserForm toggleEditing={this.toggleEditing} />
         )}
       </DetailsContainer>
@@ -52,7 +55,14 @@ class UserDetails extends Component {
   }
 }
 
-export default UserDetails
+const mapStateToProps = state => {
+  return {
+    isEditing: state.editingUser,
+    isAdding: state.addingItem
+  }
+}
+
+export default connect(mapStateToProps, { editingUser, addingItem })(UserDetails)
 
 const DetailsContainer = styled.div`
   border: 1px solid #212b38;
