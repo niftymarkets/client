@@ -21,7 +21,7 @@ class ItemCard extends Component {
       buyerId: currentUserBuyingItemId,
       userId: currentUserBuyingItemId,
       username: this.props.username,
-      availability: 0,
+      availability: 0
     }
     // const newTransaction = {
     //   ...this.props.item,
@@ -57,13 +57,13 @@ class ItemCard extends Component {
     }
   }
 
-  radioHandler = (e) => {
+  radioHandler = e => {
     this.props.changeItemAvailability(
       this.props.item.itemId,
       this.props.userId,
       {
         availability: e.target.value,
-        buyerId: null,
+        buyerId: null
       }
     )
   }
@@ -111,39 +111,40 @@ class ItemCard extends Component {
         ) : null}
 
         {hasDeleteButton ? (
-
           <div>
             <p>Should the item be available on the market?</p>
             <form>
               <label>
-                <input type="radio"
-                  value="1"
+                <input
+                  type='radio'
+                  value='1'
                   checked={item.availability === 1}
-                  name="availability"
+                  name='availability'
                   onChange={this.radioHandler}
                 />
-              Yes
-              </label>
-              
-              <label>
-                <input type="radio"
-                  value="0"
-                  checked={item.availability === 0}
-                  name="availability"
-                  onChange={this.radioHandler}
-                />
-              No
+                Yes
               </label>
 
-            </form> 
+              <label>
+                <input
+                  type='radio'
+                  value='0'
+                  checked={item.availability === 0}
+                  name='availability'
+                  onChange={this.radioHandler}
+                />
+                No
+              </label>
+            </form>
 
             <button
-              onClick={() => this.props.deleteUserItem(item.itemId, this.props.userId)}
+              onClick={() =>
+                this.props.deleteUserItem(item.itemId, this.props.userId)
+              }
             >
               Delete Item
             </button>
           </div>
-
         ) : null}
       </CardWrap>
     )
@@ -167,7 +168,7 @@ export default connect(
     buyItem,
     newTransaction,
     changeFunds,
-    changeItemAvailability,
+    changeItemAvailability
   }
 )(ItemCard)
 
@@ -180,8 +181,10 @@ const CardWrap = styled.div`
   width: 20%;
   border-radius: 4px;
   margin: 1rem;
-  background: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
+  background: #212b38;
+  ${'' /* background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12); */}
   p {
     margin: 0;
   }

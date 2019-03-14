@@ -3,9 +3,9 @@ import React from 'react'
 const Tabs = ({ filterItems, categories }) => {
   return (
     <div>
-      <h3>
-        Categories <i class='fas fa-tags' />
-      </h3>
+      <h6>
+        Categories <i className='fas fa-tags' />
+      </h6>
       {categories.map(category => (
         <div key={category.name} onClick={() => filterItems(category.id)}>
           {category.name} ({category.count})

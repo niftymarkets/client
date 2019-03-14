@@ -138,7 +138,7 @@ const Heading = styled.h3`
 
 const InputField = styled.input`
   width: 100%;
-  padding: 2.5rem 0;
+  padding: 2rem 0;
   background: #161c24;
   border: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
