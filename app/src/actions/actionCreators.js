@@ -178,7 +178,7 @@ export const getMarketItems = () => dispatch => {
 export const getUserItems = userId => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
-console.log(userId)
+
   axios
     .get(`${url}/api/users/${userId}/items`)
     .then(res => dispatch({ type: types.GET_USER_ITEMS, userItems: res.data }))
