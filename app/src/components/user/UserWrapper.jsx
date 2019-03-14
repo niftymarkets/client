@@ -5,7 +5,8 @@ import {
   getUserDetails,
   getUserItems,
   getWishList,
-  changeFunds
+  changeFunds,
+  getTransactionHistory
 } from '../../actions/actionCreators'
 
 import TransactionHistory from './TransactionHistory'
@@ -19,6 +20,7 @@ class UserWrapper extends Component {
     this.props.getUserDetails(id)
     this.props.getUserItems(id)
     this.props.getWishList(id)
+    this.props.getTransactionHistory(id)
   }
 
   render() {
@@ -33,6 +35,8 @@ class UserWrapper extends Component {
     if (!userDetails) {
       return <div>Loading user details...</div>
     }
+
+    console.log(transactionHistory)
 
     return (
       <UserContainer>
@@ -78,7 +82,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getUserDetails, getUserItems, getWishList, changeFunds }
+  { getUserDetails, getUserItems, getWishList, changeFunds, getTransactionHistory }
 )(UserWrapper)
 
 const UserContainer = styled.div`

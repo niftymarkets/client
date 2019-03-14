@@ -59,6 +59,7 @@ const DetailsContainer = styled.div`
   border-radius: 4px;
   padding: 0.5rem;
   min-width: 350px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
 `
 
 const UserInfoContainer = styled.div`
