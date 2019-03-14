@@ -35,24 +35,33 @@ class UserWrapper extends Component {
     }
 
     return (
-      <StyledUser>
-        <UserDetails
-          name={userDetails.username}
-          userId={userDetails.userId}
-          funds_balance={userDetails.funds_balance}
-          img_url={userDetails.img_url}
-          password={userDetails.password}
-          email={userDetails.email}
-          changeFunds={changeFunds}
-        />
+      <UserContainer>
+
+        <MainContainer>
+
+          <UserDetails
+            name={userDetails.username}
+            userId={userDetails.userId}
+            funds_balance={userDetails.funds_balance}
+            img_url={userDetails.img_url}
+            password={userDetails.password}
+            email={userDetails.email}
+            changeFunds={changeFunds}
+          />
+
+          <TransactionHistory transHist={transactionHistory} />
+
+          <Wishlist wishList={wishList} />
+
+        </MainContainer>
+        
 
         <CurrentItems
           userItems={userItems}
         />
 
-        <TransactionHistory transHist={transactionHistory} />
-        <Wishlist wishList={wishList} />
-      </StyledUser>
+
+      </UserContainer>
     )
   }
 }
@@ -72,8 +81,13 @@ export default connect(
   { getUserDetails, getUserItems, getWishList, changeFunds }
 )(UserWrapper)
 
-const StyledUser = styled.div`
+const UserContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+`;
+
+const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-`
+`;

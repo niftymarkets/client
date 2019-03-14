@@ -125,6 +125,11 @@ ul {
 
 /* GLOBAL STYLES */
 
+* {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
 body {
   background: #fcfcfc;
 }
@@ -143,6 +148,44 @@ h5,
 h6 {
   font-family: 'Russo One', sans-serif;
   color: #0299a0;
+}
+
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.2rem;
+}
+h3 {
+  font-size: 2.8rem;
+}
+h4 {
+  font-size: 2rem;
+}
+h5 {
+  font-size: 1.7rem;
+}
+h6 {
+  font-size: 1.4rem;
+}
+p,
+a,
+ul,
+li,
+tr,
+td,
+th,
+input,
+select,
+span {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
 }
 
 p {
@@ -171,7 +214,7 @@ button {
     #0299a0 90.06%
   ); */
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 4px;
   border: 0;
   font-size: 1rem;
   outline: none;

@@ -23,7 +23,7 @@ class ItemForm extends Component {
   onChangeHandler = (e) => {
     this.props.updateItemForm({
       ...this.props.addItem,
-      availability: true,
+      availability: 1,
       userId: this.props.id,
       username: this.props.username,
       [e.target.name]: e.target.value
@@ -72,14 +72,6 @@ class ItemForm extends Component {
           onChange={this.onChangeHandler}
           name="img_url" type="text" placeholder="Enter image URL">
         </input>
-
-{/* Still not sure how do we use this */}
-        {/* <input
-          value={this.props.addItem.availability}
-          onChange={this.onChangeHandler}
-          name="availability" type="text" placeholder="Enter item immediately on the market?">
-        </input> */}
-
 
         <button onClick={this.onClickHandler}>Add new item</button>
 

@@ -35,13 +35,16 @@ class MarketWrapper extends Component {
       clearSearch
     } = this.props
 
+    const availableItems = marketItems.filter(item => item.availability === 1);
+
     const { newCategories, searchResults } = searchMachine(
-      marketItems,
+      availableItems,
       marketSearch,
       activeCategory
     )
 
     return (
+
       <MarketContainer>
         <MarketTabs>
           <Search searchItems={searchItems} clearSearch={clearSearch} />
@@ -49,7 +52,7 @@ class MarketWrapper extends Component {
         </MarketTabs>
 
         <MarketMain>
-          <Gallery marketItems={searchResults} />
+          <Gallery availableItems={searchResults} />
         </MarketMain>
       </MarketContainer>
     )

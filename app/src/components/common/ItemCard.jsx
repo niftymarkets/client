@@ -6,7 +6,8 @@ import {
   deleteUserItem,
   buyItem,
   newTransaction,
-  changeFunds
+  changeFunds,
+  changeItemAvailability
 } from '../../actions/actionCreators'
 import { Link } from 'react-router-dom'
 
@@ -17,9 +18,10 @@ class ItemCard extends Component {
 
     const newItemObject = {
       ...this.props.item,
-      buyerId: null,
+      buyerId: currentUserBuyingItemId,
       userId: currentUserBuyingItemId,
-      username: this.props.username
+      username: this.props.username,
+      availability: 0,
     }
     const newTransaction = {
       ...this.props.item,
@@ -55,6 +57,10 @@ class ItemCard extends Component {
     }
   }
 
+  radioHandler = (e) => {
+    this.props.changeItemAvailability(this.props.item.itemId, this.props.userId, {availability: e.target.value})
+  }
+
   render() {
     const {
       item,
@@ -79,7 +85,6 @@ class ItemCard extends Component {
         <p>${item.price}</p>
         <p>@{item.username}</p>
         <p>#{item.category}</p>
-        {item.availability === 0 ? <p>Sold</p> : <p>Available</p>}
 
         {/* Conditonals for card options */}
         {hasBuyButton ? (
@@ -99,13 +104,39 @@ class ItemCard extends Component {
         ) : null}
 
         {hasDeleteButton ? (
-          <button
-            onClick={() =>
-              this.props.deleteUserItem(item.itemId, this.props.userId)
-            }
-          >
-            Delete Item
-          </button>
+
+          <div>
+            <p>Should the item be available on the market?</p>
+            <form>
+              <label>
+                <input type="radio"
+                  value="1"
+                  checked={item.availability === 1}
+                  name="availability"
+                  onChange={this.radioHandler}
+                />
+              Yes
+              </label>
+              
+              <label>
+                <input type="radio"
+                  value="0"
+                  checked={item.availability === 0}
+                  name="availability"
+                  onChange={this.radioHandler}
+                />
+              No
+              </label>
+
+            </form> 
+
+            <button
+              onClick={() => this.props.deleteUserItem(item.itemId, this.props.userId)}
+            >
+              Delete Item
+            </button>
+          </div>
+
         ) : null}
       </CardWrap>
     )
@@ -128,7 +159,8 @@ export default connect(
     deleteUserItem,
     buyItem,
     newTransaction,
-    changeFunds
+    changeFunds,
+    changeItemAvailability,
   }
 )(ItemCard)
 

@@ -112,12 +112,6 @@ export const user = (state = dummyUser, action) => {
         wishList: action.payload
       }
 
-    // case types.REMOVE_WISH:
-    //   return {
-    //     ...state,
-    //     wishList: action.payload
-    //   }
-
     case types.UPDATE_ITEM_FORM:
       return {
         ...state,
