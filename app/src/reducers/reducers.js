@@ -7,7 +7,10 @@ const dummyUser = {
   userDetails: {},
   wishList: [],
   userItems: [],  
-  transactionHistory: {},
+  transactionHistory: {
+    boughtItems: [],
+    soldItems: []
+  },
 
   addItem: {
     name: '',
@@ -59,6 +62,16 @@ export const editingUser = (editingUser = false, action) => {
 
     default:
       return editingUser
+  }
+}
+
+export const handlingModal = (handlingModal = false, action) => {
+  switch (action.type) {
+    case types.HANDLE_MODAL:
+      return action.payload
+
+    default:
+      return handlingModal
   }
 }
 
@@ -178,7 +191,8 @@ const rootReducer = combineReducers({
   signupForm: signupFormReducer,
   loginForm: loginFormReducer,
   editingUser,
-  addingItem
+  addingItem,
+  handlingModal
 })
 
 export default rootReducer

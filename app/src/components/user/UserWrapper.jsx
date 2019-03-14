@@ -100,7 +100,6 @@ const MainContainer = styled.div`
 
   @media (max-width: 750px) {
     align-items: center;
-    /* flex-direction: row; */
 
     div:first-child {
       flex-grow: 4;

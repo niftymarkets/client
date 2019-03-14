@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { editingUser, addingItem} from '../../actions/actionCreators'
+import { editingUser, addingItem, toggleModal } from '../../actions/actionCreators'
 import EditUserForm from './EditUserForm'
 import ItemForm from './AddItemForm'
 
 class UserDetails extends Component {
 
   toggleEditing = () => {
-    this.props.addingItem(false)
+    // this.props.addingItem(false)
     this.props.editingUser(!this.props.isEditing)
+    this.props.toggleModal(!this.props.handlingModal)
   }
 
   toggleAdding = () => {
-    this.props.editingUser(false)
+    // this.props.editingUser(false)
     this.props.addingItem(!this.props.isAdding)
+    this.props.toggleModal(!this.props.handlingModal)
   }
 
   render() {
@@ -68,11 +70,18 @@ class UserDetails extends Component {
 const mapStateToProps = state => {
   return {
     isEditing: state.editingUser,
-    isAdding: state.addingItem
+    isAdding: state.addingItem,
+    handlingModal: state.handlingModal,
   }
 }
 
-export default connect(mapStateToProps, { editingUser, addingItem })(UserDetails)
+export default connect(
+  mapStateToProps,
+  {
+  editingUser,
+  addingItem,
+  toggleModal,
+  })(UserDetails)
 
 const DetailsContainer = styled.div`
   border: 1px solid #212b38;

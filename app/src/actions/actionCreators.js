@@ -262,3 +262,10 @@ export const addingItem = bool => {
     payload: bool,
   }
 }
+
+export const toggleModal = bool => {
+  return {
+    type: types.HANDLE_MODAL,
+    payload: bool,
+  }
+}
