@@ -10,14 +10,12 @@ class CurrentItems extends Component {
 
     return (
       <UserItemsContainer>
-        <div>
           <h6>Your current items:</h6>
           <ItemsContainer>
             {this.props.userItems.map(item => (
               <ItemCard key={item.itemId} item={item} hasDeleteButton={true} />
             ))}
           </ItemsContainer>
-        </div>
       </UserItemsContainer>
     )
   }
@@ -32,11 +30,22 @@ const LoadingDiv = styled.h6`
 `
 const UserItemsContainer = styled.div`
   margin: 0 2rem;
+
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    align-items: center;
+  }
 `
 
 const ItemsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 1rem -1rem;
+
+  @media (max-width: 750px) {
+    justify-content: space-around;
+  }
 `
 

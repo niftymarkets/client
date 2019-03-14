@@ -36,8 +36,6 @@ class UserWrapper extends Component {
       return <div>Loading user details...</div>
     }
 
-    console.log(transactionHistory)
-
     return (
       <UserContainer>
 
@@ -89,9 +87,23 @@ const UserContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding: 1rem;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 750px) {
+    align-items: center;
+    /* flex-direction: row; */
+
+    div:first-child {
+      flex-grow: 4;
+    }
+  }
 `;
