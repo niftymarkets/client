@@ -1,4 +1,114 @@
+/* CSS RESET - Global styles below */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
 body {
+  line-height: 1;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -8,7 +118,65 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ol,
+ul {
+  list-style: none;
+}
+
+/* GLOBAL STYLES */
+
+body {
+  background: #fafa);
+}
+
+nav {
+  background: #212b38;
+}
+
+main {
+  max-width: 900px;
+  margin: 3rem auto 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Russo One', sans-serif;
+  color: #0299a0;
+}
+
+p {
+  font-family: 'Ubuntu', sans-serif;
+  color: #212b38;
+}
+
+a {
+  text-decoration: none;
+  color: #29f3db;
+}
+
+a:hover {
+  color: #c2fcf7;
+}
+
+
+button {
+  /* color: white; */
+  font-family: 'Ubuntu', sans-serif;
+  padding: 5px 10px;
+  /* background: #0299a0; */
+  /* background: linear-gradient(
+    180deg,
+    #01fce1 0,
+    #01d6c8 31.87%,
+    #0299a0 90.06%
+  ); */
+  cursor: pointer;
+  border-radius: 10px;
+  border: 0;
+  font-size: 1rem;
+  outline: none;
 }

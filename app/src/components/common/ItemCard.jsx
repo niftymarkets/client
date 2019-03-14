@@ -77,10 +77,8 @@ const ItemWrap = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 30%;
-  border: 1px solid black;
   border-radius: 4px;
   margin: 1rem;
-  background: lightgrey;
   div {
     img {
       max-width: 100%;

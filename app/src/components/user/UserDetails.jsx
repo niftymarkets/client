@@ -21,7 +21,6 @@ class UserDetails extends Component {
         <h2>
           Welcome <span>{this.props.name}</span>
         </h2>
-
         {/* Capitalize the first letter of name using CSS text-transform, could do it with JS but it's too complex */}
         <h3>Balance: ${this.props.funds_balance}</h3>
         <div>
