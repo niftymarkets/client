@@ -52,15 +52,6 @@ const dummyUser = {
     ]
 },
 
-  // editingUser: false, // bool - changes on "EDIT" btn click
-  // editUser: {
-  //   // item the user will be editing
-  //   username: '',
-  //   password: '',
-  //   email: '',
-  //   funds_balance: ''
-  // },
-
   addItem: {
     name: '',
     price: '',
@@ -68,7 +59,7 @@ const dummyUser = {
     category: 'Outfits', // this is the default value for dropdown
     userId: '',
     img_url: '',
-    availability: false
+    availability: ''
   }
 }
 
@@ -134,12 +125,7 @@ export const user = (state = dummyUser, action) => {
     case types.UPDATE_TRANSACTION_HISTORY:
       return {
         ...state,
-        transactionHistory: {
-          boughtItems: [
-            ...state.transactionHistory.boughtItems,
-            action.payload
-          ]
-        }
+        transactionHistory: action.payload
       }
 
     case types.GET_TRANSACTION_HISTORY:

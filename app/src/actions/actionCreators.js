@@ -205,22 +205,6 @@ export const buyItem = (itemId, updatedItemObj) => dispatch => {
   .catch(err => dispatch(onError(err.message)))
 }
 
-// WIP
-export const addTransaction = (userId, newTransaction) => dispatch => {
-  // POST request to change users transaction history
-  // URL: /api/users/:id/purchases
-  axios({
-    method: 'post',
-    // url: `${url}/api/users/${userId}/purchases`, // add URL after API endpoint is created
-    data: JSON.stringify(newTransaction),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-    })
-    .then(() => dispatch(/*get transaction history or get it from RESP */))
-  .catch(err => dispatch(onError(err.message)))
-}
-
 export const getTransactionHistory = (userId) => dispatch => {
 
   axios

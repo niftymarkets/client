@@ -23,10 +23,10 @@ class ItemCard extends Component {
       username: this.props.username,
       availability: 0,
     }
-    const newTransaction = {
-      ...this.props.item,
-      username: this.props.item.username
-    }
+    // const newTransaction = {
+    //   ...this.props.item,
+    //   username: this.props.item.username
+    // }
 
     const newUserFunds = this.props.funds_balance - this.props.item.price
 
@@ -51,14 +51,21 @@ class ItemCard extends Component {
         this.props.buyItem(this.props.item.itemId, newItemObject)
         // USER PUT request to change users funds_balance
         this.props.changeFunds(currentUserBuyingItemId, newUserFunds)
-        // USER state change in transaction history - will be POST req to USER trans.history when created
-        this.props.newTransaction(newTransaction)
+        // USER state change in transaction history
+        // this.props.newTransaction(newTransaction)
       }
     }
   }
 
   radioHandler = (e) => {
-    this.props.changeItemAvailability(this.props.item.itemId, this.props.userId, {availability: e.target.value})
+    this.props.changeItemAvailability(
+      this.props.item.itemId,
+      this.props.userId,
+      {
+        availability: e.target.value,
+        buyerId: null,
+      }
+    )
   }
 
   render() {
@@ -170,7 +177,7 @@ const CardWrap = styled.div`
   justify-content: space-between;
   max-width: 250px;
   min-width: 250px;
-  width: 20%
+  width: 20%;
   border-radius: 4px;
   margin: 1rem;
   background: white;
