@@ -18,6 +18,7 @@ class ItemForm extends Component {
     e.preventDefault();
     this.props.postNewItem(this.props.addItem, this.props.id);
     this.props.updateItemForm(emptyItemForm);
+    this.props.toggleAdding();
   }
 
   onChangeHandler = (e) => {
@@ -74,7 +75,7 @@ class ItemForm extends Component {
         </input>
 
         <button onClick={this.onClickHandler}>Add new item</button>
-
+        <button onClick={this.props.toggleAdding}>Cancel</button>
       </form>
     );
   }

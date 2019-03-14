@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import EditUserForm from './EditUserForm'
-import { editingUser, addingItem} from '../../actions/actionCreators'
 import { connect } from 'react-redux'
+import { editingUser, addingItem} from '../../actions/actionCreators'
+import EditUserForm from './EditUserForm'
+import ItemForm from './AddItemForm'
 
 class UserDetails extends Component {
-  // state = {
-  //   isEditing: false
-  // }
 
   toggleEditing = () => {
-    // this.setState({ isEditing: !this.state.isEditing, isAdding: false })
+    this.props.addingItem(false)
     this.props.editingUser(!this.props.isEditing)
+  }
+
+  toggleAdding = () => {
+    this.props.editingUser(false)
+    this.props.addingItem(!this.props.isAdding)
   }
 
   render() {
@@ -37,7 +40,8 @@ class UserDetails extends Component {
 
         <ButtonsContainer>
 
-          <button onClick={() => this.toggleEditing()}>Edit Profile</button>
+          <button onClick={this.toggleEditing}>Edit Profile</button>
+
           <button
             onClick={() =>
               this.props.changeFunds(this.props.userId, newFunds)
@@ -45,10 +49,16 @@ class UserDetails extends Component {
           >
             Add $100
           </button>
+
+          <button onClick={this.toggleAdding}>Add item</button>
         </ButtonsContainer>
 
         {this.props.isEditing && (
           <EditUserForm toggleEditing={this.toggleEditing} />
+        )}
+
+        {this.props.isAdding && (
+          <ItemForm toggleAdding={this.toggleAdding} />
         )}
       </DetailsContainer>
     )
@@ -69,6 +79,7 @@ const DetailsContainer = styled.div`
   border-radius: 4px;
   padding: 0.5rem;
   min-width: 350px;
+  max-width: 385px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
 `
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import ItemForm from './AddItemForm'
 import ItemCard from '../common/ItemCard'
 
 class CurrentItems extends Component {
@@ -11,8 +10,6 @@ class CurrentItems extends Component {
 
     return (
       <UserItemsContainer>
-        <p>Add new item here!</p>
-        <ItemForm />
         <div>
           <h6>Your current items:</h6>
           <ItemsContainer>
