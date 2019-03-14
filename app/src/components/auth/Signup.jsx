@@ -68,13 +68,6 @@ class Signup extends Component {
             placeholder='Password'
           />
 
-          {/* <InputField
-            required
-            name='password'
-            type='password'
-            placeholder='Repeat Password'
-          /> */}
-
           <Section>
             <Button onClick={this.onClickHandler}>Sign up</Button>
             <Link to='/'>
@@ -112,16 +105,17 @@ export default connect(
 )(Signup)
 
 const SignupForm = styled.div`
-  width: 32rem;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  margin: -18.4rem 0 0 -15.5rem;
+  max-width: 500px;
+  margin: 6rem auto 0 auto;
   background: #161c24;
   padding: 2rem 3rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 500px) {
+    margin: 6rem 1rem 0 1rem;
+  }
 `
 
 const Heading = styled.h3`
@@ -129,20 +123,21 @@ const Heading = styled.h3`
 `
 
 const InputField = styled.input`
-  width: 25rem;
+  width: 100%;
   padding: 2.5rem 0;
   background: #161c24;
   border: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   outline: none;
   color: #46485c;
+  font-family: 'Ubuntu', sans-serif;
 `
 
 const Button = styled.button`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   background: #212b38;
   border: 0;
-  width: 25rem;
+  width: 100%;
   height: 4rem;
   border-radius: 0.3rem;
   color: #29f3db;

@@ -70,16 +70,8 @@ class Login extends Component {
               placeholder='Password'
             />
 
-            {/* Checkbox currently not working */}
+            {/* Checkbox currently just changing UI, feature not implemented */}
             <CheckboxWrapper onClick={() => this.toggleRemember()}>
-              {/* <Checkbox
-                checked=''
-                id='remember'
-                name='remember'
-                type='checkbox'
-              />
-              <CheckboxLabel for='remember' /> */}
-              {/* <span>Remember me</span> */}
               {this.state.isClicked ? (
                 <CheckboxLabel ticked className='far fa-check-circle' />
               ) : (
@@ -126,21 +118,18 @@ export default connect(
   { updateLoginForm }
 )(Login)
 
-// const LoginWrapper = styled.div`
-//   background: rgba(27, 35, 45, 1);
-// `
-
 const LoginForm = styled.div`
-  width: 32rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -18.4rem 0 0 -15.5rem;
+  max-width: 500px;
+  margin: 6rem auto 0 auto;
   background: #161c24;
   padding: 2rem 3rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  @media (max-width: 500px) {
+    margin: 6rem 1rem 0 1rem;
+  }
 `
 
 const Heading = styled.h3`
@@ -148,20 +137,21 @@ const Heading = styled.h3`
 `
 
 const InputField = styled.input`
-  width: 25rem;
+  width: 100%;
   padding: 2.5rem 0;
   background: #161c24;
   border: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   outline: none;
   color: #46485c;
+  font-family: 'Ubuntu', sans-serif;
 `
 
 const Button = styled.button`
   margin-top: 1rem;
   background: #212b38;
   border: 0;
-  width: 25rem;
+  width: 100%;
   height: 4rem;
   border-radius: 0.3rem;
   color: #29f3db;
