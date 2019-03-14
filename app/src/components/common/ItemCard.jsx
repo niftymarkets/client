@@ -1,10 +1,60 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { toggleWishList, deleteUserItem } from '../../actions/actionCreators'
+import {
+  toggleWishList,
+  deleteUserItem,
+  buyItem,
+  newTransaction,
+  changeFunds
+} from '../../actions/actionCreators'
 import { Link } from 'react-router-dom'
 
 class ItemCard extends Component {
+
+  buyClickHandler = () => {
+    const itemOwnerId = this.props.item.userId;
+    const currentUserBuyingItemId = this.props.userId;
+
+    const newItemObject = {
+      ...this.props.item,
+      buyerId: null,
+      userId: currentUserBuyingItemId,
+      username: this.props.username,
+    }
+    const newTransaction = {
+      ...this.props.item,
+      username: this.props.item.username
+    }
+
+    const newUserFunds = this.props.funds_balance - this.props.item.price
+
+    if (itemOwnerId === currentUserBuyingItemId) {
+      alert('You can not buy your own item')
+    } else if (this.props.funds_balance < this.props.item.price) {
+      alert('Insufficient funds in your account')
+    } 
+    
+
+    if (
+      itemOwnerId !== currentUserBuyingItemId &&
+      this.props.funds_balance > this.props.item.price
+    ) {
+      const userConfirm = window.confirm(
+        `Do you really want to buy ${this.props.item.name} for ${this.props.item.price}?`
+      )
+
+      if (userConfirm) {
+        // ITEM PUT request to change users owner
+        this.props.buyItem(this.props.item.itemId, newItemObject);
+        // USER PUT request to change users funds_balance
+        this.props.changeFunds(currentUserBuyingItemId, newUserFunds)
+        // USER state change in transaction history - will be POST req to USER trans.history when created
+        this.props.newTransaction(newTransaction);
+      }
+    }
+  }
+
   render() {
     const {
       item,
@@ -13,8 +63,7 @@ class ItemCard extends Component {
       hasBuyButton,
       hasWishlist,
       hasDeleteButton,
-      pathname,
-      userId
+      userId,
     } = this.props
 
     const checkWishlist =
@@ -35,7 +84,7 @@ class ItemCard extends Component {
         {/* Conditonals for card options */}
         {hasBuyButton ? (
           localStorage.getItem('jwt') ? (
-            <button>Buy</button>
+            <button onClick={this.buyClickHandler}>Buy</button>
           ) : (
             <Link to='/login'>
               <button>Buy</button>
@@ -51,7 +100,7 @@ class ItemCard extends Component {
 
         {hasDeleteButton ? (
           <button
-            onClick={() => this.props.deleteUserItem(item.itemId, pathname)}
+            onClick={() => this.props.deleteUserItem(item.itemId, this.props.userId)}
           >
             Delete Item
           </button>
@@ -64,13 +113,21 @@ class ItemCard extends Component {
 const mapStateToProps = state => {
   return {
     wishList: state.user.wishList,
-    userId: state.user.userDetails.userId
+    userId: state.user.userDetails.userId,
+    funds_balance: state.user.userDetails.funds_balance,
+    username: state.user.userDetails.username,
   }
 }
 
 export default connect(
   mapStateToProps,
-  { toggleWishList, deleteUserItem }
+  {
+    toggleWishList,
+    deleteUserItem,
+    buyItem,
+    newTransaction,
+    changeFunds,
+  }
 )(ItemCard)
 
 const ItemWrap = styled.div`

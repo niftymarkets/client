@@ -13,7 +13,7 @@ class CurrentItems extends Component {
       <div>
         <h2>I have list of current items</h2>
         <div>Add new item here!</div>
-        <ItemForm pathname={this.props.pathname}/>
+        <ItemForm />
         <div>
           <h3>Your current items:</h3>
           <div>
@@ -23,7 +23,6 @@ class CurrentItems extends Component {
                   key={item.itemId}
                   item={item}
                   hasDeleteButton={true}
-                  pathname={this.props.pathname}
                 />
               ))
             }

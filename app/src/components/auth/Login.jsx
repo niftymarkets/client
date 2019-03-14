@@ -25,7 +25,6 @@ class Login extends Component {
         localStorage.setItem('userId', res.data.userId);
         this.props.history.push(`/users/${res.data.userId}`)
       })
-      .then(res => console.log(res))
       .catch(err => console.error(err))
       .finally(() => this.props.updateLoginForm(emptyLoginForm));
   }

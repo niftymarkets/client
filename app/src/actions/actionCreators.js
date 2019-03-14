@@ -91,7 +91,7 @@ export const updateItemForm = item => {
   }
 }
 
-export const postNewItem = (item, pathname) => dispatch => {
+export const postNewItem = (item, userId) => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
@@ -104,7 +104,7 @@ export const postNewItem = (item, pathname) => dispatch => {
     }
   })
     .then(res => console.log(res.data.message))
-    .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
+    .then(() => dispatch(getUserItems(userId))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
     .catch(err => dispatch(onError(err.message)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -132,9 +132,6 @@ export const signupUser = (username, email, password) => dispatch => {
 
   axios
     .post(`${url}${signupUrl}`, { username, email, password })
-    .then(res => {
-      console.log(res)
-    })
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -186,33 +183,74 @@ export const getUserItems = userId => dispatch => {
     .finally(() => dispatch(onLoad(false)))
 }
 
-export const deleteUserItem = (id, pathname) => dispatch => {
+export const deleteUserItem = (itemId, userId) => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
   axios
-    .delete(`${url}/api/items/${id}`)
-    .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
+    .delete(`${url}/api/items/${itemId}`)
+    .then(() => dispatch(getUserItems(userId))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
     .then(res => alert(res.data.message))
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
 
-// export const editUser = newDetails => {
-//   return { type: types.EDIT_USER, payload: newDetails }
-// }
-
-export const editUser = (id, newDetails) => dispatch => {
-  axios
-    .put(`${url}/api/users/${id}`, newDetails)
-    .then(() => dispatch(getUserDetails(id)))
+// BUY ITEM
+// means edit (PUT) item - buyerId, userId, username
+export const buyItem = (itemId, updatedItemObj) => dispatch => { 
+  axios({
+    method: 'put',
+    url: `${url}/api/items/${itemId}`,
+    data: JSON.stringify(updatedItemObj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    })
+    .then(() => dispatch(getMarketItems()))
+  .catch(err => dispatch(onError(err.message)))
 }
 
-export const addFunds = (id, prevFunds) => dispatch => {
-  // const newFunds = parseFloat(prevFunds) + 100
-  // console.log(newFunds)
-  axios.put(`${url}/api/users/${id}`, { funds_balance: 100 }).then(res => {
-    console.log(res)
-    dispatch(getUserDetails(id))
-  })
+// WIP
+export const addTransaction = (userId, newTransaction) => dispatch => {
+  // POST request to change users transaction history
+  // URL: /api/users/:id/purchases
+  axios({
+    method: 'post',
+    // url: `${url}/api/users/${userId}/purchases`, // add URL after API endpoint is created
+    data: JSON.stringify(newTransaction),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    })
+    .then(() => dispatch(/*get transaction history or get it from RESP */))
+  .catch(err => dispatch(onError(err.message)))
+}
+
+export const getTransactionHistory = (userId) => dispatch => {
+
+  axios
+    .get(`${url}/api/users/${userId}/transactions`)
+    .then(res => {
+      dispatch({ type: types.GET_TRANSACTION_HISTORY, payload: res.data })
+    })
+    .catch(err => dispatch(onError(err)))
+}
+
+export const newTransaction = newTransaction => {
+  return {
+    type: types.UPDATE_TRANSACTION_HISTORY,
+    payload: newTransaction
+  }  
+}
+
+export const editUser = (userId, newDetails) => dispatch => {
+  axios
+    .put(`${url}/api/users/${userId}`, newDetails)
+    .then(() => dispatch(getUserDetails(userId)))
+}
+
+export const changeFunds = (userId, newFunds) => dispatch => {
+  axios
+  .put(`${url}/api/users/${userId}`, { funds_balance: newFunds })
+  .then(() => dispatch(getUserDetails(userId)))
 }
