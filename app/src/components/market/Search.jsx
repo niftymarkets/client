@@ -16,40 +16,51 @@ class Search extends Component {
   render() {
     return (
       <SearchWrapper>
-        <i className='fas fa-search' />
-        <input
+        <SearchIcons className='fas fa-search' />
+        <InputField
           type='text'
           placeholder='Search...'
           ref={this.searchRef}
           onChange={() => this.searchItems()}
         />
-        <i className='fas fa-times' onClick={() => this.clearSearch()} />
+        <SearchIcons
+          className='fas fa-times'
+          onClick={() => this.clearSearch()}
+        />
       </SearchWrapper>
     )
   }
 }
 
 const SearchWrapper = styled.div`
+  margin-top: 1rem;
   padding: 10px 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
+  }
+`
 
-  i {
-    color: #0299a0;
-    padding: 5px 10px;
+const SearchIcons = styled.i`
+  color: #0299a0;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  &.fa-times {
     cursor: pointer;
   }
+`
 
-  input {
-    border: none;
+const InputField = styled.input`
+ border: none;
     width: 100%;
-    color: transparent;
     background: #212b38;
     font-family: 'Ubuntu', sans-serif;
     &:focus {
       outline: none;
+      color: #0299a0;
+    }
+    ::placeholder {
+      color: white;
     }
   }
 `
