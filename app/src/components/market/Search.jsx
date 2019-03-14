@@ -16,14 +16,14 @@ class Search extends Component {
   render() {
     return (
       <SearchWrapper>
-        <i class='fas fa-search' />
+        <i className='fas fa-search' />
         <input
           type='text'
           placeholder='Search...'
           ref={this.searchRef}
           onChange={() => this.searchItems()}
         />
-        <i class='fas fa-times' onClick={() => this.clearSearch()} />
+        <i className='fas fa-times' onClick={() => this.clearSearch()} />
       </SearchWrapper>
     )
   }

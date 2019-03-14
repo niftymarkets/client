@@ -12,6 +12,14 @@ const emptyLoginForm = {
 }
 
 class Login extends Component {
+  state = {
+    isClicked: true
+  }
+
+  toggleRemember = () => {
+    this.setState({ isClicked: !this.state.isClicked })
+  }
+
   onClickHandler = e => {
     e.preventDefault()
 
@@ -40,55 +48,68 @@ class Login extends Component {
 
   render() {
     return (
-      <LoginForm>
-        <h2>Login</h2>
-        <form autoComplete='off'>
-          <input
-            required
-            value={this.props.loginForm.username}
-            onChange={this.onChangeHandler}
-            name='username'
-            type='text'
-            placeholder='Username'
-          />
+      <LoginWrapper>
+        <LoginForm>
+          <Heading>Login</Heading>
+          <form autoComplete='off'>
+            <InputField
+              required
+              value={this.props.loginForm.username}
+              onChange={this.onChangeHandler}
+              name='username'
+              type='text'
+              placeholder='Username'
+            />
 
-          <input
-            required
-            value={this.props.loginForm.password}
-            onChange={this.onChangeHandler}
-            name='password'
-            type='password'
-            placeholder='Password'
-          />
+            <InputField
+              required
+              value={this.props.loginForm.password}
+              onChange={this.onChangeHandler}
+              name='password'
+              type='password'
+              placeholder='Password'
+            />
 
-          {/* <div>
-            <input checked='' id='remember' name='remember' type='checkbox' />
-            <label for='remember' />
-            <span>Remember me</span>
-          </div> */}
+            {/* Checkbox currently not working */}
+            <CheckboxWrapper onClick={() => this.toggleRemember()}>
+              {/* <Checkbox
+                checked=''
+                id='remember'
+                name='remember'
+                type='checkbox'
+              />
+              <CheckboxLabel for='remember' /> */}
+              {/* <span>Remember me</span> */}
+              {this.state.isClicked ? (
+                <CheckboxLabel ticked className='far fa-check-circle' />
+              ) : (
+                <CheckboxLabel className='far fa-circle' />
+              )}
 
-          <div>
-            <button onClick={this.onClickHandler}>Sign in</button>
-            <Link to='/'>
-              <button>Cancel</button>
-            </Link>
-          </div>
+              <span>Remember me</span>
+            </CheckboxWrapper>
 
-          <div class='socialLogin'>
-            <i class='fab fa-facebook-square' />
-            <i class='fab fa-steam-square' />
-          </div>
-        </form>
+            <Section>
+              <Button onClick={this.onClickHandler}>Sign in</Button>
+              <Link to='/'>
+                <Button>Cancel</Button>
+              </Link>
+            </Section>
 
-        <div>
-          <p>
-            New to nifty market? <Link to='/signup'>Sign up now</Link>
-          </p>
-          <a class='register' href='#'>
-            Forgot your password?
-          </a>
-        </div>
-      </LoginForm>
+            <SocialIcons>
+              <CheckboxLabel className='fab fa-facebook-square' />
+              <CheckboxLabel className='fab fa-steam-square' />
+            </SocialIcons>
+          </form>
+
+          <Section>
+            <Paragraph>
+              New to nifty market? <Link to='/signup'>Sign up now</Link>
+            </Paragraph>
+            <Paragraph>Forgot your password?</Paragraph>
+          </Section>
+        </LoginForm>
+      </LoginWrapper>
     )
   }
 }
@@ -105,3 +126,91 @@ export default connect(
   { updateLoginForm }
 )(Login)
 
+const LoginWrapper = styled.div`
+  background: rgba(27, 35, 45, 1);
+`
+
+const LoginForm = styled.div`
+  width: 32rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -18.4rem 0 0 -15.5rem;
+  background: #161c24;
+  padding: 2rem 3rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+`
+
+const Heading = styled.h3`
+  color: #29f3db;
+`
+
+const InputField = styled.input`
+  width: 25rem;
+  padding: 2.5rem 0;
+  background: #161c24;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  outline: none;
+  color: #46485c;
+`
+
+const Button = styled.button`
+  margin-top: 1rem;
+  background: #212b38;
+  border: 0;
+  width: 25rem;
+  height: 4rem;
+  border-radius: 0.3rem;
+  color: #29f3db;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  &:hover {
+    background: #85bdbf;
+  }
+`
+
+const SocialIcons = styled.div`
+  text-align: center;
+  i {
+    text-decoration: none;
+    font-size: 2.9rem;
+    color: #85bdbf;
+    margin: 1rem;
+    &:hover {
+      color: #c2fcf7;
+    }
+  }
+`
+
+const Paragraph = styled.p`
+  color: #c2fcf7;
+  margin-bottom: 5px;
+`
+
+const Section = styled.div`
+  text-align: center;
+  margin-bottom: 5px;
+`
+
+const CheckboxWrapper = styled.div`
+  margin-top: 15px;
+  span {
+    color: #c2fcf7;
+  }
+`
+
+const CheckboxLabel = styled.i`
+  font-size: 1rem;
+  margin-right: 5px;
+  cursor: pointer;
+  color: ${props => (props.ticked ? '#C2FCF7' : '#46485c')};
+`
