@@ -1,6 +1,6 @@
-import React from 'react'
-import ItemCard from '../common/ItemCard'
-import styled from 'styled-components'
+import React from "react";
+import ItemCard from "../common/ItemCard";
+import styled from "styled-components";
 
 const Gallery = ({ availableItems }) => {
   return (
@@ -16,12 +16,14 @@ const Gallery = ({ availableItems }) => {
           />
         ))}
     </GalleryItems>
-  )
-}
+  );
+};
 
 const GalleryItems = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 1rem -1rem;
 `
+
 export default Gallery
+
