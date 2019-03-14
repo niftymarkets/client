@@ -5,7 +5,7 @@ class TransactionHistory extends Component {
   render() {
     return (
       <div>
-        <h2>I'm the Transaction History!</h2>
+        <h6>Transactions</h6>
         <table>
           <thead>
             <tr>

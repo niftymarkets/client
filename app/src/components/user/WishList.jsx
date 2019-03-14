@@ -5,7 +5,7 @@ class WishList extends Component {
   render() {
     return (
       <div>
-        <h2>Your Wishlist:</h2>
+        <h6>Your Wishlist:</h6>
         <ul>
           {this.props.wishList.map(wish => (
             <Wish key={wish.wishlistId} wish={wish} />

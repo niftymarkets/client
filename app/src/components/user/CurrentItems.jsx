@@ -11,11 +11,10 @@ class CurrentItems extends Component {
 
     return (
       <div>
-        <h2>I have list of current items</h2>
-        <div>Add new item here!</div>
+        <p>Add new item here!</p>
         <ItemForm />
         <div>
-          <h3>Your current items:</h3>
+          <h6>Your current items:</h6>
           <div>
             {
               this.props.userItems.map(item => (
