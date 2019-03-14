@@ -84,7 +84,8 @@ const MarketContainer = styled.div`
 `
 
 const MarketTabs = styled.div`
-  min-width: 250px;
+  flex-shrink: 0;
+  width: 250px;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -96,6 +97,7 @@ const MarketTabs = styled.div`
 `
 
 const MarketMain = styled.div`
-  padding: 1.5rem;
+  padding: 1rem;
+  flex-grow: 0;
   width: 100%;
 `
