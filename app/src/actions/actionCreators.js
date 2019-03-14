@@ -197,3 +197,13 @@ export const deleteUserItem = (id, pathname) => dispatch => {
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
+
+// export const editUser = newDetails => {
+//   return { type: types.EDIT_USER, payload: newDetails }
+// }
+
+export const editUser = (id, newDetails) => dispatch => {
+  axios
+    .put(`${url}/api/users/${id}`, newDetails)
+    .then(() => dispatch(getUserDetails(id)))
+}

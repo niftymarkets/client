@@ -29,15 +29,19 @@ class UserWrapper extends Component {
 
     return (
       <StyledUser>
-        <h2>I'm the UserWrapper!</h2>
         <UserDetails
           name={userDetails.username}
           balance={userDetails.funds_balance}
+          img_url={userDetails.img_url}
+          password={userDetails.password}
+          email={userDetails.email}
         />
+
         <CurrentItems
           userItems={userItems}
           pathname={this.props.renderProps.location.pathname}
         />
+
         <TransactionHistory transHist={transactionHistory} />
         <Wishlist wishList={wishList} />
       </StyledUser>
