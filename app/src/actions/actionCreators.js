@@ -250,18 +250,20 @@ export const newTransaction = newTransaction => {
 //   return { type: types.EDIT_USER, payload: newDetails }
 // }
 
-export const editUser = (id, newDetails) => dispatch => {
+export const editUser = (userId, newDetails) => dispatch => {
   axios
-    .put(`${url}/api/users/${id}`, newDetails)
-    .then(() => dispatch(getUserDetails(id)))
+    .put(`${url}/api/users/${userId}`, newDetails)
+    .then(() => dispatch(getUserDetails(userId)))
 }
 
-export const addFunds = (id, prevFunds) => dispatch => {
-  // const newFunds = parseFloat(prevFunds) + 100
-  // console.log(newFunds)
-  axios.put(`${url}/api/users/${id}`, { funds_balance: 100 }).then(res => {
-    console.log(res)
-    dispatch(getUserDetails(id))
-  })
+export const addFunds = userId => dispatch => {
+  axios
+  .put(`${url}/api/users/${userId}`, { funds_balance: 100 })
+  .then(() => dispatch(getUserDetails(userId)))
 }
 
+export const changeFunds = (userId, newFunds) => dispatch => {
+  axios
+  .put(`${url}/api/users/${userId}`, { funds_balance: newFunds })
+  .then(() => dispatch(getUserDetails(userId)))
+}
