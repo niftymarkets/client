@@ -48,7 +48,7 @@ class Login extends Component {
 
   render() {
     return (
-      <LoginWrapper>
+      <div>
         <LoginForm>
           <Heading>Login</Heading>
           <form autoComplete='off'>
@@ -109,7 +109,7 @@ class Login extends Component {
             <Paragraph>Forgot your password?</Paragraph>
           </Section>
         </LoginForm>
-      </LoginWrapper>
+      </div>
     )
   }
 }
@@ -126,9 +126,9 @@ export default connect(
   { updateLoginForm }
 )(Login)
 
-const LoginWrapper = styled.div`
-  background: rgba(27, 35, 45, 1);
-`
+// const LoginWrapper = styled.div`
+//   background: rgba(27, 35, 45, 1);
+// `
 
 const LoginForm = styled.div`
   width: 32rem;
@@ -192,8 +192,13 @@ const SocialIcons = styled.div`
 `
 
 const Paragraph = styled.p`
-  color: #c2fcf7;
-  margin-bottom: 5px;
+  margin-top: 1rem;
+  display: block;
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: #6d7781;
 `
 
 const Section = styled.div`
