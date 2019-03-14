@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import {
   getUserDetails,
   getUserItems,
-  getWishList
+  getWishList,
+  addFunds
 } from '../../actions/actionCreators'
 
 import TransactionHistory from './TransactionHistory'
@@ -21,7 +22,13 @@ class UserWrapper extends Component {
   }
 
   render() {
-    const { userDetails, userItems, transactionHistory, wishList } = this.props
+    const {
+      userDetails,
+      userItems,
+      transactionHistory,
+      wishList,
+      addFunds
+    } = this.props
 
     if (!userDetails) {
       return <div>Loading user details...</div>
@@ -29,14 +36,20 @@ class UserWrapper extends Component {
 
     return (
       <StyledUser>
-        <h2>I'm the UserWrapper!</h2>
         <UserDetails
           name={userDetails.username}
-          balance={userDetails.funds_balance}
+          userId={userDetails.userId}
+          funds_balance={userDetails.funds_balance}
+          img_url={userDetails.img_url}
+          password={userDetails.password}
+          email={userDetails.email}
+          addFunds={addFunds}
         />
+
         <CurrentItems
           userItems={userItems}
         />
+
         <TransactionHistory transHist={transactionHistory} />
         <Wishlist wishList={wishList} />
       </StyledUser>
@@ -56,7 +69,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getUserDetails, getUserItems, getWishList }
+  { getUserDetails, getUserItems, getWishList, addFunds }
 )(UserWrapper)
 
 const StyledUser = styled.div`
