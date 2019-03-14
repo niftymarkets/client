@@ -1,10 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { toggleWishList, deleteUserItem } from '../../actions/actionCreators'
+import { toggleWishList, deleteUserItem, buyItem } from '../../actions/actionCreators'
 import { Link } from 'react-router-dom'
 
 class ItemCard extends Component {
+
+  buyClickHandler = () => {
+    const itemOwnerId = this.props.item.userId;
+    const currentUserBuyingItemId = this.props.userId;
+
+    if (itemOwnerId === currentUserBuyingItemId) {
+      alert('You can not buy your own item')
+    }
+    // if (this.props.funds_balance < this.props.item.price) {
+    //   alert('Insufficient funds in your account')
+    // }
+
+    const newItemObject = {
+      ...this.props.item,
+      buyerId: null,
+      userId: currentUserBuyingItemId,
+      username: this.props.username,
+    }
+    console.log(newItemObject)
+    window.confirm(`Do you really want to buy ${this.props.item.name} ?`)
+    this.props.buyItem(this.props.item.itemId, newItemObject);
+
+    // also USER PUT request to change users itemList and funds_balance
+
+  }
+
   render() {
     const {
       item,
@@ -14,7 +40,7 @@ class ItemCard extends Component {
       hasWishlist,
       hasDeleteButton,
       pathname,
-      userId
+      userId,
     } = this.props
 
     const checkWishlist =
@@ -35,7 +61,7 @@ class ItemCard extends Component {
         {/* Conditonals for card options */}
         {hasBuyButton ? (
           localStorage.getItem('jwt') ? (
-            <button>Buy</button>
+            <button onClick={this.buyClickHandler}>Buy</button>
           ) : (
             <Link to='/login'>
               <button>Buy</button>
@@ -64,13 +90,15 @@ class ItemCard extends Component {
 const mapStateToProps = state => {
   return {
     wishList: state.user.wishList,
-    userId: state.user.userDetails.userId
+    userId: state.user.userDetails.userId,
+    funds_balance: state.user.userDetails.funds_balance,
+    username: state.user.userDetails.username,
   }
 }
 
 export default connect(
   mapStateToProps,
-  { toggleWishList, deleteUserItem }
+  { toggleWishList, deleteUserItem, buyItem }
 )(ItemCard)
 
 const ItemWrap = styled.div`

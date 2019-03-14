@@ -197,3 +197,27 @@ export const deleteUserItem = (id, pathname) => dispatch => {
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
+
+// BUY ITEM
+// means edit (PUT) item - buyerId and userId
+export const buyItem = (itemId, itemObj) => dispatch => {
+  /*
+currentUserBuyingItemId BECOMES itemOwnerId
+currentUserBuyingItemId FUNDS_BALANCE is decreased by ITEM_PRICE
+PUT REQUEST is send to server to update marketList
+
+  */
+
+ axios({
+  method: 'put',
+  url: `${url}/api/items/${itemId}`,
+  data: JSON.stringify(itemObj),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+  })
+  .then(res => console.log(res.data))
+  .then(() => dispatch(getMarketItems()))
+  .catch(err => dispatch(onError(err.message)))
+  .finally(() => dispatch(onLoad(false)))
+}
