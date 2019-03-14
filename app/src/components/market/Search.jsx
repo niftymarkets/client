@@ -59,6 +59,9 @@ const InputField = styled.input`
       outline: none;
       color: #0299a0;
     }
+    ::placeholder {
+      color: white;
+    }
   }
 `
 
