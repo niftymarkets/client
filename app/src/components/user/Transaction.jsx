@@ -30,4 +30,5 @@ export default connect(
 
 const TableLine = styled.tr`
   padding: 0 0.5rem;
+  color: #fcfcfc;
 `

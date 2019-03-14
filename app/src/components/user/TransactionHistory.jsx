@@ -70,7 +70,7 @@ const StyledTable = styled.table`
 
   thead {
     background-color: #212b38;
-    color:  #fcfcfc;
+    color:  #0299a0;
     font-weight: 600;
     text-align: center;
 

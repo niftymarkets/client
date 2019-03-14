@@ -76,7 +76,6 @@ const UserInfoDiv = styled.div`
   margin-left: 1rem;
   h6 {
     margin: 0.2rem 0;
-    color: #212b38;
   }
 `
 

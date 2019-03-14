@@ -35,4 +35,8 @@ const StyledList = styled.ul`
   border-radius: 4px;
   padding: 0.5rem;
   min-width: 350px;
+
+  li {
+    color: #fcfcfc;
+  }
 `
