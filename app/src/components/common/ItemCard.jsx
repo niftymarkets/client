@@ -19,7 +19,7 @@ class ItemCard extends Component {
 
     const newItemObject = {
       ...this.props.item,
-      buyerId: null,
+      buyerId: currentUserBuyingItemId,
       userId: currentUserBuyingItemId,
       username: this.props.username,
       availability: 0,
