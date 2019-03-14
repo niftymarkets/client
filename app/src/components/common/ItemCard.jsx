@@ -51,8 +51,6 @@ class ItemCard extends Component {
         this.props.changeFunds(currentUserBuyingItemId, newUserFunds)
         // USER state change in transaction history - will be POST req to USER trans.history when created
         this.props.newTransaction(newTransaction);
-        
-        console.log('new user funds', newUserFunds)
       }
     }
   }

@@ -132,9 +132,6 @@ export const signupUser = (username, email, password) => dispatch => {
 
   axios
     .post(`${url}${signupUrl}`, { username, email, password })
-    .then(res => {
-      console.log(res)
-    })
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -230,7 +227,7 @@ export const addTransaction = (userId, newTransaction) => dispatch => {
 }
 
 export const getTransactionHistory = (userId) => dispatch => {
-// /api/users/:id/transactions
+
   axios
     .get(`${url}/api/users/${userId}/transactions`)
     .then(res => {
@@ -245,10 +242,6 @@ export const newTransaction = newTransaction => {
     payload: newTransaction
   }  
 }
-
-// export const editUser = newDetails => {
-//   return { type: types.EDIT_USER, payload: newDetails }
-// }
 
 export const editUser = (userId, newDetails) => dispatch => {
   axios

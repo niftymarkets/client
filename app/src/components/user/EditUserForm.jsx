@@ -14,7 +14,7 @@ class EditUserForm extends Component {
       password: this.passwordRef.current.value,
       email: this.emailRef.current.value
     }
-    console.log(newUserDetails)
+    // console.log(newUserDetails)
     this.props.editUser(this.props.userDetails.userId, newUserDetails)
     this.usernameRef.current.value = ''
     this.passwordRef.current.value = ''
