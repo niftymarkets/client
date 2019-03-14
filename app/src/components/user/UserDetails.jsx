@@ -1,25 +1,55 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
+import EditUserForm from './EditUserForm'
 
 class UserDetails extends Component {
+  state = {
+    isEditing: false
+  }
+
+  toggleEditing = () => {
+    this.setState({ isEditing: !this.state.isEditing, isAdding: false })
+  }
+
   render() {
+    console.log(this.props)
     return (
       <div>
-        <h2>I have user details</h2>
-        <div>
+        <ImageWrapper>
           <img src={this.props.img_url} alt='User avatar' />
-        </div>
-        <p>
+        </ImageWrapper>
+        <h2>
           Welcome <span>{this.props.name}</span>
-        </p>
+        </h2>
+
         {/* Capitalize the first letter of name using CSS text-transform, could do it with JS but it's too complex */}
-        <h3>Balance: {this.props.balance}$</h3>
+        <h3>Balance: ${this.props.funds_balance}</h3>
         <div>
-          <button>Add funds</button>
-          <button>Send funds</button>
+          {/* <button>Send funds</button> */}
+
+          <button onClick={() => this.toggleEditing()}>Edit Profile</button>
+          <button
+            onClick={() =>
+              this.props.addFunds(this.props.userId, this.props.funds_balance)
+            }
+          >
+            Add $100
+          </button>
         </div>
+
+        {this.state.isEditing && (
+          <EditUserForm toggleEditing={this.toggleEditing} />
+        )}
       </div>
     )
   }
 }
 
 export default UserDetails
+
+const ImageWrapper = styled.div`
+  max-width: 250px;
+  img {
+    max-width: 100%;
+  }
+`

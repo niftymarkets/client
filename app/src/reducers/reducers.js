@@ -7,6 +7,7 @@ const dummyUser = {
   userDetails: {},
   wishList: [],
   userItems: [],
+  
   transactionHistory: {
     "boughtItems": [
         {
@@ -51,16 +52,14 @@ const dummyUser = {
     ]
 },
 
-  editingItem: false,
-  editItem: {
-    itemId: 3,
-    name: '',
-    description: '',
-    price: 1,
-    category: '',
-    img_url: '',
-    availability: false
-  },
+  // editingUser: false, // bool - changes on "EDIT" btn click
+  // editUser: {
+  //   // item the user will be editing
+  //   username: '',
+  //   password: '',
+  //   email: '',
+  //   funds_balance: ''
+  // },
 
   addItem: {
     name: '',
