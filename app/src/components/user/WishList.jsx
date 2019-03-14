@@ -8,7 +8,7 @@ class WishList extends Component {
         <h2>Your Wishlist:</h2>
         <ul>
           {this.props.wishList.map(wish => (
-            <Wish key={wish} wish={wish} />
+            <Wish key={wish.wishlistId} wish={wish} />
           ))}
         </ul>
       </div>

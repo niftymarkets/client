@@ -4,7 +4,6 @@ import axios from 'axios'
 export const url = 'https://nifty-markets.herokuapp.com'
 
 let token = localStorage.getItem('jwt')
-
 axios.defaults.headers.common['Authorization'] = token
 
 // ACTION CREATORS
@@ -70,10 +69,10 @@ export const toggleWishList = (userId, itemId, wishList) => dispatch => {
   }
 }
 
-export const removeWish = (userId, wishList) => dispatch => {
+export const removeWish = (userId, wish) => dispatch => {
   dispatch(onError(null))
   axios
-    .delete(`${url}/api/users/${userId}/wishlist/${wishList.wishlistId}`)
+    .delete(`${url}/api/users/${userId}/wishlist/${wish.wishlistId}`)
     .then(() => {
       dispatch(getWishList(userId))
     })
@@ -148,15 +147,15 @@ export const updateLoginForm = item => {
   }
 }
 
-export const getUserDetails = pathname => dispatch => {
+export const getUserDetails = userId => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
   axios
-    .get(`${url}/api${pathname}`)
-    .then(res =>
+    .get(`${url}/api/users/${userId}`)
+    .then(res => {
       dispatch({ type: types.GET_USER_DETAILS, userDetails: res.data })
-    )
+    })
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -176,12 +175,12 @@ export const getMarketItems = () => dispatch => {
     .finally(() => dispatch(onLoad(false)))
 }
 
-export const getUserItems = pathname => dispatch => {
+export const getUserItems = userId => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
   axios
-    .get(`${url}/api${pathname}/items`)
+    .get(`${url}/api/users/${userId}/items`)
     .then(res => dispatch({ type: types.GET_USER_ITEMS, userItems: res.data }))
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))
