@@ -11,16 +11,15 @@ import {
 import { Link } from 'react-router-dom'
 
 class ItemCard extends Component {
-
   buyClickHandler = () => {
-    const itemOwnerId = this.props.item.userId;
-    const currentUserBuyingItemId = this.props.userId;
+    const itemOwnerId = this.props.item.userId
+    const currentUserBuyingItemId = this.props.userId
 
     const newItemObject = {
       ...this.props.item,
       buyerId: null,
       userId: currentUserBuyingItemId,
-      username: this.props.username,
+      username: this.props.username
     }
     const newTransaction = {
       ...this.props.item,
@@ -33,24 +32,25 @@ class ItemCard extends Component {
       alert('You can not buy your own item')
     } else if (this.props.funds_balance < this.props.item.price) {
       alert('Insufficient funds in your account')
-    } 
-    
+    }
 
     if (
       itemOwnerId !== currentUserBuyingItemId &&
       this.props.funds_balance > this.props.item.price
     ) {
       const userConfirm = window.confirm(
-        `Do you really want to buy ${this.props.item.name} for ${this.props.item.price}?`
+        `Do you really want to buy ${this.props.item.name} for ${
+          this.props.item.price
+        }?`
       )
 
       if (userConfirm) {
         // ITEM PUT request to change users owner
-        this.props.buyItem(this.props.item.itemId, newItemObject);
+        this.props.buyItem(this.props.item.itemId, newItemObject)
         // USER PUT request to change users funds_balance
         this.props.changeFunds(currentUserBuyingItemId, newUserFunds)
         // USER state change in transaction history - will be POST req to USER trans.history when created
-        this.props.newTransaction(newTransaction);
+        this.props.newTransaction(newTransaction)
       }
     }
   }
@@ -63,17 +63,17 @@ class ItemCard extends Component {
       hasBuyButton,
       hasWishlist,
       hasDeleteButton,
-      userId,
+      userId
     } = this.props
 
     const checkWishlist =
       wishList && wishList.find(list => list.itemId === item.itemId)
 
     return (
-      <ItemWrap>
-        <div>
+      <CardWrap>
+        <ImageWrap>
           <img src={item.img_url} alt='Item' />
-        </div>
+        </ImageWrap>
         <p>{item.name}</p>
         <p>{item.description}</p>
         <p>${item.price}</p>
@@ -100,12 +100,14 @@ class ItemCard extends Component {
 
         {hasDeleteButton ? (
           <button
-            onClick={() => this.props.deleteUserItem(item.itemId, this.props.userId)}
+            onClick={() =>
+              this.props.deleteUserItem(item.itemId, this.props.userId)
+            }
           >
             Delete Item
           </button>
         ) : null}
-      </ItemWrap>
+      </CardWrap>
     )
   }
 }
@@ -115,7 +117,7 @@ const mapStateToProps = state => {
     wishList: state.user.wishList,
     userId: state.user.userDetails.userId,
     funds_balance: state.user.userDetails.funds_balance,
-    username: state.user.userDetails.username,
+    username: state.user.userDetails.username
   }
 }
 
@@ -126,23 +128,30 @@ export default connect(
     deleteUserItem,
     buyItem,
     newTransaction,
-    changeFunds,
+    changeFunds
   }
 )(ItemCard)
 
-const ItemWrap = styled.div`
+const CardWrap = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 30%;
+  justify-content: space-between;
+  max-width: 250px;
+  min-width: 250px;
   border-radius: 4px;
   margin: 1rem;
   background: white;
-  div {
-    img {
-      max-width: 100%;
-    }
-  }
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
   p {
     margin: 0;
+  }
+`
+
+const ImageWrap = styled.div`
+  width: 100%;
+  height: 250px;
+  img {
+    max-width: 100%;
+    height: 100%;
   }
 `

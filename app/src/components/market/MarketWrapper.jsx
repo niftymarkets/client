@@ -15,6 +15,8 @@ import Tabs from './Tabs'
 
 import searchMachine from './searchMachine'
 
+import styled from 'styled-components'
+
 class MarketWrapper extends Component {
   componentDidMount() {
     const id = localStorage.getItem('userId')
@@ -40,11 +42,15 @@ class MarketWrapper extends Component {
     )
 
     return (
-      <div>
-        <Tabs filterItems={filterItems} categories={newCategories} />
-        <Search searchItems={searchItems} clearSearch={clearSearch} />
-        <Gallery marketItems={searchResults} />
-      </div>
+      <MarketContainer>
+        <MarketTabs>
+          <Tabs filterItems={filterItems} categories={newCategories} />
+        </MarketTabs>
+        <MarketMain>
+          <Search searchItems={searchItems} clearSearch={clearSearch} />
+          <Gallery marketItems={searchResults} />
+        </MarketMain>
+      </MarketContainer>
     )
   }
 }
@@ -69,3 +75,16 @@ export default connect(
     getUserDetails
   }
 )(MarketWrapper)
+
+const MarketContainer = styled.div`
+  display: flex;
+`
+
+const MarketTabs = styled.div`
+  min-width: 250px;
+  background: #212b38;
+`
+
+const MarketMain = styled.div`
+  padding: 2rem;
+`

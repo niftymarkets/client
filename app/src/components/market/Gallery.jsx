@@ -1,9 +1,10 @@
 import React from 'react'
 import ItemCard from '../common/ItemCard'
+import styled from 'styled-components'
 
 const Gallery = ({ marketItems }) => {
   return (
-    <div>
+    <GalleryItems>
       {marketItems &&
         marketItems.length > 0 &&
         marketItems.map(item => (
@@ -14,8 +15,12 @@ const Gallery = ({ marketItems }) => {
             hasWishlist={true}
           />
         ))}
-    </div>
+    </GalleryItems>
   )
 }
 
+const GalleryItems = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
 export default Gallery
