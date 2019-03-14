@@ -21,7 +21,7 @@ class ItemCard extends Component {
       buyerId: currentUserBuyingItemId,
       userId: currentUserBuyingItemId,
       username: this.props.username,
-      availability: 0,
+      availability: 0
     }
     // const newTransaction = {
     //   ...this.props.item,
@@ -57,13 +57,13 @@ class ItemCard extends Component {
     }
   }
 
-  radioHandler = (e) => {
+  radioHandler = e => {
     this.props.changeItemAvailability(
       this.props.item.itemId,
       this.props.userId,
       {
         availability: e.target.value,
-        buyerId: null,
+        buyerId: null
       }
     )
   }
@@ -87,19 +87,32 @@ class ItemCard extends Component {
         <ImageWrap>
           <img src={item.img_url} alt='Item' />
         </ImageWrap>
-        <p>{item.name}</p>
-        <p>{item.description}</p>
-        <p>${item.price}</p>
-        <p>@{item.username}</p>
-        <p>#{item.category}</p>
+
+        <ItemName>
+          {item.name} • ${item.price}
+        </ItemName>
+        <ItemDetails>
+          <Description>{item.description}</Description>
+
+          <Meta>
+            <Paragraph>
+              <Icons className='fas fa-user' />
+              {item.username}
+            </Paragraph>
+            <Paragraph>
+              <Icons className='fas fa-tags' />
+              {item.category}
+            </Paragraph>
+          </Meta>
+        </ItemDetails>
 
         {/* Conditonals for card options */}
         {hasBuyButton ? (
           localStorage.getItem('jwt') ? (
-            <button onClick={this.buyClickHandler}>Buy</button>
+            <Button onClick={this.buyClickHandler}>Buy</Button>
           ) : (
             <Link to='/login'>
-              <button>Buy</button>
+              <Button>Buy</Button>
             </Link>
           )
         ) : null}
@@ -111,39 +124,40 @@ class ItemCard extends Component {
         ) : null}
 
         {hasDeleteButton ? (
-
           <div>
             <p>Should the item be available on the market?</p>
             <form>
               <label>
-                <input type="radio"
-                  value="1"
+                <input
+                  type='radio'
+                  value='1'
                   checked={item.availability === 1}
-                  name="availability"
+                  name='availability'
                   onChange={this.radioHandler}
                 />
-              Yes
-              </label>
-              
-              <label>
-                <input type="radio"
-                  value="0"
-                  checked={item.availability === 0}
-                  name="availability"
-                  onChange={this.radioHandler}
-                />
-              No
+                Yes
               </label>
 
-            </form> 
+              <label>
+                <input
+                  type='radio'
+                  value='0'
+                  checked={item.availability === 0}
+                  name='availability'
+                  onChange={this.radioHandler}
+                />
+                No
+              </label>
+            </form>
 
             <button
-              onClick={() => this.props.deleteUserItem(item.itemId, this.props.userId)}
+              onClick={() =>
+                this.props.deleteUserItem(item.itemId, this.props.userId)
+              }
             >
               Delete Item
             </button>
           </div>
-
         ) : null}
       </CardWrap>
     )
@@ -167,31 +181,63 @@ export default connect(
     buyItem,
     newTransaction,
     changeFunds,
-    changeItemAvailability,
+    changeItemAvailability
   }
 )(ItemCard)
 
 const CardWrap = styled.div`
+  flex: 0 0 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 250px;
-  min-width: 250px;
-  width: 20%;
-  border-radius: 4px;
+  border-radius: 3px;
   margin: 1rem;
-  background: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
-  p {
-    margin: 0;
-  }
+  background: #212b38;
 `
 
 const ImageWrap = styled.div`
   width: 100%;
   height: 250px;
+  border-radius: 5px 5px 0 0;
   img {
     max-width: 100%;
     height: 100%;
   }
 `
+
+const ItemName = styled.h4`
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 10px 0 5px 0;
+`
+const ItemDetails = styled.div`
+  padding: 0 10px;
+`
+
+const Paragraph = styled.p`
+  color: white;
+  margin-bottom: 5px;
+`
+
+const Description = styled.p`
+  color: white;
+  font-style: italic;
+  font-size: 0.8rem;
+  text-align: center;
+`
+
+const Meta = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  p:first-child {
+    margin-right: 10px;
+  }
+`
+const Icons = styled.i`
+  font-size: 0.7rem;
+  margin-right: 5px;
+  color: #01d6c8;
+`
+const Button = styled.button``

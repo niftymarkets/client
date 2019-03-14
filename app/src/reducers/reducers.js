@@ -6,51 +6,11 @@ import { combineReducers } from 'redux'
 const dummyUser = {
   userDetails: {},
   wishList: [],
-  userItems: [],
-  
+  userItems: [],  
   transactionHistory: {
-    "boughtItems": [
-        {
-            "itemId": 6,
-            "name": "Floss",
-            "price": 29,
-            "description": "Express yourself on the battlefield.",
-            "category": "emotes",
-            "buyerId": 1,
-            "userId": 2,
-            "username": "same",
-            "img_url": "https://cdn.thetrackernetwork.com/cdn/fortnite/9AB75723_large.png",
-            "availability": 0
-        },
-        {
-            "itemId": 19,
-            "name": "Squirtle",
-            "price": 100,
-            "description": "One part squirrel, one part turtle",
-            "category": "pets",
-            "buyerId": 1,
-            "userId": 9,
-            "username": "quinn",
-            "img_url": "https://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/500px-007Squirtle.png",
-            "availability": 0
-        }
-    ],
-    
-    "soldItems": [
-        {
-            "itemId": 2,
-            "name": "Cuddle Team Leader",
-            "price": 25,
-            "description": "Hug it out.",
-            "category": "outfits",
-            "buyerId": 3,
-            "userId": 1,
-            "username": "scott",
-            "img_url": "https://cdn.thetrackernetwork.com/cdn/fortnite/22163_large.png",
-            "availability": 0
-        }
-    ]
-},
+    boughtItems: [],
+    soldItems: []
+  },
 
   addItem: {
     name: '',
@@ -94,6 +54,38 @@ export const error = (error = null, action) => {
       return error
   }
 }
+
+export const editingUser = (editingUser = false, action) => {
+  switch (action.type) {
+    case types.EDITING_USER:
+      return action.payload
+
+    default:
+      return editingUser
+  }
+}
+
+export const handlingModal = (handlingModal = false, action) => {
+  switch (action.type) {
+    case types.HANDLE_MODAL:
+      return action.payload
+
+    default:
+      return handlingModal
+  }
+}
+
+
+export const addingItem = (addingItem = false, action) => {
+  switch (action.type) {
+    case types.ADDING_ITEM:
+      return action.payload
+
+    default:
+      return addingItem
+  }
+}
+
 
 export const user = (state = dummyUser, action) => {
   switch (action.type) {
@@ -197,7 +189,10 @@ const rootReducer = combineReducers({
   marketSearch,
   activeCategory,
   signupForm: signupFormReducer,
-  loginForm: loginFormReducer
+  loginForm: loginFormReducer,
+  editingUser,
+  addingItem,
+  handlingModal
 })
 
 export default rootReducer
