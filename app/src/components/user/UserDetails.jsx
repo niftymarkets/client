@@ -23,10 +23,10 @@ class UserDetails extends Component {
             <img src={this.props.img_url} alt='User avatar' />
           </ImageWrapper>
           <UserInfoDiv>
-            <h6>
+            <StyledUserName>
               Welcome {this.props.name}
-            </h6>
-            {/* Capitalize the first letter of name using CSS text-transform, could do it with JS but it's too complex */}
+            </StyledUserName>
+
             <h6>Balance: ${this.props.funds_balance}</h6>
           </UserInfoDiv>
 
@@ -67,6 +67,9 @@ const UserInfoContainer = styled.div`
   flex-direction: row;
   width: 100%;
   margin-bottom: 1rem;
+`
+const StyledUserName = styled.h6`
+  text-transform: capitalize;
 `
 
 const UserInfoDiv = styled.div`
