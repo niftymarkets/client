@@ -1,12 +1,12 @@
 import React from 'react'
 import ItemCard from '../common/ItemCard'
 
-const Gallery = ({ marketItems }) => {
+const Gallery = ({ availableItems }) => {
   return (
     <div>
-      {marketItems &&
-        marketItems.length > 0 &&
-        marketItems.map(item => (
+      {availableItems &&
+        availableItems.length > 0 &&
+        availableItems.map(item => (
           <ItemCard
             key={item.itemId}
             item={item}

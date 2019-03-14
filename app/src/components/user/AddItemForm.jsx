@@ -73,14 +73,6 @@ class ItemForm extends Component {
           name="img_url" type="text" placeholder="Enter image URL">
         </input>
 
-{/* Still not sure how do we use this */}
-        {/* <input
-          value={this.props.addItem.availability}
-          onChange={this.onChangeHandler}
-          name="availability" type="text" placeholder="Enter item immediately on the market?">
-        </input> */}
-
-
         <button onClick={this.onClickHandler}>Add new item</button>
 
       </form>
