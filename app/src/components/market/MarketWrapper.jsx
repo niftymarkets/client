@@ -40,12 +40,11 @@ class MarketWrapper extends Component {
     )
 
     return (
-      <main>
-        <h1>Nifty Markets</h1>
+      <div>
         <Tabs filterItems={filterItems} categories={newCategories} />
         <Search searchItems={searchItems} clearSearch={clearSearch} />
         <Gallery marketItems={searchResults} />
-      </main>
+      </div>
     )
   }
 }

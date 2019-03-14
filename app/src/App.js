@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import './index.css'
 
 // Components
 import Navigation from './components/common/Navigation'
@@ -15,22 +16,24 @@ class App extends Component {
       <div>
         <Navigation userId={userId} />
 
-        <Route path='/market' component={MarketWrapper} />
+        <main>
+          <Route path='/market' component={MarketWrapper} />
 
-        <Route
-          exact
-          path={`/users/${userId}`}
-          render={renderProps =>
-            localStorage.getItem('jwt') ? (
-              <UserWrapper renderProps={renderProps} />
-            ) : (
-              <Redirect to='/login' />
-            )
-          }
-        />
+          <Route
+            exact
+            path={`/users/${userId}`}
+            render={renderProps =>
+              localStorage.getItem('jwt') ? (
+                <UserWrapper renderProps={renderProps} />
+              ) : (
+                <Redirect to='/login' />
+              )
+            }
+          />
 
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+        </main>
       </div>
     )
   }

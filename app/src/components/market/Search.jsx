@@ -17,7 +17,7 @@ class Search extends Component {
       <div>
         <input
           type='text'
-          placeholder='Search'
+          placeholder='Search...'
           ref={this.searchRef}
           onChange={() => this.searchItems()}
         />
