@@ -131,7 +131,8 @@ ul {
 }
 
 body {
-  background: #fcfcfc;
+  /* background: #fcfcfc; */
+  background: rgba(27, 35, 45, 1);
 }
 
 nav {
