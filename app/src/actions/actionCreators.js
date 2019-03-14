@@ -199,25 +199,49 @@ export const deleteUserItem = (id, pathname) => dispatch => {
 }
 
 // BUY ITEM
-// means edit (PUT) item - buyerId and userId
-export const buyItem = (itemId, itemObj) => dispatch => {
-  /*
-currentUserBuyingItemId BECOMES itemOwnerId
-currentUserBuyingItemId FUNDS_BALANCE is decreased by ITEM_PRICE
-PUT REQUEST is send to server to update marketList
-
-  */
-
- axios({
-  method: 'put',
-  url: `${url}/api/items/${itemId}`,
-  data: JSON.stringify(itemObj),
-  headers: {
-    'Content-Type': 'application/json'
-  }
-  })
-  .then(res => console.log(res.data))
-  .then(() => dispatch(getMarketItems()))
+// means edit (PUT) item - buyerId, userId, username
+export const buyItem = (itemId, updatedItemObj) => dispatch => { 
+  axios({
+    method: 'put',
+    url: `${url}/api/items/${itemId}`,
+    data: JSON.stringify(updatedItemObj),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    })
+    .then(() => dispatch(getMarketItems()))
   .catch(err => dispatch(onError(err.message)))
-  .finally(() => dispatch(onLoad(false)))
+}
+
+// WIP
+export const addTransaction = (userId, newTransaction) => dispatch => {
+  // POST request to change users transaction history
+  // URL: /api/users/:id/purchases
+  axios({
+    method: 'post',
+    // url: `${url}/api/users/${userId}/purchases`, // add URL after API endpoint is created
+    data: JSON.stringify(newTransaction),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    })
+    .then(() => dispatch(/*get transaction history or get it from RESP */))
+  .catch(err => dispatch(onError(err.message)))
+}
+
+export const getTransactionHistory = (userId) => dispatch => {
+// /api/users/:id/transactions
+  axios
+    .get(`${url}/api/users/${userId}/transactions`)
+    .then(res => {
+      dispatch({ type: types.GET_TRANSACTION_HISTORY, payload: res.data })
+    })
+    .catch(err => dispatch(onError(err)))
+}
+
+export const newTransaction = newTransaction => {
+  return {
+    type: types.UPDATE_TRANSACTION_HISTORY,
+    payload: newTransaction
+  }  
 }

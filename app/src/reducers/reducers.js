@@ -7,41 +7,52 @@ const dummyUser = {
   userDetails: {},
   wishList: [],
   userItems: [],
-  transactionHistory: [
-    {
-      // each transaction should change game_item.owner
-      transId: 1,
-      itemId: 1,
-      price: 10,
-      date: Date.now(),
-      otherUser: 'user1'
-    },
-    {
-      transId: 2,
-      itemId: 2,
-      price: 20,
-      date: Date.now(),
-      otherUser: 'user2'
-    },
-    {
-      transId: 3,
-      itemId: 3,
-      price: 30,
-      date: Date.now(),
-      otherUser: 'user3'
-    },
-    {
-      transId: 4,
-      itemId: 4,
-      price: 40,
-      date: Date.now(),
-      otherUser: 'user4'
-    }
-  ],
+  transactionHistory: {
+    "boughtItems": [
+        {
+            "itemId": 6,
+            "name": "Floss",
+            "price": 29,
+            "description": "Express yourself on the battlefield.",
+            "category": "emotes",
+            "buyerId": 1,
+            "userId": 2,
+            "username": "same",
+            "img_url": "https://cdn.thetrackernetwork.com/cdn/fortnite/9AB75723_large.png",
+            "availability": 0
+        },
+        {
+            "itemId": 19,
+            "name": "Squirtle",
+            "price": 100,
+            "description": "One part squirrel, one part turtle",
+            "category": "pets",
+            "buyerId": 1,
+            "userId": 9,
+            "username": "quinn",
+            "img_url": "https://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/500px-007Squirtle.png",
+            "availability": 0
+        }
+    ],
+    
+    "soldItems": [
+        {
+            "itemId": 2,
+            "name": "Cuddle Team Leader",
+            "price": 25,
+            "description": "Hug it out.",
+            "category": "outfits",
+            "buyerId": 3,
+            "userId": 1,
+            "username": "scott",
+            "img_url": "https://cdn.thetrackernetwork.com/cdn/fortnite/22163_large.png",
+            "availability": 0
+        }
+    ]
+},
 
-  editingItem: false, // bool - changes on "EDIT" btn click
+  editingItem: false,
   editItem: {
-    // item the user will be editing
     itemId: 3,
     name: '',
     description: '',
@@ -61,50 +72,6 @@ const dummyUser = {
     availability: false
   }
 }
-
-// const dummyItems = [
-//   {
-//     itemId: 1,
-//     name: 'Love Ranger',
-//     price: 10,
-//     description: 'Aim for the heart.',
-//     category: 'outfits',
-//     owner: 'username',
-//     imgUrl: 'https://cdn.thetrackernetwork.com/cdn/fortnite/93062_large.png',
-//     availability: true
-//   },
-//   {
-//     itemId: 2,
-//     name: 'Raptor',
-//     price: 29,
-//     description: 'Royale Air Force test pilot',
-//     category: 'outfits',
-//     owner: 'username',
-//     imgUrl:
-//       'https://image.fnbr.co/outfit/5ab15860e9847b3170da032d/featured.png',
-//     availability: false
-//   },
-//   {
-//     itemId: 3,
-//     name: 'Stop Axe',
-//     price: 40,
-//     description: 'Never stop axin',
-//     category: 'toys',
-//     owner: 'username',
-//     imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
-//     availability: true
-//   },
-//   {
-//     itemId: 4,
-//     name: 'Start Name Thing',
-//     price: 500,
-//     description: 'Gotta go',
-//     category: 'toys',
-//     owner: 'username',
-//     imgUrl: 'https://image.fnbr.co/pickaxe/5afc0f9eb6e7f752dba32633/png.png',
-//     availability: true
-//   }
-// ]
 
 const signupFormDummy = {
   username: '',
@@ -168,6 +135,24 @@ export const user = (state = dummyUser, action) => {
       return {
         ...state,
         userItems: action.userItems
+      }
+    
+      // WE WILL NOT NEED THIS, DEPENDING ON SERVER POST RESPONSE
+    case types.UPDATE_TRANSACTION_HISTORY:
+      return {
+        ...state,
+        transactionHistory: {
+          boughtItems: [
+            ...state.transactionHistory.boughtItems,
+            action.payload
+          ]
+        }
+      }
+
+    case types.GET_TRANSACTION_HISTORY:
+      return {
+        ...state,
+        transactionHistory: action.payload
       }
 
     default:

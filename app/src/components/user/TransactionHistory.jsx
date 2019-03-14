@@ -17,10 +17,10 @@ class TransactionHistory extends Component {
           </thead>
           <tbody>
             {
-              this.props.transHist.map(transaction => (
+              this.props.transHist.boughtItems.map(transaction => (
                 <Transaction
                   transaction={transaction}
-                  key={transaction.transId}
+                  key={transaction.itemId}
                 />
               ))
             }

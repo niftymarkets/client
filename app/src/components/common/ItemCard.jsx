@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { toggleWishList, deleteUserItem, buyItem } from '../../actions/actionCreators'
+import { toggleWishList, deleteUserItem, buyItem, newTransaction } from '../../actions/actionCreators'
 import { Link } from 'react-router-dom'
 
 class ItemCard extends Component {
@@ -23,11 +23,21 @@ class ItemCard extends Component {
       userId: currentUserBuyingItemId,
       username: this.props.username,
     }
-    console.log(newItemObject)
+
     window.confirm(`Do you really want to buy ${this.props.item.name} ?`)
     this.props.buyItem(this.props.item.itemId, newItemObject);
 
-    // also USER PUT request to change users itemList and funds_balance
+    // also USER PUT request to change users funds_balance
+
+    // TRANSACTIONS:
+
+    const newTransaction = {
+      ...this.props.item,
+      username: this.props.item.username
+    }
+
+    this.props.newTransaction(newTransaction);
+
 
   }
 
@@ -98,7 +108,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleWishList, deleteUserItem, buyItem }
+  { toggleWishList, deleteUserItem, buyItem, newTransaction }
 )(ItemCard)
 
 const ItemWrap = styled.div`
