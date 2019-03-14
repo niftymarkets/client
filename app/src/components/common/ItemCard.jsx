@@ -79,6 +79,7 @@ const ItemWrap = styled.div`
   max-width: 30%;
   border-radius: 4px;
   margin: 1rem;
+  background: white;
   div {
     img {
       max-width: 100%;
