@@ -256,12 +256,6 @@ export const editUser = (userId, newDetails) => dispatch => {
     .then(() => dispatch(getUserDetails(userId)))
 }
 
-export const addFunds = userId => dispatch => {
-  axios
-  .put(`${url}/api/users/${userId}`, { funds_balance: 100 })
-  .then(() => dispatch(getUserDetails(userId)))
-}
-
 export const changeFunds = (userId, newFunds) => dispatch => {
   axios
   .put(`${url}/api/users/${userId}`, { funds_balance: newFunds })

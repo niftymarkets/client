@@ -5,7 +5,7 @@ import {
   getUserDetails,
   getUserItems,
   getWishList,
-  addFunds
+  changeFunds
 } from '../../actions/actionCreators'
 
 import TransactionHistory from './TransactionHistory'
@@ -27,7 +27,7 @@ class UserWrapper extends Component {
       userItems,
       transactionHistory,
       wishList,
-      addFunds
+      changeFunds
     } = this.props
 
     if (!userDetails) {
@@ -43,7 +43,7 @@ class UserWrapper extends Component {
           img_url={userDetails.img_url}
           password={userDetails.password}
           email={userDetails.email}
-          addFunds={addFunds}
+          changeFunds={changeFunds}
         />
 
         <CurrentItems
@@ -69,7 +69,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getUserDetails, getUserItems, getWishList, addFunds }
+  { getUserDetails, getUserItems, getWishList, changeFunds }
 )(UserWrapper)
 
 const StyledUser = styled.div`
