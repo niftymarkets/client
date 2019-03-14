@@ -22,5 +22,6 @@ const Gallery = ({ marketItems }) => {
 const GalleryItems = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: 1rem -1rem 1rem -1rem;
 `
 export default Gallery

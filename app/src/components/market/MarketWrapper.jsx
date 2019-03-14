@@ -44,10 +44,11 @@ class MarketWrapper extends Component {
     return (
       <MarketContainer>
         <MarketTabs>
+          <Search searchItems={searchItems} clearSearch={clearSearch} />
           <Tabs filterItems={filterItems} categories={newCategories} />
         </MarketTabs>
+
         <MarketMain>
-          <Search searchItems={searchItems} clearSearch={clearSearch} />
           <Gallery marketItems={searchResults} />
         </MarketMain>
       </MarketContainer>
@@ -83,8 +84,10 @@ const MarketContainer = styled.div`
 const MarketTabs = styled.div`
   min-width: 250px;
   background: #212b38;
+  height: 100vh;
 `
 
 const MarketMain = styled.div`
   padding: 2rem;
+  width: 100%;
 `

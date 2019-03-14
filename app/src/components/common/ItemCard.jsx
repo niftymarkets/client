@@ -138,6 +138,7 @@ const CardWrap = styled.div`
   justify-content: space-between;
   max-width: 250px;
   min-width: 250px;
+  width: 20%
   border-radius: 4px;
   margin: 1rem;
   background: white;

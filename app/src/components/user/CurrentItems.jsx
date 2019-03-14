@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import ItemForm from './AddItemForm';
+import React, { Component } from 'react'
+import ItemForm from './AddItemForm'
 import ItemCard from '../common/ItemCard'
 
 class CurrentItems extends Component {
   render() {
-
     if (!this.props.userItems) {
       return <div>Loading user items...</div>
     }
@@ -17,19 +16,13 @@ class CurrentItems extends Component {
         <div>
           <h3>Your current items:</h3>
           <div>
-            {
-              this.props.userItems.map(item => (
-                <ItemCard
-                  key={item.itemId}
-                  item={item}
-                  hasDeleteButton={true}
-                />
-              ))
-            }
+            {this.props.userItems.map(item => (
+              <ItemCard key={item.itemId} item={item} hasDeleteButton={true} />
+            ))}
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
