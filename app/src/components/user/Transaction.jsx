@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 
 class Transaction extends Component {
@@ -6,12 +7,12 @@ class Transaction extends Component {
     const { name, price, username, category } = this.props.transaction
 
     return (
-      <tr>
+      <TableLine>
         <td>{name}</td>
         <td>$ {price}</td>
         <td>{username}</td>
         <td>{category}</td>
-      </tr>
+      </TableLine>
     )
   }
 }
@@ -26,3 +27,7 @@ export default connect(
   mapStateToProps,
   {}
 )(Transaction)
+
+const TableLine = styled.tr`
+  padding: 0 0.5rem;
+`
