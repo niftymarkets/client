@@ -36,7 +36,6 @@ class UserWrapper extends Component {
         />
         <CurrentItems
           userItems={userItems}
-          pathname={this.props.renderProps.location.pathname}
         />
         <TransactionHistory transHist={transactionHistory} />
         <Wishlist wishList={wishList} />

@@ -16,7 +16,7 @@ const emptyItemForm = {
 class ItemForm extends Component {
   onClickHandler = (e) => {
     e.preventDefault();
-    this.props.postNewItem(this.props.addItem, this.props.pathname);
+    this.props.postNewItem(this.props.addItem, this.props.id);
     this.props.updateItemForm(emptyItemForm);
   }
 
@@ -25,6 +25,7 @@ class ItemForm extends Component {
       ...this.props.addItem,
       availability: true,
       userId: this.props.id,
+      username: this.props.username,
       [e.target.name]: e.target.value
     });
   }
@@ -91,6 +92,7 @@ const mapStateToProps = state => {
   return ({
     addItem: state.user.addItem,
     id: state.user.userDetails.userId,
+    username: state.user.userDetails.username,
   })
 }
 

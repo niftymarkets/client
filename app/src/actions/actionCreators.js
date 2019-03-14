@@ -91,7 +91,7 @@ export const updateItemForm = item => {
   }
 }
 
-export const postNewItem = (item, pathname) => dispatch => {
+export const postNewItem = (item, userId) => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
@@ -104,7 +104,7 @@ export const postNewItem = (item, pathname) => dispatch => {
     }
   })
     .then(res => console.log(res.data.message))
-    .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
+    .then(() => dispatch(getUserItems(userId))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
     .catch(err => dispatch(onError(err.message)))
     .finally(() => dispatch(onLoad(false)))
 }
@@ -178,7 +178,7 @@ export const getMarketItems = () => dispatch => {
 export const getUserItems = userId => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
-
+console.log(userId)
   axios
     .get(`${url}/api/users/${userId}/items`)
     .then(res => dispatch({ type: types.GET_USER_ITEMS, userItems: res.data }))
@@ -186,13 +186,13 @@ export const getUserItems = userId => dispatch => {
     .finally(() => dispatch(onLoad(false)))
 }
 
-export const deleteUserItem = (id, pathname) => dispatch => {
+export const deleteUserItem = (itemId, userId) => dispatch => {
   dispatch(onError(null))
   dispatch(onLoad(true))
 
   axios
-    .delete(`${url}/api/items/${id}`)
-    .then(() => dispatch(getUserItems(pathname))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
+    .delete(`${url}/api/items/${itemId}`)
+    .then(() => dispatch(getUserItems(userId))) // this would return {type: types.GET_USER_ITEMS, userItems: res.data})
     .then(res => alert(res.data.message))
     .catch(err => dispatch(onError(err)))
     .finally(() => dispatch(onLoad(false)))

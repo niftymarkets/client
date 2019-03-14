@@ -49,7 +49,6 @@ class ItemCard extends Component {
       hasBuyButton,
       hasWishlist,
       hasDeleteButton,
-      pathname,
       userId,
     } = this.props
 
@@ -87,7 +86,7 @@ class ItemCard extends Component {
 
         {hasDeleteButton ? (
           <button
-            onClick={() => this.props.deleteUserItem(item.itemId, pathname)}
+            onClick={() => this.props.deleteUserItem(item.itemId, this.props.userId)}
           >
             Delete Item
           </button>
