@@ -51,8 +51,8 @@ class ItemCard extends Component {
         this.props.buyItem(this.props.item.itemId, newItemObject)
         // USER PUT request to change users funds_balance
         this.props.changeFunds(currentUserBuyingItemId, newUserFunds)
-        // USER state change in transaction history - will be POST req to USER trans.history when created
-        this.props.newTransaction(newTransaction)
+        // USER state change in transaction history
+        // this.props.newTransaction(newTransaction)
       }
     }
   }
@@ -170,7 +170,7 @@ const CardWrap = styled.div`
   justify-content: space-between;
   max-width: 250px;
   min-width: 250px;
-  width: 20%
+  width: 20%;
   border-radius: 4px;
   margin: 1rem;
   background: white;
