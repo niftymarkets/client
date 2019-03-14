@@ -126,7 +126,7 @@ ul {
 /* GLOBAL STYLES */
 
 body {
-  background: #fafa);
+  background: #ededed;
 }
 
 nav {
@@ -161,7 +161,6 @@ a {
 a:hover {
   color: #c2fcf7;
 }
-
 
 button {
   /* color: white; */
