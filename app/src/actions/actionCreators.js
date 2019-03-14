@@ -207,3 +207,12 @@ export const editUser = (id, newDetails) => dispatch => {
     .put(`${url}/api/users/${id}`, newDetails)
     .then(() => dispatch(getUserDetails(id)))
 }
+
+export const addFunds = (id, prevFunds) => dispatch => {
+  // const newFunds = parseFloat(prevFunds) + 100
+  // console.log(newFunds)
+  axios.put(`${url}/api/users/${id}`, { funds_balance: 100 }).then(res => {
+    console.log(res)
+    dispatch(getUserDetails(id))
+  })
+}
