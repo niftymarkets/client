@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Gallery = ({ availableItems }) => {
   return (
-    <div>
+    <GalleryItems>
       {availableItems &&
         availableItems.length > 0 &&
         availableItems.map(item => (
@@ -22,6 +22,6 @@ const Gallery = ({ availableItems }) => {
 const GalleryItems = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 1rem -1rem 1rem -1rem;
+  margin: 1rem -1rem;
 `
 export default Gallery
