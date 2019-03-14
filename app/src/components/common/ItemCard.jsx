@@ -13,9 +13,9 @@ class ItemCard extends Component {
     if (itemOwnerId === currentUserBuyingItemId) {
       alert('You can not buy your own item')
     }
-    // if (this.props.funds_balance < this.props.item.price) {
-    //   alert('Insufficient funds in your account')
-    // }
+    if (this.props.funds_balance < this.props.item.price) {
+      alert('Insufficient funds in your account')
+    }
 
     const newItemObject = {
       ...this.props.item,
@@ -24,13 +24,19 @@ class ItemCard extends Component {
       username: this.props.username,
     }
 
-    window.confirm(`Do you really want to buy ${this.props.item.name} ?`)
-    this.props.buyItem(this.props.item.itemId, newItemObject);
+    const userConfirm = window.confirm(`Do you really want to buy ${this.props.item.name} ?`)
 
-    // also USER PUT request to change users funds_balance
+    if (
+      itemOwnerId !== currentUserBuyingItemId &&
+      this.props.funds_balance > this.props.item.price && 
+      userConfirm
+    ) {
+      this.props.buyItem(this.props.item.itemId, newItemObject);
+    }
+
+    // USER PUT request to change users funds_balance
 
     // TRANSACTIONS:
-
     const newTransaction = {
       ...this.props.item,
       username: this.props.item.username
