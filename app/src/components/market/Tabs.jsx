@@ -4,7 +4,7 @@ const Tabs = ({ filterItems, categories }) => {
   return (
     <div>
       <h3>
-        Categories <i class='fas fa-tags' />
+        Categories <i className ='fas fa-tags' />
       </h3>
       {categories.map(category => (
         <div key={category.name} onClick={() => filterItems(category.id)}>

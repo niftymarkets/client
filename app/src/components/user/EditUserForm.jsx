@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { editUser } from '../../actions/actionCreators'
+import ReactModal from 'react-modal'
 
 class EditUserForm extends Component {
   usernameRef = React.createRef()
@@ -23,20 +24,25 @@ class EditUserForm extends Component {
 
   render() {
     return (
-      <form autoComplete='off'>
-        <input type='text' ref={this.usernameRef} placeholder='Name' />
-        <input type='password' ref={this.passwordRef} placeholder='Password' />
-        <input type='email' ref={this.emailRef} placeholder='Email' />
-        <button onClick={e => this.editUser(e)}>Save</button>
-        <button onClick={() => this.props.toggleEditing()}>Cancel</button>
-      </form>
+      <ReactModal
+        isOpen={this.props.handlingModal}
+      >
+        <form autoComplete='off'>
+          <input type='text' ref={this.usernameRef} placeholder='Name' />
+          <input type='password' ref={this.passwordRef} placeholder='Password' />
+          <input type='email' ref={this.emailRef} placeholder='Email' />
+          <button onClick={e => this.editUser(e)}>Save</button>
+          <button onClick={() => this.props.toggleEditing()}>Cancel</button>
+        </form>
+      </ReactModal>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    userDetails: state.user.userDetails
+    userDetails: state.user.userDetails,
+    handlingModal: state.handlingModal,
   }
 }
 

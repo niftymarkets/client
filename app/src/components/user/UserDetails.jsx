@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { editingUser, addingItem, toggleModal } from '../../actions/actionCreators'
 import EditUserForm from './EditUserForm'
+import ItemForm from './AddItemForm'
 
 class UserDetails extends Component {
-  state = {
-    isEditing: false
-  }
 
   toggleEditing = () => {
-    this.setState({ isEditing: !this.state.isEditing, isAdding: false })
+    // this.props.addingItem(false)
+    this.props.editingUser(!this.props.isEditing)
+    this.props.toggleModal(!this.props.handlingModal)
+  }
+
+  toggleAdding = () => {
+    // this.props.editingUser(false)
+    this.props.addingItem(!this.props.isAdding)
+    this.props.toggleModal(!this.props.handlingModal)
   }
 
   render() {
@@ -23,10 +31,10 @@ class UserDetails extends Component {
             <img src={this.props.img_url} alt='User avatar' />
           </ImageWrapper>
           <UserInfoDiv>
-            <h6>
+            <StyledUserName>
               Welcome {this.props.name}
-            </h6>
-            {/* Capitalize the first letter of name using CSS text-transform, could do it with JS but it's too complex */}
+            </StyledUserName>
+
             <h6>Balance: ${this.props.funds_balance}</h6>
           </UserInfoDiv>
 
@@ -34,7 +42,8 @@ class UserDetails extends Component {
 
         <ButtonsContainer>
 
-          <button onClick={() => this.toggleEditing()}>Edit Profile</button>
+          <button onClick={this.toggleEditing}>Edit Profile</button>
+
           <button
             onClick={() =>
               this.props.changeFunds(this.props.userId, newFunds)
@@ -42,23 +51,44 @@ class UserDetails extends Component {
           >
             Add $100
           </button>
+
+          <button onClick={this.toggleAdding}>Add item</button>
         </ButtonsContainer>
 
-        {this.state.isEditing && (
+        {this.props.isEditing && (
           <EditUserForm toggleEditing={this.toggleEditing} />
+        )}
+
+        {this.props.isAdding && (
+          <ItemForm toggleAdding={this.toggleAdding} />
         )}
       </DetailsContainer>
     )
   }
 }
 
-export default UserDetails
+const mapStateToProps = state => {
+  return {
+    isEditing: state.editingUser,
+    isAdding: state.addingItem,
+    handlingModal: state.handlingModal,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {
+  editingUser,
+  addingItem,
+  toggleModal,
+  })(UserDetails)
 
 const DetailsContainer = styled.div`
   border: 1px solid #212b38;
   border-radius: 4px;
   padding: 0.5rem;
   min-width: 350px;
+  max-width: 385px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
 `
 
@@ -68,6 +98,9 @@ const UserInfoContainer = styled.div`
   width: 100%;
   margin-bottom: 1rem;
 `
+const StyledUserName = styled.h6`
+  text-transform: capitalize;
+`
 
 const UserInfoDiv = styled.div`
   display: flex;
@@ -76,7 +109,6 @@ const UserInfoDiv = styled.div`
   margin-left: 1rem;
   h6 {
     margin: 0.2rem 0;
-    color: #212b38;
   }
 `
 
