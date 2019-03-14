@@ -19,8 +19,8 @@ class MarketWrapper extends Component {
   componentDidMount() {
     const id = localStorage.getItem('userId')
     this.props.getMarketItems()
-    this.props.getUserDetails(`/user/${id}`)
-    this.props.getWishList(this.props.userDetails.userId)
+    this.props.getUserDetails(id)
+    this.props.getWishList(id)
   }
 
   render() {

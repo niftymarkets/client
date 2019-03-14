@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 class UserDetails extends Component {
   render() {
-    console.log(this.props)
     return (
       <div>
         <h2>I have user details</h2>

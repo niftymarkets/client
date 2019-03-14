@@ -14,9 +14,10 @@ import CurrentItems from './CurrentItems'
 
 class UserWrapper extends Component {
   componentDidMount() {
-    this.props.getUserDetails(this.props.renderProps.location.pathname)
-    this.props.getUserItems(this.props.renderProps.location.pathname)
-    this.props.getWishList(this.props.userDetails.userId)
+    const id = localStorage.getItem('userId')
+    this.props.getUserDetails(id)
+    this.props.getUserItems(id)
+    this.props.getWishList(id)
   }
 
   render() {

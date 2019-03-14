@@ -8,26 +8,26 @@ import UserWrapper from './components/user/UserWrapper'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 
-
 class App extends Component {
   render() {
-    let userId = localStorage.getItem('userId');
+    let userId = localStorage.getItem('userId')
     return (
       <div>
-        <Navigation userId={userId}/>
+        <Navigation userId={userId} />
 
         <Route path='/market' component={MarketWrapper} />
 
         <Route
           exact
           path={`/users/${userId}`}
-          render={renderProps => (
+          render={renderProps =>
             localStorage.getItem('jwt') ? (
-              <UserWrapper renderProps={renderProps}/>
+              <UserWrapper renderProps={renderProps} />
             ) : (
-              <Redirect to="/login"/>
+              <Redirect to='/login' />
             )
-          )} />
+          }
+        />
 
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
@@ -36,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

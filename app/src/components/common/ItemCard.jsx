@@ -20,7 +20,6 @@ class ItemCard extends Component {
     const checkWishlist =
       wishList && wishList.find(list => list.itemId === item.itemId)
 
-    console.log(this.props)
     return (
       <ItemWrap>
         <div>
