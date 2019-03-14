@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 
 class Transaction extends Component {
   render() {
-    const { itemId, price, otherUser, date } = this.props.transaction
-    const transactedItem = this.props.marketItems.filter(
-      item => item.itemId === itemId
-    )
+    // const { itemId, price, otherUser, date } = this.props.transaction
+    // const transactedItem = this.props.marketItems.filter(
+    //   item => item.itemId === itemId
+    // )
     return (
       // <tr>
       //   <td>{transactedItem[0].name}</td>
@@ -14,7 +14,12 @@ class Transaction extends Component {
       //   <td>{otherUser}</td>
       //   <td>{date}</td>
       // </tr>
-      <div>Hello World</div>
+      <tr>
+        <td>name</td>
+        <td>$ price</td>
+        <td>otherUser</td>
+        <td>date</td>
+      </tr>
     )
   }
 }
