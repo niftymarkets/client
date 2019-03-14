@@ -19,7 +19,7 @@ class TransactionHistory extends Component {
             <tr>
               <th>Item</th>
               <th>Price</th>
-              <th>To/From</th>
+              <th>To</th>
               <th>Category</th>
             </tr>
           </thead>
