@@ -4,6 +4,11 @@ import Wish from './Wish'
 
 class WishList extends Component {
   render() {
+
+    if (!this.props.wishList) {
+      return <LoadingDiv>Loading your wishes...</LoadingDiv>
+    }
+
     return (
       <WishListContainer>
         <h6>Your Wishlist:</h6>
@@ -23,8 +28,12 @@ class WishList extends Component {
 
 export default WishList
 
-const WishListContainer = styled.div`
+const LoadingDiv = styled.p`
+  color: #fcfcfc;
+  margin: 1rem auto;
+`
 
+const WishListContainer = styled.div`
   h6 {
     margin-bottom: 0.5rem;
   }
