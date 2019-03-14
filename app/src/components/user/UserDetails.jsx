@@ -13,6 +13,7 @@ class UserDetails extends Component {
 
   render() {
 
+    const newFunds = this.props.funds_balance + 100;
     return (
       <div>
         <ImageWrapper>
@@ -29,7 +30,7 @@ class UserDetails extends Component {
           <button onClick={() => this.toggleEditing()}>Edit Profile</button>
           <button
             onClick={() =>
-              this.props.changeFunds(this.props.userId, 100)
+              this.props.changeFunds(this.props.userId, newFunds)
             }
           >
             Add $100

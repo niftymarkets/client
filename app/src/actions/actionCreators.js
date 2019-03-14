@@ -6,7 +6,6 @@ export const url = 'https://nifty-markets.herokuapp.com'
 let token = localStorage.getItem('jwt')
 axios.defaults.headers.common['Authorization'] = token
 
-// ACTION CREATORS
 
 export const onLoad = bool => {
   return {
@@ -77,10 +76,6 @@ export const removeWish = (userId, wish) => dispatch => {
       dispatch(getWishList(userId))
     })
     .catch(err => dispatch(onError(err.message)))
-  // return {
-  //   type: types.REMOVE_WISH,
-  //   payload: wishList.filter(wish => wish !== id)
-  // }
 }
 
 // ADD NEW ITEM
@@ -254,3 +249,19 @@ export const changeFunds = (userId, newFunds) => dispatch => {
   .put(`${url}/api/users/${userId}`, { funds_balance: newFunds })
   .then(() => dispatch(getUserDetails(userId)))
 }
+
+
+export const changeItemAvailability = (itemId, userId, value) => dispatch => { 
+  axios({
+    method: 'put',
+    url: `${url}/api/items/${itemId}`,
+    data: JSON.stringify(value),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    })
+    .then(() => dispatch(getMarketItems()))
+    .then(() => dispatch(getUserItems(userId)))
+  .catch(err => dispatch(onError(err.message)))
+}
+
