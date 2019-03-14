@@ -22,6 +22,7 @@ class ItemCard extends Component {
       buyerId: null,
       userId: currentUserBuyingItemId,
       username: this.props.username,
+      availability: 0,
     }
     const newTransaction = {
       ...this.props.item,

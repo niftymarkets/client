@@ -23,7 +23,7 @@ class ItemForm extends Component {
   onChangeHandler = (e) => {
     this.props.updateItemForm({
       ...this.props.addItem,
-      availability: true,
+      availability: 1,
       userId: this.props.id,
       username: this.props.username,
       [e.target.name]: e.target.value
