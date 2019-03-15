@@ -28,9 +28,14 @@ class EditUserForm extends Component {
         isOpen={this.props.handlingModal}
         ariaHideApp={false}
       >
+
         <form autoComplete='off'>
           <input type='text' ref={this.usernameRef} placeholder='Name' />
-          <input type='password' ref={this.passwordRef} placeholder='Password' />
+          <input
+            type='password'
+            ref={this.passwordRef}
+            placeholder='Password'
+          />
           <input type='email' ref={this.emailRef} placeholder='Email' />
           <button onClick={e => this.editUser(e)}>Save</button>
           <button onClick={() => this.props.toggleEditing()}>Cancel</button>
@@ -43,7 +48,7 @@ class EditUserForm extends Component {
 const mapStateToProps = state => {
   return {
     userDetails: state.user.userDetails,
-    handlingModal: state.handlingModal,
+    handlingModal: state.handlingModal
   }
 }
 

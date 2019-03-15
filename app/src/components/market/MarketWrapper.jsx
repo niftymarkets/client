@@ -35,7 +35,7 @@ class MarketWrapper extends Component {
       clearSearch
     } = this.props
 
-    const availableItems = marketItems.filter(item => item.availability === 1);
+    const availableItems = marketItems.filter(item => item.availability === 1)
 
     const { newCategories, searchResults } = searchMachine(
       availableItems,
@@ -44,7 +44,6 @@ class MarketWrapper extends Component {
     )
 
     return (
-
       <MarketContainer>
         <MarketTabs>
           <Search searchItems={searchItems} clearSearch={clearSearch} />
@@ -82,15 +81,37 @@ export default connect(
 
 const MarketContainer = styled.div`
   display: flex;
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `
 
 const MarketTabs = styled.div`
-  min-width: 250px;
-  background: #212b38;
-  height: 100vh;
+  height: auto;
+  flex-direction: column;
+
+  @media (min-width: 550px) {
+    flex-shrink: 0;
+    width: 250px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
+    background: #212b38;
+    overflow-x: hidden;
+  }
 `
 
 const MarketMain = styled.div`
-  padding: 2rem;
+  padding: 0.5rem;
+  flex-grow: 0;
   width: 100%;
+
+  @media (max-width: 550px) {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
 `

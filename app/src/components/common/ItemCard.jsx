@@ -60,7 +60,7 @@ class ItemCard extends Component {
     }
   }
 
-  radioHandler = (e) => {
+  radioHandler = e => {
     this.props.changeItemAvailability(
       this.props.item.itemId,
       this.props.userId,
@@ -89,63 +89,87 @@ class ItemCard extends Component {
         <ImageWrap>
           <img src={item.img_url} alt='Item' />
         </ImageWrap>
-        <p>{item.name}</p>
-        <p>{item.description}</p>
-        <p>${item.price}</p>
-        <p>@{item.username}</p>
-        <p>#{item.category}</p>
+
+        <ItemName>
+          {item.name} • ${item.price}
+        </ItemName>
+        <ItemDetails>
+          <Description>{item.description}</Description>
+
+          <Meta>
+            <Paragraph>
+              <Icons className='fas fa-user' />
+              {item.username}
+            </Paragraph>
+            <Paragraph>
+              <Icons className='fas fa-tags' />
+              {item.category}
+            </Paragraph>
+          </Meta>
+        </ItemDetails>
 
         {/* Conditonals for card options */}
-        {hasBuyButton ? (
-          localStorage.getItem('jwt') ? (
-            <button onClick={this.buyClickHandler}>Buy</button>
-          ) : (
-            <Link to='/login'>
-              <button>Buy</button>
-            </Link>
-          )
-        ) : null}
+        <MarketOptions>
+          {hasBuyButton ? (
+            localStorage.getItem('jwt') ? (
+              <Button onClick={this.buyClickHandler}>Buy</Button>
+            ) : (
+              <Link to='/login'>
+                <Button>Buy</Button>
+              </Link>
+            )
+          ) : null}
 
-        {hasWishlist && localStorage.getItem('jwt') ? (
-          <button onClick={() => toggleWishList(userId, item.itemId, wishList)}>
-            {checkWishlist ? `Remove from Wishlist` : `Add to Wishlist`}
-          </button>
-        ) : null}
+          {hasWishlist && localStorage.getItem('jwt') ? (
+            <div onClick={() => toggleWishList(userId, item.itemId, wishList)}>
+              {checkWishlist ? (
+                <Button>
+                  <i className='fas fa-star' /> Remove from Wishlist
+                </Button>
+              ) : (
+                <Button>
+                  <i class='far fa-star' /> Add to Wishlist
+                </Button>
+              )}
+            </div>
+          ) : null}
+        </MarketOptions>
 
         {hasDeleteButton ? (
-
           <div>
             <p>Should the item be available on the market?</p>
             <form>
               <label>
-                <input type="radio"
-                  value="1"
+                <input
+                  type='radio'
+                  value='1'
                   checked={item.availability === 1}
-                  name="availability"
+                  name='availability'
                   onChange={this.radioHandler}
                 />
-              Yes
+                Yes
               </label>
-              
+
               <label>
-                <input type="radio"
-                  value="0"
+                <input
+                  type='radio'
+                  value='0'
                   checked={item.availability === 0}
-                  name="availability"
+                  name='availability'
                   onChange={this.radioHandler}
                 />
-              No
+                No
               </label>
+            </form>
 
-            </form> 
-
-            <button
-              onClick={() => this.props.deleteUserItem(item.itemId, this.props.userId)}
+            <Button
+              onClick={() =>
+                this.props.deleteUserItem(item.itemId, this.props.userId)
+              }
             >
               Delete Item
-            </button>
+            </Button>
           </div>
-
         ) : null}
       </CardWrap>
     )
@@ -169,31 +193,88 @@ export default connect(
     // buyItem,
     newTransaction,
     changeFunds,
-    changeItemAvailability,
+    changeItemAvailability
   }
 )(ItemCard)
 
 const CardWrap = styled.div`
+  flex: 0 0 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 250px;
-  min-width: 250px;
-  width: 20%;
-  border-radius: 4px;
+  border-radius: 3px;
   margin: 1rem;
-  background: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
-  p {
-    margin: 0;
+  background: #212b38;
+
+  @media (max-width: 550px) {
+    flex: 0 0 95%;
+    margin: 10px;
   }
 `
 
 const ImageWrap = styled.div`
   width: 100%;
   height: 250px;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  padding: 5px;
   img {
     max-width: 100%;
     height: 100%;
+  }
+`
+
+const ItemName = styled.h4`
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 10px 0 5px 0;
+`
+const ItemDetails = styled.div`
+  padding: 0 10px;
+`
+
+const Paragraph = styled.p`
+  color: white;
+  margin-bottom: 5px;
+`
+
+const Description = styled.p`
+  color: white;
+  font-style: italic;
+  font-size: 0.8rem;
+  text-align: center;
+`
+
+const Meta = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  p:first-child {
+    margin-right: 10px;
+  }
+`
+const Icons = styled.i`
+  font-size: 0.7rem;
+  margin-right: 5px;
+  color: #01d6c8;
+`
+
+const MarketOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const Button = styled.div`
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 0;
+  width: 80%;
+  margin: 0 auto 10px auto;
+  color: white;
+  background: #0299a0;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    background: #85bdbf;
   }
 `

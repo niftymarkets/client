@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 
 class Navigation extends Component {
   logoutUser = () => {
@@ -14,10 +15,14 @@ class Navigation extends Component {
 
   render() {
     return (
-      <nav>
+      <NavWrapper>
+        <NavLink to='static_page'>
+          <h1>NiftyMarkets</h1>
+        </NavLink>
         <NavLink to='static_page'>Home</NavLink>
         <NavLink to='/market'>Market</NavLink>
-        <NavLink to='/static_page'>FAQs</NavLink>
+        <NavLink to='static_page'>About us</NavLink>
+        <NavLink to='static_page'>Contact</NavLink>
         {localStorage.getItem('jwt') ? (
           <span>
             <NavLink to={`/users/${this.props.userId}`}>Profile</NavLink>
@@ -29,9 +34,13 @@ class Navigation extends Component {
             <NavLink to='/login'>Log in</NavLink>
           </span>
         )}
-      </nav>
+      </NavWrapper>
     )
   }
 }
+
+const NavWrapper = styled.nav`
+  display: flex;
+`
 
 export default Navigation
