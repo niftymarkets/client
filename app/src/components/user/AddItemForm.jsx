@@ -42,8 +42,8 @@ class ItemForm extends Component {
         style={{ overlay, content }}
       >
         <StyledForm autoComplete="off">
-
-          <input
+          <Heading>Add new item</Heading>
+          <InputField
             required
             value={this.props.addItem.name}
             onChange={this.onChangeHandler}
@@ -52,7 +52,7 @@ class ItemForm extends Component {
             placeholder='Enter item name'
           />
 
-          <input
+          <InputField
             required
             value={this.props.addItem.price}
             onChange={this.onChangeHandler}
@@ -61,7 +61,7 @@ class ItemForm extends Component {
             placeholder='Enter item price'
           />
 
-          <input
+          <InputField
             required
             value={this.props.addItem.description}
             onChange={this.onChangeHandler}
@@ -70,16 +70,16 @@ class ItemForm extends Component {
             placeholder='Enter item description'
           />
 
-          <select required name='category' onChange={this.onChangeHandler}>
+          <SelectField required name='category' onChange={this.onChangeHandler}>
             <option defaultValue value='Outfits'>
               Outfits
             </option>
             <option value='Emotes'>Emotes</option>
             <option value='Toys'>Toys</option>
             <option value='Pets'>Pets</option>
-          </select>
+          </SelectField>
 
-          <input
+          <InputField
             required
             value={this.props.addItem.img_url}
             onChange={this.onChangeHandler}
@@ -88,8 +88,8 @@ class ItemForm extends Component {
             placeholder='Enter image URL'
           />
 
-          <button onClick={this.onClickHandler}>Add new item</button>
-          <button onClick={this.props.toggleAdding}>Cancel</button>
+          <Button onClick={this.onClickHandler}>Add new item</Button>
+          <Button onClick={this.props.toggleAdding}>Cancel</Button>
         </StyledForm>
       </ReactModal>
     )
@@ -111,7 +111,6 @@ export default connect(
 )(ItemForm)
 
 const StyledForm = styled.form`
-  background-color: orange;
 `
 
 // USE THESE OBJECTS TO STYLE THE MODAL
@@ -121,23 +120,64 @@ const overlay = {
   left: 0,
   right: 0,
   bottom: 0,
-  // backgroundColor: 'rgba(255, 255, 255, 0.75)'
-  // opacity: 0.5,
 }
   
 const content = {
   position: 'absolute',
-  top: '40px',
-  left: '40px',
-  right: '40px',
-  bottom: '40px',
-  border: '1px dashed #ccc',
-  background: '#fff',
+  maxWidth: '500px',
+  margin: '6rem auto 0 auto',
+  padding: '2rem 3rem',
+  borderRadius: '0.5rem',
+  border: '1px solid #161c24',
+  background: '#161c24',
   overflow: 'auto',
   WebkitOverflowScrolling: 'touch',
-  borderRadius: '4px',
   outline: 'none',
-  padding: '20px'
+
 }
 
+const Heading = styled.h3`
+  color: #29f3db;
+`
 
+const InputField = styled.input`
+  width: 100%;
+  padding: 2rem 0;
+  background: #161c24;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  outline: none;
+  color: #fcfcfc;
+  font-family: 'Ubuntu', sans-serif;
+`
+const Button = styled.button`
+  margin-top: 1.5rem;
+  background: #212b38;
+  border: 0;
+  width: 100%;
+  height: 4rem;
+  border-radius: 0.3rem;
+  color: #29f3db;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  &:hover {
+    background: #85bdbf;
+  }
+`
+
+const SelectField = styled.select`
+  width: 100%;
+  padding: 2rem 0;
+  background: #161c24;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  outline: none;
+  color: #fcfcfc;
+  font-family: 'Ubuntu', sans-serif;
+`
