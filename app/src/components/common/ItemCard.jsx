@@ -205,6 +205,26 @@ const CardWrap = styled.div`
   margin: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
   background: #212b38;
+  cursor: pointer;
+
+  @keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+&:hover {
+  animation-name: pulse;
+  animation-duration: 0.7s;
+}
 
   @media (max-width: 550px) {
     flex: 0 0 95%;
