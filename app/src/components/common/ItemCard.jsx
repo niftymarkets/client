@@ -194,12 +194,18 @@ const CardWrap = styled.div`
   margin: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
   background: #212b38;
+
+  @media (max-width: 550px) {
+    flex: 0 0 95%;
+    margin: 10px;
+  }
 `
 
 const ImageWrap = styled.div`
   width: 100%;
   height: 250px;
   border-radius: 5px 5px 0 0;
+  text-align: center;
   img {
     max-width: 100%;
     height: 100%;

@@ -38,12 +38,13 @@ const SearchWrapper = styled.div`
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
-  }
+  background: #212b38;
+  margin: 1rem 10px 0 10px;
 `
 
 const SearchIcons = styled.i`
   color: #0299a0;
-  padding: 5px 10px;
+  padding: 5px 5px;
   font-size: 0.9rem;
   &.fa-times {
     cursor: pointer;
@@ -51,7 +52,7 @@ const SearchIcons = styled.i`
 `
 
 const InputField = styled.input`
- border: none;
+    border: none;
     width: 100%;
     background: #212b38;
     font-family: 'Ubuntu', sans-serif;
