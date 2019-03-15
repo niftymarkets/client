@@ -128,7 +128,7 @@ class ItemCard extends Component {
                 </Button>
               ) : (
                 <Button>
-                  <i class='far fa-star' /> Add to Wishlist
+                  <i className='far fa-star' /> Add to Wishlist
                 </Button>
               )}
             </div>
