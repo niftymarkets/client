@@ -97,8 +97,7 @@ const MarketTabs = styled.div`
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 1;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.12);
     background: #212b38;
     overflow-x: hidden;
   }
