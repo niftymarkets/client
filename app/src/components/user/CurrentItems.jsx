@@ -4,31 +4,30 @@ import ItemCard from '../common/ItemCard'
 
 class CurrentItems extends Component {
   render() {
-    if (!this.props.userItems) {
+    if (this.props.loading) {
       return <LoadingDiv>Loading user items...</LoadingDiv>
     }
 
     return (
       <UserItemsContainer>
-          <h6>Your current items:</h6>
-          <ItemsContainer>
-            {
-              this.props.userItems.length < 1 ?
-              (<LoadingDiv>You do not have any items. See Market to get some.</LoadingDiv>)
-              :
-              this.props.userItems.map(item => (
+        <h6>Your current items:</h6>
+        <ItemsContainer>
+          {this.props.userItems && this.props.userItems.length === 0 ? (
+            <LoadingDiv>
+              You do not have any items. See Market to get some.
+            </LoadingDiv>
+          ) : (
+            this.props.userItems.map(item => (
               <ItemCard key={item.itemId} item={item} hasDeleteButton={true} />
             ))
-            
-            }
-          </ItemsContainer>
+          )}
+        </ItemsContainer>
       </UserItemsContainer>
     )
   }
 }
 
 export default CurrentItems
-
 
 const LoadingDiv = styled.h6`
   color: #fcfcfc;
@@ -54,4 +53,3 @@ const ItemsContainer = styled.div`
     justify-content: space-around;
   }
 `
-

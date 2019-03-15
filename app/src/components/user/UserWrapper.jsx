@@ -29,7 +29,8 @@ class UserWrapper extends Component {
       userItems,
       transactionHistory,
       wishList,
-      changeFunds
+      changeFunds,
+      loading
     } = this.props
 
     if (!userDetails) {
@@ -38,9 +39,7 @@ class UserWrapper extends Component {
 
     return (
       <UserContainer>
-
         <MainContainer>
-
           <UserDetails
             name={userDetails.username}
             userId={userDetails.userId}
@@ -54,15 +53,9 @@ class UserWrapper extends Component {
           <TransactionHistory transHist={transactionHistory} />
 
           <Wishlist wishList={wishList} />
-
         </MainContainer>
-        
 
-        <CurrentItems
-          userItems={userItems}
-        />
-
-
+        <CurrentItems userItems={userItems} loading={loading} />
       </UserContainer>
     )
   }
@@ -74,13 +67,20 @@ const mapStateToProps = state => {
     transactionHistory: state.user.transactionHistory,
     wishList: state.user.wishList,
     userDetails: state.user.userDetails,
-    userItems: state.user.userItems
+    userItems: state.user.userItems,
+    loading: state.loading
   }
 }
 
 export default connect(
   mapStateToProps,
-  { getUserDetails, getUserItems, getWishList, changeFunds, getTransactionHistory }
+  {
+    getUserDetails,
+    getUserItems,
+    getWishList,
+    changeFunds,
+    getTransactionHistory
+  }
 )(UserWrapper)
 
 const UserContainer = styled.div`
@@ -92,7 +92,7 @@ const UserContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`;
+`
 
 const MainContainer = styled.div`
   display: flex;
@@ -105,4 +105,4 @@ const MainContainer = styled.div`
       flex-grow: 4;
     }
   }
-`;
+`

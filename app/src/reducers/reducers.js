@@ -6,7 +6,7 @@ import { combineReducers } from 'redux'
 const dummyUser = {
   userDetails: {},
   wishList: [],
-  userItems: [],  
+  userItems: [],
   transactionHistory: [],
 
   addItem: {
@@ -72,7 +72,6 @@ export const handlingModal = (handlingModal = false, action) => {
   }
 }
 
-
 export const addingItem = (addingItem = false, action) => {
   switch (action.type) {
     case types.ADDING_ITEM:
@@ -82,7 +81,6 @@ export const addingItem = (addingItem = false, action) => {
       return addingItem
   }
 }
-
 
 export const user = (state = dummyUser, action) => {
   switch (action.type) {
@@ -109,8 +107,8 @@ export const user = (state = dummyUser, action) => {
         ...state,
         userItems: action.userItems
       }
-    
-      // WE WILL NOT NEED THIS, DEPENDING ON SERVER POST RESPONSE
+
+    // WE WILL NOT NEED THIS, DEPENDING ON SERVER POST RESPONSE
     case types.UPDATE_TRANSACTION_HISTORY:
       return {
         ...state,
