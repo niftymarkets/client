@@ -33,7 +33,7 @@ class Login extends Component {
       .then(res => {
         localStorage.setItem('jwt', res.data.token)
         localStorage.setItem('userId', res.data.userId)
-        this.props.history.push(`/users/${res.data.userId}`)
+        this.props.history.push(`/app/users/${res.data.userId}`)
       })
       .catch(err => console.error(err))
       .finally(() => this.props.updateLoginForm(emptyLoginForm))
