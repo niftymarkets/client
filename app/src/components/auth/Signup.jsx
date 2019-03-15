@@ -24,7 +24,7 @@ class Signup extends Component {
         password
       })
       // if we get the JWT here we can login user directly
-      .then(() => this.props.history.push('/login'))
+      .then(() => this.props.history.push('/app/login'))
       .catch(err => console.error(err))
       .finally(() => this.props.updateSignupForm(emptySignupForm))
   }
@@ -70,7 +70,7 @@ class Signup extends Component {
 
           <Section>
             <Button onClick={this.onClickHandler}>Sign up</Button>
-            <Link to='/'>
+            <Link to='/app/market'>
               <Button>Cancel</Button>
             </Link>
           </Section>
@@ -106,7 +106,7 @@ export default connect(
 
 const SignupForm = styled.div`
   max-width: 500px;
-  margin: 6rem auto 0 auto;
+  margin: 6rem auto;
   background: #161c24;
   padding: 2rem 3rem;
   border-radius: 0.5rem;

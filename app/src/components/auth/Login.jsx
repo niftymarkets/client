@@ -33,7 +33,7 @@ class Login extends Component {
       .then(res => {
         localStorage.setItem('jwt', res.data.token)
         localStorage.setItem('userId', res.data.userId)
-        this.props.history.push(`/users/${res.data.userId}`)
+        this.props.history.push(`/app/users/${res.data.userId}`)
       })
       .catch(err => console.error(err))
       .finally(() => this.props.updateLoginForm(emptyLoginForm))
@@ -83,7 +83,7 @@ class Login extends Component {
 
             <Section>
               <Button onClick={this.onClickHandler}>Log in</Button>
-              <Link to='/'>
+              <Link to='/app/market'>
                 <Button>Cancel</Button>
               </Link>
             </Section>
@@ -120,7 +120,7 @@ export default connect(
 
 const LoginForm = styled.div`
   max-width: 500px;
-  margin: 6rem auto 0 auto;
+  margin: 6rem auto;
   background: #161c24;
   padding: 2rem 3rem;
   border-radius: 0.5rem;
