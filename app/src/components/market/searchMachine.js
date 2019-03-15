@@ -30,7 +30,7 @@ function searchMachine(marketItems, marketSearch, activeCategory) {
     // find the number of items *after* they are filtered by a search term
     if (marketSearch) {
       const searchItems = matchSorter(categoryItems, marketSearch, {
-        keys: ['name'],
+        keys: ['name', 'username'],
         threshold: matchSorter.rankings.CONTAINS
       })
       // override count so we have the count *after* search is done
@@ -44,7 +44,7 @@ function searchMachine(marketItems, marketSearch, activeCategory) {
       // filter the items above by the provided search term
       if (marketSearch) {
         searchResults = matchSorter(searchResults, marketSearch, {
-          keys: ['name'],
+          keys: ['name', 'username'],
           threshold: matchSorter.rankings.CONTAINS
         })
       }

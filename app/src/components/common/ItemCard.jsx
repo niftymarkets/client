@@ -216,6 +216,7 @@ const ImageWrap = styled.div`
   height: 250px;
   border-radius: 5px 5px 0 0;
   text-align: center;
+  padding: 5px;
   img {
     max-width: 100%;
     height: 100%;
