@@ -8,6 +8,7 @@ import MarketWrapper from './components/market/MarketWrapper'
 import UserWrapper from './components/user/UserWrapper'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
+import Footer from './components/common/Footer'
 
 class App extends Component {
   render() {
@@ -26,14 +27,16 @@ class App extends Component {
               localStorage.getItem('jwt') ? (
                 <UserWrapper renderProps={renderProps} />
               ) : (
-                <Redirect to='/login' />
+                <Redirect to='/app/login' />
               )
             }
           />
 
-          <Route path='/login' component={Login} />
-          <Route path='/signup' component={Signup} />
+          <Route path='/app/login' component={Login} />
+          <Route path='/app/signup' component={Signup} />
         </main>
+
+        <Footer />
       </div>
     )
   }

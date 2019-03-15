@@ -6,122 +6,129 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,10,9,7,8" />
     <title>NiftyMarkets</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Russo+One|Ubuntu" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link href="css/index.css" rel="stylesheet">
-  <script src="./JS/sidenav.js" async></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Russo+One|Ubuntu"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link href="css/index.css" rel="stylesheet" />
+    <script src="./JS/sidenav.js" async></script>
   </head>
   <body>
-      <div class="nav">
-          <nav id="mySidenav" class="sidenav">
-              <a href="javascript:void(0)" class="closebtn">&times;</a>
-              <div class="login-btns">
-                  <form method="POST" action="../landing/login.html">
-                      <button class ="sidebarBtn" type="submit">Login</button>
-                  </form>
-                  <form method="POST" action="../landing/register.html">
-                      <button class ="sidebarBtn" type ="submit">Get Started</button>
-                  </form>
-            </div>
-              <a href="../landing/index.html">Home</a>
-              <a href="../landing/about.html">About Us</a>
-              <a href="../landing/contact.html">Contact</a>
-          </nav>
-          <div class="openMenu">
-            <span class="menu-button">&#9776;</span>
-          </div>
-            <div class="navH1">
-            <h1>NiftyMarkets</h1>
-          </div>
-            <nav class="desktop">
-              <div class="left">
-                  <h1>NiftyMarkets</h1>
-                <a href="../landing/index.html">Home</a>
-                <a href="../landing/about.html">About Us</a>
-                <a href="../landing/contact.html">Contact</a>
-              </div>
-              <div class="right">
-                  <form method="POST" action="../landing/login.html">
-                    <button class ="desktopBtn" type="submit">Login</button>
-                </form>
-                <form method="POST" action="../landing/register.html">
-                    <button class ="desktopBtn" type ="submit">Get Started</button>
-                </form>
-                <span class="fas fa-gamepad"></span>
-                  </div>
-                  
-            </nav>
-          </div>
+    <div class="nav">
+      <nav id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <div class="login-btns">
+          <a href="./app/login">
+            <button class="sidebarBtn" type="submit">Login</button>
+          </a>
+          <a href="./app/signup">
+            <button class="sidebarBtn" type="submit">Get Started</button>
+          </a>
+        </div>
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About Us</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+      <div class="openMenu">
+        <span class="menu-button">&#9776;</span>
+      </div>
+      <div class="navH1">
+        <h1>NiftyMarkets</h1>
+      </div>
+      <nav class="desktop">
+        <div class="left">
+          <h1>NiftyMarkets</h1>
+          <a href="./index.html">Home</a>
+          <a href="./about.html">About Us</a>
+          <a href="./contact.html">Contact</a>
+        </div>
+        <div class="right">
+          <a href="./app/login">
+            <button class="desktopBtn" type="submit">Login</button>
+          </a>
+          <a href="./app/signup">
+            <button class="desktopBtn" type="submit">Get Started</button>
+          </a>
+          <span class="fas fa-gamepad"></span>
+        </div>
+      </nav>
+    </div>
     <h2 class="aboutH2">Meet the team!</h2>
     <div class="row">
-            <div class="column">
-              <div class="card">
-                <img src="../landing/imgs/lukasz.PNG" alt="Lukasz" >
-                <div class="container">
-                  <h2>Lukasz Busk</h2>
-                  <p class="title">Team Leader</p>
-                  <p>CS9 | WEBEU1 PM</p>
-                  <p><button class="button">Contact</button></p>
-                </div>
-              </div>
-            </div>
-          
-            <div class="column">
-              <div class="card">
-                <img src="../landing/imgs/my-pic.PNG" alt="Austin" >
-                <div class="container">
-                  <h2>Austin Powell</h2>
-                  <p class="title">UI</p>
-                  <p>WEB18 FSW</p>
-                  <p><button class="button">Contact</button></p>
-                </div>
-              </div>
-            </div>
-          
-            <div class="column">
-              <div class="card">
-                <img src="../landing/imgs/delba.PNG" alt="Delba" >
-                <div class="container">
-                  <h2>Delba de Oliveira</h2>
-                  <p class="title">Front-End Architect</p>
-                  <p>WEBEU1</p>
-                  <p><button class="button">Contact</button></p>
-                </div>
-              </div>
-            </div>
+      <div class="column">
+        <div class="card">
+          <img src="./imgs/lukasz.PNG" alt="Lukasz" />
+          <div class="container">
+            <h2>Lukasz Busk</h2>
+            <p class="title">Team Leader</p>
+            <p>CS9 | WEBEU1 PM</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
 
-            <div class="column">
-                    <div class="card">
-                      <img src="../landing/imgs/Pavol.PNG" alt="Pavol" >
-                      <div class="container">
-                        <h2>Pavol Karas</h2>
-                        <p class="title">Front-End Architect</p>
-                        <p>WEBEU1</p>
-                        <p><button class="button">Contact</button></p>
-                      </div>
-                    </div>
-                  </div>
+      <div class="column">
+        <div class="card">
+          <img src="./imgs/my-pic.PNG" alt="Austin" />
+          <div class="container">
+            <h2>Austin Powell</h2>
+            <p class="title">UI</p>
+            <p>WEB18 FSW</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
 
-                  <div class="column">
-                        <div class="card">
-                          <img src="../landing/imgs/scott.PNG" alt="Scott" >
-                          <div class="container">
-                            <h2>Scott Vojik</h2>
-                            <p class="title">Back-End</p>
-                            <p>WEB16</p>
-                            <p><button class="button">Contact</button></p>
-                          </div>
-                        </div>
-                      </div>
-          </div> 
-          <footer>
-          <div class="social">
-              <a href="#" class="fab fa-facebook-square"></a>
-              <a href="#" class="fab fa-twitter-square"></a>
-              <a href="#" class="fab fa-github-square"></a>
-              <a href="#" class="fab fa-google-plus-square"></a>
-            </div>
-        &copy;NiftyMarkets 2019</footer>
-    
-    </body>
-    </html>
+      <div class="column">
+        <div class="card">
+          <img src="./imgs/delba.PNG" alt="Delba" />
+          <div class="container">
+            <h2>Delba de Oliveira</h2>
+            <p class="title">Front-End Architect</p>
+            <p>WEBEU1</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <img src="./imgs/Pavol.PNG" alt="Pavol" />
+          <div class="container">
+            <h2>Pavol Karas</h2>
+            <p class="title">Front-End Architect</p>
+            <p>WEBEU1</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <img src="./imgs/scott.PNG" alt="Scott" />
+          <div class="container">
+            <h2>Scott Vojik</h2>
+            <p class="title">Back-End</p>
+            <p>WEB16</p>
+            <p><button class="button">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="social">
+        <a href="#" class="fab fa-facebook-square"></a>
+        <a href="#" class="fab fa-twitter-square"></a>
+        <a href="#" class="fab fa-github-square"></a>
+        <a href="#" class="fab fa-google-plus-square"></a>
+      </div>
+      &copy;NiftyMarkets 2019
+    </footer>
+  </body>
+</html>

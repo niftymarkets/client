@@ -85,7 +85,7 @@ class Signup extends Component {
         <Section>
           <Paragraph>
             Already have an account?
-            <Link to='/login'> Login with your account!</Link>
+            <Link to='/app/login'> Login with your account!</Link>
           </Paragraph>
         </Section>
       </SignupForm>
@@ -129,7 +129,7 @@ const InputField = styled.input`
   border: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   outline: none;
-  color: #46485c;
+  color: #fcfcfc;
   font-family: 'Ubuntu', sans-serif;
 `
 

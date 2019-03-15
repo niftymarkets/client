@@ -96,7 +96,7 @@ class Login extends Component {
 
           <Section>
             <Paragraph>
-              New to nifty market? <Link to='/signup'>Sign up now</Link>
+              New to nifty market? <Link to='/app/signup'>Sign up now</Link>
             </Paragraph>
             <Paragraph>Forgot your password?</Paragraph>
           </Section>
@@ -143,7 +143,7 @@ const InputField = styled.input`
   border: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   outline: none;
-  color: #46485c;
+  color: #fcfcfc;
   font-family: 'Ubuntu', sans-serif;
 `
 
