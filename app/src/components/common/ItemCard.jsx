@@ -29,7 +29,6 @@ class ItemCard extends Component {
       itemId: this.props.item.itemId
     }
 
-
     const newUserFunds = this.props.funds_balance - this.props.item.price
 
     if (itemOwnerId === currentUserBuyingItemId) {
@@ -65,7 +64,7 @@ class ItemCard extends Component {
       this.props.item.itemId,
       this.props.userId,
       {
-        availability: e.target.value,
+        availability: e.target.value
       }
     )
   }
@@ -136,10 +135,10 @@ class ItemCard extends Component {
         </MarketOptions>
 
         {hasDeleteButton ? (
-          <div>
+          <UserOptions>
             <p>Should the item be available on the market?</p>
-            <form>
-              <label>
+            <SellOption>
+              <RadioLabel>
                 <input
                   type='radio'
                   value='1'
@@ -148,9 +147,9 @@ class ItemCard extends Component {
                   onChange={this.radioHandler}
                 />
                 Yes
-              </label>
+              </RadioLabel>
 
-              <label>
+              <RadioLabel>
                 <input
                   type='radio'
                   value='0'
@@ -159,8 +158,8 @@ class ItemCard extends Component {
                   onChange={this.radioHandler}
                 />
                 No
-              </label>
-            </form>
+              </RadioLabel>
+            </SellOption>
 
             <Button
               onClick={() =>
@@ -169,7 +168,7 @@ class ItemCard extends Component {
             >
               Delete Item
             </Button>
-          </div>
+          </UserOptions>
         ) : null}
       </CardWrap>
     )
@@ -274,7 +273,34 @@ const Button = styled.div`
   background: #0299a0;
   font-size: 1rem;
   cursor: pointer;
+  font-family: 'Ubuntu', sans-serif;
   &:hover {
     background: #85bdbf;
   }
+`
+
+const UserOptions = styled.div`
+  p {
+    color: white;
+    text-align: center;
+  }
+`
+
+const RadioLabel = styled.label`
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  :first-child {
+    margin-right: 10px;
+  }
+  input {
+    cursor: pointer;
+  }
+`
+
+const SellOption = styled.form`
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
 `
