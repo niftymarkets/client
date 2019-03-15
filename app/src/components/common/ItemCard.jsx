@@ -113,7 +113,7 @@ class ItemCard extends Component {
             localStorage.getItem('jwt') ? (
               <Button onClick={this.buyClickHandler}>Buy</Button>
             ) : (
-              <Link to='/login'>
+              <Link to='/app/login'>
                 <Button>Buy</Button>
               </Link>
             )

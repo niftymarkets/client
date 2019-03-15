@@ -30,8 +30,8 @@ class Navigation extends Component {
           </span>
         ) : (
           <span>
-            <NavLink to='/signup'>Sign up</NavLink>
-            <NavLink to='/login'>Log in</NavLink>
+            <NavLink to='/app/signup'>Sign up</NavLink>
+            <NavLink to='/app/login'>Log in</NavLink>
           </span>
         )}
       </NavWrapper>

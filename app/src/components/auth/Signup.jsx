@@ -85,7 +85,7 @@ class Signup extends Component {
         <Section>
           <Paragraph>
             Already have an account?
-            <Link to='/login'> Login with your account!</Link>
+            <Link to='/app/login'> Login with your account!</Link>
           </Paragraph>
         </Section>
       </SignupForm>
