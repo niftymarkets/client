@@ -37,7 +37,9 @@ class Navigation extends Component {
                   <i className='fas fa-user' />
                   Profile
                 </NavLink>
-                <Button onClick={this.logoutUser}>Log out</Button>
+                <NavLink to='/market'>
+                  <Button onClick={this.logoutUser}>Log out</Button>
+                </NavLink>
               </>
             ) : (
               <>
