@@ -107,21 +107,31 @@ class ItemCard extends Component {
         </ItemDetails>
 
         {/* Conditonals for card options */}
-        {hasBuyButton ? (
-          localStorage.getItem('jwt') ? (
-            <Button onClick={this.buyClickHandler}>Buy</Button>
-          ) : (
-            <Link to='/login'>
-              <Button>Buy</Button>
-            </Link>
-          )
-        ) : null}
+        <MarketOptions>
+          {hasBuyButton ? (
+            localStorage.getItem('jwt') ? (
+              <Button onClick={this.buyClickHandler}>Buy</Button>
+            ) : (
+              <Link to='/login'>
+                <Button>Buy</Button>
+              </Link>
+            )
+          ) : null}
 
-        {hasWishlist && localStorage.getItem('jwt') ? (
-          <button onClick={() => toggleWishList(userId, item.itemId, wishList)}>
-            {checkWishlist ? `Remove from Wishlist` : `Add to Wishlist`}
-          </button>
-        ) : null}
+          {hasWishlist && localStorage.getItem('jwt') ? (
+            <div onClick={() => toggleWishList(userId, item.itemId, wishList)}>
+              {checkWishlist ? (
+                <Button>
+                  <i className='fas fa-star' /> Remove from Wishlist
+                </Button>
+              ) : (
+                <Button>
+                  <i class='far fa-star' /> Add to Wishlist
+                </Button>
+              )}
+            </div>
+          ) : null}
+        </MarketOptions>
 
         {hasDeleteButton ? (
           <div>
@@ -150,13 +160,13 @@ class ItemCard extends Component {
               </label>
             </form>
 
-            <button
+            <Button
               onClick={() =>
                 this.props.deleteUserItem(item.itemId, this.props.userId)
               }
             >
               Delete Item
-            </button>
+            </Button>
           </div>
         ) : null}
       </CardWrap>
@@ -246,4 +256,22 @@ const Icons = styled.i`
   margin-right: 5px;
   color: #01d6c8;
 `
-const Button = styled.button``
+
+const MarketOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const Button = styled.div`
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 0;
+  width: 80%;
+  margin: 0 auto 10px auto;
+  color: white;
+  background: #0299a0;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    background: #85bdbf;
+  }
+`
