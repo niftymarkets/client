@@ -106,7 +106,7 @@ export default connect(
 
 const SignupForm = styled.div`
   max-width: 500px;
-  margin: 6rem auto 0 auto;
+  margin: 6rem auto;
   background: #161c24;
   padding: 2rem 3rem;
   border-radius: 0.5rem;

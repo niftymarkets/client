@@ -11,7 +11,7 @@ class Navigation extends Component {
     // are removed once the user logs out.
     // Otherwise log out would cause bugs, because changes to localStorage
     // do not re-render anything
-    window.location.reload();
+    // window.location.reload();
   };
 
   render() {

@@ -24,10 +24,11 @@ class App extends Component {
             exact
             path={`/app/users/${userId}`}
             render={renderProps =>
-              localStorage.getItem('jwt') ? (
-                <UserWrapper renderProps={renderProps} />
-              ) : (
+              !localStorage.getItem('jwt') ? (
+                
                 <Redirect to='/app/login' />
+              ) : (
+                <UserWrapper renderProps={renderProps} />
               )
             }
           />
