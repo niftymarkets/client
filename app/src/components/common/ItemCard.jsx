@@ -107,21 +107,31 @@ class ItemCard extends Component {
         </ItemDetails>
 
         {/* Conditonals for card options */}
-        {hasBuyButton ? (
-          localStorage.getItem('jwt') ? (
-            <Button onClick={this.buyClickHandler}>Buy</Button>
-          ) : (
-            <Link to='/login'>
-              <Button>Buy</Button>
-            </Link>
-          )
-        ) : null}
+        <MarketOptions>
+          {hasBuyButton ? (
+            localStorage.getItem('jwt') ? (
+              <Button onClick={this.buyClickHandler}>Buy</Button>
+            ) : (
+              <Link to='/login'>
+                <Button>Buy</Button>
+              </Link>
+            )
+          ) : null}
 
-        {hasWishlist && localStorage.getItem('jwt') ? (
-          <button onClick={() => toggleWishList(userId, item.itemId, wishList)}>
-            {checkWishlist ? `Remove from Wishlist` : `Add to Wishlist`}
-          </button>
-        ) : null}
+          {hasWishlist && localStorage.getItem('jwt') ? (
+            <div onClick={() => toggleWishList(userId, item.itemId, wishList)}>
+              {checkWishlist ? (
+                <Button>
+                  <i className='fas fa-star' /> Remove from Wishlist
+                </Button>
+              ) : (
+                <Button>
+                  <i class='far fa-star' /> Add to Wishlist
+                </Button>
+              )}
+            </div>
+          ) : null}
+        </MarketOptions>
 
         {hasDeleteButton ? (
           <div>
@@ -150,13 +160,13 @@ class ItemCard extends Component {
               </label>
             </form>
 
-            <button
+            <Button
               onClick={() =>
                 this.props.deleteUserItem(item.itemId, this.props.userId)
               }
             >
               Delete Item
-            </button>
+            </Button>
           </div>
         ) : null}
       </CardWrap>
@@ -194,12 +204,19 @@ const CardWrap = styled.div`
   margin: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
   background: #212b38;
+
+  @media (max-width: 550px) {
+    flex: 0 0 95%;
+    margin: 10px;
+  }
 `
 
 const ImageWrap = styled.div`
   width: 100%;
   height: 250px;
   border-radius: 5px 5px 0 0;
+  text-align: center;
+  padding: 5px;
   img {
     max-width: 100%;
     height: 100%;
@@ -240,4 +257,22 @@ const Icons = styled.i`
   margin-right: 5px;
   color: #01d6c8;
 `
-const Button = styled.button``
+
+const MarketOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const Button = styled.div`
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 0;
+  width: 80%;
+  margin: 0 auto 10px auto;
+  color: white;
+  background: #0299a0;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    background: #85bdbf;
+  }
+`
