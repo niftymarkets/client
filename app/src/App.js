@@ -26,13 +26,13 @@ class App extends Component {
               localStorage.getItem('jwt') ? (
                 <UserWrapper renderProps={renderProps} />
               ) : (
-                <Redirect to='/login' />
+                <Redirect to='/app/login' />
               )
             }
           />
 
-          <Route path='/login' component={Login} />
-          <Route path='/signup' component={Signup} />
+          <Route path='/app/login' component={Login} />
+          <Route path='/app/signup' component={Signup} />
         </main>
       </div>
     )

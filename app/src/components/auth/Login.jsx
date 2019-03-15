@@ -96,7 +96,7 @@ class Login extends Component {
 
           <Section>
             <Paragraph>
-              New to nifty market? <Link to='/signup'>Sign up now</Link>
+              New to nifty market? <Link to='/app/signup'>Sign up now</Link>
             </Paragraph>
             <Paragraph>Forgot your password?</Paragraph>
           </Section>
