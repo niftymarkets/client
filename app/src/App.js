@@ -8,6 +8,7 @@ import MarketWrapper from './components/market/MarketWrapper'
 import UserWrapper from './components/user/UserWrapper'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
+import Footer from './components/common/Footer'
 
 class App extends Component {
   render() {
@@ -34,6 +35,8 @@ class App extends Component {
           <Route path='/app/login' component={Login} />
           <Route path='/app/signup' component={Signup} />
         </main>
+
+        <Footer />
       </div>
     )
   }
