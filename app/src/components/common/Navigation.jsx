@@ -32,18 +32,18 @@ class Navigation extends Component {
         <NavRight>
           <div className='nav-links'>
             {localStorage.getItem('jwt') ? (
-              <span>
+              <>
                 <NavLink to={`/users/${this.props.userId}`}>
                   <i className='fas fa-user' />
                   Profile
                 </NavLink>
                 <Button onClick={this.logoutUser}>Log out</Button>
-              </span>
+              </>
             ) : (
-              <span>
+              <>
                 <NavLink to='/signup'>Sign up</NavLink>
                 <NavLink to='/login'>Log in</NavLink>
-              </span>
+              </>
             )}
           </div>
         </NavRight>
@@ -70,6 +70,10 @@ const NavWrapper = styled.nav`
     font-size: 2rem;
     cursor: pointer;
   }
+  i.fa-user {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
 `
 
 const NavLeft = styled.div`
@@ -79,7 +83,7 @@ const NavLeft = styled.div`
 
 const NavRight = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   }
 `
 
