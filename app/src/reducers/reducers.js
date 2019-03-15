@@ -7,10 +7,7 @@ const dummyUser = {
   userDetails: {},
   wishList: [],
   userItems: [],  
-  transactionHistory: {
-    boughtItems: [],
-    soldItems: []
-  },
+  transactionHistory: [],
 
   addItem: {
     name: '',

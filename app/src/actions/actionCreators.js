@@ -192,18 +192,21 @@ export const deleteUserItem = (itemId, userId) => dispatch => {
 
 // BUY ITEM
 // means edit (PUT) item - buyerId, userId, username
-export const buyItem = (itemId, updatedItemObj) => dispatch => { 
-  axios({
-    method: 'put',
-    url: `${url}/api/items/${itemId}`,
-    data: JSON.stringify(updatedItemObj),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-    })
-    .then(() => dispatch(getMarketItems()))
-  .catch(err => dispatch(onError(err.message)))
-}
+// NO LONGER NECESSARY COZ OF NEW TRANSACTION API
+// KEEPING IT HERE JUT TO BE SAFE
+
+// export const buyItem = (itemId, updatedItemObj) => dispatch => { 
+//   axios({
+//     method: 'put',
+//     url: `${url}/api/items/${itemId}`,
+//     data: JSON.stringify(updatedItemObj),
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//     })
+//     .then(() => dispatch(getMarketItems()))
+//   .catch(err => dispatch(onError(err.message)))
+// }
 
 export const getTransactionHistory = (userId) => dispatch => {
 
@@ -215,11 +218,19 @@ export const getTransactionHistory = (userId) => dispatch => {
     .catch(err => dispatch(onError(err)))
 }
 
-export const newTransaction = newTransaction => {
-  return {
-    type: types.UPDATE_TRANSACTION_HISTORY,
-    payload: newTransaction
-  }  
+export const newTransaction = (userId, newTransaction) => dispatch => {
+
+  axios({
+      method: 'post',
+      url: `${url}/api/users/${userId}/transactions`,
+      data: JSON.stringify(newTransaction),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      })
+    .then(() => dispatch(getTransactionHistory(userId)))
+    .then(() => dispatch(getMarketItems()))
+    .catch(err => dispatch(onError(err)))
 }
 
 export const editUser = (userId, newDetails) => dispatch => {

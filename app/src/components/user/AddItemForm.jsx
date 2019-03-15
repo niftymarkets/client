@@ -35,8 +35,14 @@ class ItemForm extends Component {
 
   render() {
     return (
-      <ReactModal isOpen={this.props.handlingModal}>
-        <StyledForm autoComplete='off'>
+
+      <ReactModal
+        isOpen={this.props.handlingModal}
+        ariaHideApp={false}
+        style={{ overlay, content }}
+      >
+        <StyledForm autoComplete="off">
+
           <input
             required
             value={this.props.addItem.name}
@@ -107,3 +113,31 @@ export default connect(
 const StyledForm = styled.form`
   background-color: orange;
 `
+
+// USE THESE OBJECTS TO STYLE THE MODAL
+const overlay = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  // backgroundColor: 'rgba(255, 255, 255, 0.75)'
+  // opacity: 0.5,
+}
+  
+const content = {
+  position: 'absolute',
+  top: '40px',
+  left: '40px',
+  right: '40px',
+  bottom: '40px',
+  border: '1px dashed #ccc',
+  background: '#fff',
+  overflow: 'auto',
+  WebkitOverflowScrolling: 'touch',
+  borderRadius: '4px',
+  outline: 'none',
+  padding: '20px'
+}
+
+

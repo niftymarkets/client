@@ -4,7 +4,7 @@ import ItemCard from '../common/ItemCard'
 
 class CurrentItems extends Component {
   render() {
-    if (this.props.userItems.length < 1) {
+    if (!this.props.userItems) {
       return <LoadingDiv>Loading user items...</LoadingDiv>
     }
 
@@ -12,9 +12,15 @@ class CurrentItems extends Component {
       <UserItemsContainer>
           <h6>Your current items:</h6>
           <ItemsContainer>
-            {this.props.userItems.map(item => (
+            {
+              this.props.userItems.length < 1 ?
+              (<LoadingDiv>You do not have any items. See Market to get some.</LoadingDiv>)
+              :
+              this.props.userItems.map(item => (
               <ItemCard key={item.itemId} item={item} hasDeleteButton={true} />
-            ))}
+            ))
+            
+            }
           </ItemsContainer>
       </UserItemsContainer>
     )
