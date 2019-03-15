@@ -5,9 +5,8 @@ import Transaction from './Transaction';
 class TransactionHistory extends Component {
 
   render() {
-    const { soldItems } = this.props.transHist;
 
-    if (!soldItems) {
+    if (!this.props.transHist) {
       return <LoadingDiv>Loading transactions...</LoadingDiv>
     }
 
@@ -19,16 +18,19 @@ class TransactionHistory extends Component {
             <tr>
               <th>Item</th>
               <th>Price</th>
-              <th>To</th>
-              <th>Category</th>
+              <th>Buyer</th>
+              <th>Seller</th>
             </tr>
           </thead>
           <tbody>
             {
-              soldItems.map(transaction => (
+              this.props.transHist.lenght < 1 ?
+              <LoadingDiv>There are no transactions...</LoadingDiv>
+              :
+              this.props.transHist.map(transaction => (
                 <Transaction
                   transaction={transaction}
-                  key={transaction.itemId}
+                  key={transaction.transactionId}
                 />
               ))
             }

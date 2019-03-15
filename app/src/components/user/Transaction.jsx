@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 
 class Transaction extends Component {
   render() {
-    const { name, price, username, category } = this.props.transaction
+    const { name, price, buyer, seller } = this.props.transaction
 
     return (
       <TableLine>
         <td>{name}</td>
         <td>$ {price}</td>
-        <td>{username}</td>
-        <td>{category}</td>
+        <td>{buyer}</td>
+        <td>{seller}</td>
       </TableLine>
     )
   }

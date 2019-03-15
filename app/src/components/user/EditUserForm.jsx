@@ -26,6 +26,7 @@ class EditUserForm extends Component {
     return (
       <ReactModal
         isOpen={this.props.handlingModal}
+        ariaHideApp={false}
       >
         <form autoComplete='off'>
           <input type='text' ref={this.usernameRef} placeholder='Name' />

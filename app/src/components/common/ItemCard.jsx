@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import {
   toggleWishList,
   deleteUserItem,
-  buyItem,
+  // buyItem,
   newTransaction,
   changeFunds,
   changeItemAvailability
@@ -16,17 +16,19 @@ class ItemCard extends Component {
     const itemOwnerId = this.props.item.userId
     const currentUserBuyingItemId = this.props.userId
 
-    const newItemObject = {
-      ...this.props.item,
-      buyerId: currentUserBuyingItemId,
-      userId: currentUserBuyingItemId,
-      username: this.props.username,
-      availability: 0,
-    }
-    // const newTransaction = {
+    // const newItemObject = {
     //   ...this.props.item,
-    //   username: this.props.item.username
+    //   buyerId: currentUserBuyingItemId,
+    //   userId: currentUserBuyingItemId,
+    //   username: this.props.username,
+    //   availability: 0,
     // }
+    const newTransaction = {
+      buyerId: currentUserBuyingItemId,
+      sellerId: itemOwnerId,
+      itemId: this.props.item.itemId
+    }
+
 
     const newUserFunds = this.props.funds_balance - this.props.item.price
 
@@ -48,11 +50,12 @@ class ItemCard extends Component {
 
       if (userConfirm) {
         // ITEM PUT request to change users owner
-        this.props.buyItem(this.props.item.itemId, newItemObject)
+        // this.props.buyItem(this.props.item.itemId, newItemObject)
+
+        // USER state change in transaction history
+        this.props.newTransaction(currentUserBuyingItemId, newTransaction)
         // USER PUT request to change users funds_balance
         this.props.changeFunds(currentUserBuyingItemId, newUserFunds)
-        // USER state change in transaction history
-        // this.props.newTransaction(newTransaction)
       }
     }
   }
@@ -63,7 +66,6 @@ class ItemCard extends Component {
       this.props.userId,
       {
         availability: e.target.value,
-        buyerId: null,
       }
     )
   }
@@ -164,7 +166,7 @@ export default connect(
   {
     toggleWishList,
     deleteUserItem,
-    buyItem,
+    // buyItem,
     newTransaction,
     changeFunds,
     changeItemAvailability,

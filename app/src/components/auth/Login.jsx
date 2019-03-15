@@ -90,7 +90,7 @@ class Login extends Component {
             </CheckboxWrapper>
 
             <Section>
-              <Button onClick={this.onClickHandler}>Sign in</Button>
+              <Button onClick={this.onClickHandler}>Log in</Button>
               <Link to='/'>
                 <Button>Cancel</Button>
               </Link>
