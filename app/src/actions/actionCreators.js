@@ -6,7 +6,6 @@ export const url = 'https://nifty-markets.herokuapp.com'
 let token = localStorage.getItem('jwt')
 axios.defaults.headers.common['Authorization'] = token
 
-
 export const onLoad = bool => {
   return {
     type: types.LOADING,
@@ -195,7 +194,7 @@ export const deleteUserItem = (itemId, userId) => dispatch => {
 // NO LONGER NECESSARY COZ OF NEW TRANSACTION API
 // KEEPING IT HERE JUT TO BE SAFE
 
-// export const buyItem = (itemId, updatedItemObj) => dispatch => { 
+// export const buyItem = (itemId, updatedItemObj) => dispatch => {
 //   axios({
 //     method: 'put',
 //     url: `${url}/api/items/${itemId}`,
@@ -208,8 +207,7 @@ export const deleteUserItem = (itemId, userId) => dispatch => {
 //   .catch(err => dispatch(onError(err.message)))
 // }
 
-export const getTransactionHistory = (userId) => dispatch => {
-
+export const getTransactionHistory = userId => dispatch => {
   axios
     .get(`${url}/api/users/${userId}/transactions`)
     .then(res => {
@@ -219,15 +217,14 @@ export const getTransactionHistory = (userId) => dispatch => {
 }
 
 export const newTransaction = (userId, newTransaction) => dispatch => {
-
   axios({
-      method: 'post',
-      url: `${url}/api/users/${userId}/transactions`,
-      data: JSON.stringify(newTransaction),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-      })
+    method: 'post',
+    url: `${url}/api/users/${userId}/transactions`,
+    data: JSON.stringify(newTransaction),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
     .then(() => dispatch(getTransactionHistory(userId)))
     .then(() => dispatch(getMarketItems()))
     .catch(err => dispatch(onError(err)))
@@ -241,12 +238,11 @@ export const editUser = (userId, newDetails) => dispatch => {
 
 export const changeFunds = (userId, newFunds) => dispatch => {
   axios
-  .put(`${url}/api/users/${userId}`, { funds_balance: newFunds })
-  .then(() => dispatch(getUserDetails(userId)))
+    .put(`${url}/api/users/${userId}`, { funds_balance: newFunds })
+    .then(() => dispatch(getUserDetails(userId)))
 }
 
-
-export const changeItemAvailability = (itemId, userId, value) => dispatch => { 
+export const changeItemAvailability = (itemId, userId, value) => dispatch => {
   axios({
     method: 'put',
     url: `${url}/api/items/${itemId}`,
@@ -254,29 +250,29 @@ export const changeItemAvailability = (itemId, userId, value) => dispatch => {
     headers: {
       'Content-Type': 'application/json'
     }
-    })
+  })
     .then(() => dispatch(getMarketItems()))
     .then(() => dispatch(getUserItems(userId)))
-  .catch(err => dispatch(onError(err.message)))
+    .catch(err => dispatch(onError(err.message)))
 }
 
 export const editingUser = bool => {
   return {
     type: types.EDITING_USER,
-    payload: bool,
+    payload: bool
   }
 }
 
 export const addingItem = bool => {
   return {
     type: types.ADDING_ITEM,
-    payload: bool,
+    payload: bool
   }
 }
 
 export const toggleModal = bool => {
   return {
     type: types.HANDLE_MODAL,
-    payload: bool,
+    payload: bool
   }
 }
