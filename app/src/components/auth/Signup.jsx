@@ -24,7 +24,7 @@ class Signup extends Component {
         password
       })
       // if we get the JWT here we can login user directly
-      .then(() => this.props.history.push('/login'))
+      .then(() => this.props.history.push('/app/login'))
       .catch(err => console.error(err))
       .finally(() => this.props.updateSignupForm(emptySignupForm))
   }
