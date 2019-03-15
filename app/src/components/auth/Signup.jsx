@@ -70,7 +70,7 @@ class Signup extends Component {
 
           <Section>
             <Button onClick={this.onClickHandler}>Sign up</Button>
-            <Link to='/'>
+            <Link to='/app/market'>
               <Button>Cancel</Button>
             </Link>
           </Section>

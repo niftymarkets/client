@@ -83,7 +83,7 @@ class Login extends Component {
 
             <Section>
               <Button onClick={this.onClickHandler}>Log in</Button>
-              <Link to='/'>
+              <Link to='/app/market'>
                 <Button>Cancel</Button>
               </Link>
             </Section>

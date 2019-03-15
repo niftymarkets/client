@@ -18,11 +18,11 @@ class App extends Component {
         <Navigation userId={userId} />
 
         <main>
-          <Route path='/market' component={MarketWrapper} />
+          <Route path='/app/market' component={MarketWrapper} />
 
           <Route
             exact
-            path={`/users/${userId}`}
+            path={`/app/users/${userId}`}
             render={renderProps =>
               localStorage.getItem('jwt') ? (
                 <UserWrapper renderProps={renderProps} />

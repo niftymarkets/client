@@ -24,7 +24,7 @@ class Navigation extends Component {
           </a>
           <div className='nav-links'>
             <a href='http://niftymarkets.herokuapp.com/index.html'>Home</a>
-            <NavLink to='/market'>Market</NavLink>
+            <NavLink to='/app/market'>Market</NavLink>
             <a href='http://niftymarkets.herokuapp.com/about.html'>About us</a>
             <a href='http://niftymarkets.herokuapp.com/contact.html'>Contact</a>
           </div>
@@ -34,18 +34,18 @@ class Navigation extends Component {
           <div className='nav-links'>
             {localStorage.getItem('jwt') ? (
               <>
-                <NavLink to={`/users/${this.props.userId}`}>
+                <NavLink to={`/app/users/${this.props.userId}`}>
                   <i className='fas fa-user' />
                   Profile
                 </NavLink>
-                <NavLink to='/market'>
+                <NavLink to='/app/market'>
                   <Button onClick={this.logoutUser}>Log out</Button>
                 </NavLink>
               </>
             ) : (
               <>
-                <NavLink to='/signup'>Sign up</NavLink>
-                <NavLink to='/login'>Log in</NavLink>
+                <NavLink to='/app/signup'>Sign up</NavLink>
+                <NavLink to='/app/login'>Log in</NavLink>
               </>
             )}
           </div>
@@ -87,7 +87,7 @@ const NavLeft = styled.div`
 const NavRight = styled.div`
   display: flex;
   align-items: baseline;
-  }
+
 `
 
 const Heading = styled.h2`
